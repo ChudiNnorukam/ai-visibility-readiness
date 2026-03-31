@@ -1,0 +1,154 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://semrush.com",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 404,
+        "content_type": "text/html; charset=utf-8",
+        "note": "HTTP 404"
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "allowed_by_default",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "allowed_by_default",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "allowed_by_default",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "allowed_by_default",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 20,
+        "pages_with_schema": 0,
+        "coverage_pct": 0.0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 1,
+        "total_headings": 45,
+        "heading_levels_used": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "hierarchy_clean": true,
+        "section_count": 44,
+        "paragraph_count": 41,
+        "avg_paragraph_words": 13.0,
+        "has_faq_pattern": false,
+        "headings_sample": [
+          {
+            "level": 1,
+            "text": "Be found everywhere search happens"
+          },
+          {
+            "level": 2,
+            "text": "Your edge to winevery search"
+          },
+          {
+            "level": 2,
+            "text": "Bigger scale.Bigger advantage."
+          },
+          {
+            "level": 2,
+            "text": "Solutions(\u00a09\u00a0)"
+          },
+          {
+            "level": 2,
+            "text": "Stats and facts"
+          },
+          {
+            "level": 2,
+            "text": "AI Visibility Index"
+          },
+          {
+            "level": 2,
+            "text": "Our customers"
+          },
+          {
+            "level": 2,
+            "text": "Resources(\u00a07\u00a0)"
+          },
+          {
+            "level": 2,
+            "text": "Get started with Semrush today"
+          },
+          {
+            "level": 3,
+            "text": "Start Here"
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 161351,
+        "text_content_bytes": 6965,
+        "content_ratio_pct": 4.3,
+        "content_sufficient_override": true,
+        "note": "Low ratio due to framework overhead, but content volume is sufficient"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 7,
+          "main": 1,
+          "nav": 0,
+          "section": 9,
+          "aside": 0,
+          "figure": 1,
+          "time": 0
+        },
+        "images_total": 52,
+        "images_with_alt": 34,
+        "alt_text_coverage_pct": 65.4
+      },
+      "verdict": "PARTIAL"
+    }
+  ],
+  "section_verdict": "PARTIAL"
+}

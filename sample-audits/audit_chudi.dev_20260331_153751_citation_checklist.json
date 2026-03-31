@@ -1,0 +1,139 @@
+{
+  "domain": "chudi.dev",
+  "generated_at": "2026-03-31T15:37:56.281712+00:00",
+  "total_queries": 20,
+  "platforms": [
+    "ChatGPT",
+    "Perplexity",
+    "Google_AIO"
+  ],
+  "total_possible_citations": 60,
+  "queries": [
+    {
+      "id": 1,
+      "category": "brand",
+      "query": "what is chudi.dev",
+      "rationale": "Direct brand recognition"
+    },
+    {
+      "id": 2,
+      "category": "brand",
+      "query": "chudi blog",
+      "rationale": "Brand + content discovery"
+    },
+    {
+      "id": 3,
+      "category": "brand",
+      "query": "who is chudi",
+      "rationale": "Personal brand recognition"
+    },
+    {
+      "id": 4,
+      "category": "brand",
+      "query": "chudi.dev reviews",
+      "rationale": "Social proof / reputation"
+    },
+    {
+      "id": 5,
+      "category": "brand",
+      "query": "chudi developer",
+      "rationale": "Professional identity"
+    },
+    {
+      "id": 6,
+      "category": "topic_authority",
+      "query": "how to Claude Code hooks",
+      "rationale": "Topic authority for: Claude Code hooks"
+    },
+    {
+      "id": 7,
+      "category": "topic_authority",
+      "query": "how to AI code guardrails",
+      "rationale": "Topic authority for: AI code guardrails"
+    },
+    {
+      "id": 8,
+      "category": "topic_authority",
+      "query": "how to AI visibility",
+      "rationale": "Topic authority for: AI visibility"
+    },
+    {
+      "id": 9,
+      "category": "topic_authority",
+      "query": "how to developer automation",
+      "rationale": "Topic authority for: developer automation"
+    },
+    {
+      "id": 10,
+      "category": "topic_authority",
+      "query": "how to building with Claude",
+      "rationale": "Topic authority for: building with Claude"
+    },
+    {
+      "id": 11,
+      "category": "long_tail",
+      "query": "best way to Claude Code hooks in 2026",
+      "rationale": "Long-tail variant for: Claude Code hooks"
+    },
+    {
+      "id": 12,
+      "category": "long_tail",
+      "query": "best way to AI code guardrails in 2026",
+      "rationale": "Long-tail variant for: AI code guardrails"
+    },
+    {
+      "id": 13,
+      "category": "long_tail",
+      "query": "best way to AI visibility in 2026",
+      "rationale": "Long-tail variant for: AI visibility"
+    },
+    {
+      "id": 14,
+      "category": "long_tail",
+      "query": "best way to developer automation in 2026",
+      "rationale": "Long-tail variant for: developer automation"
+    },
+    {
+      "id": 15,
+      "category": "long_tail",
+      "query": "best way to building with Claude in 2026",
+      "rationale": "Long-tail variant for: building with Claude"
+    },
+    {
+      "id": 16,
+      "category": "competitor_adjacent",
+      "query": "Claude Code hooks tutorial guide",
+      "rationale": "Competitive query for: Claude Code hooks"
+    },
+    {
+      "id": 17,
+      "category": "competitor_adjacent",
+      "query": "AI code guardrails tutorial guide",
+      "rationale": "Competitive query for: AI code guardrails"
+    },
+    {
+      "id": 18,
+      "category": "competitor_adjacent",
+      "query": "AI visibility tutorial guide",
+      "rationale": "Competitive query for: AI visibility"
+    },
+    {
+      "id": 19,
+      "category": "competitor_adjacent",
+      "query": "developer automation tutorial guide",
+      "rationale": "Competitive query for: developer automation"
+    },
+    {
+      "id": 20,
+      "category": "competitor_adjacent",
+      "query": "building with Claude tutorial guide",
+      "rationale": "Competitive query for: building with Claude"
+    }
+  ],
+  "instructions": {
+    "step_1": "For each query, search on all 3 platforms",
+    "step_2": "Record whether your domain appears in the response",
+    "step_3": "Use statuses: CITED (link/mention), NOT_CITED, NO_AIO (for Google when no AI Overview appears)",
+    "step_4": "Run this test monthly for trend tracking"
+  }
+}

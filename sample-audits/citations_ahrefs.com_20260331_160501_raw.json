@@ -1,0 +1,217 @@
+[
+  {
+    "platform": "ChatGPT",
+    "query": "what is ahrefs.com",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Ahrefs.com is a popular online toolset for search engine optimization (SEO) that provides a range of features to help marketers and website owners improve their online visibility. Key functionalities ",
+    "query_id": 1,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "who is ahrefs",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Ahrefs is a comprehensive SEO (Search Engine Optimization) toolset that provides various features to help businesses and marketers improve their online visibility. Founded in 2010, Ahrefs offers tools",
+    "query_id": 2,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "ahrefs.com blog",
+    "status": "CITED",
+    "cited_urls": [
+      "https://ahrefs.com/blog/?utm_source=openai",
+      "https://ahrefs.com/blog/seo-blogs/?utm_source=openai",
+      "https://ahrefs.com/blog/seo-blogs/?utm_source=openai",
+      "https://ahrefs.com/blog/seo-blogs/?utm_source=openai",
+      "https://ahrefs.com/blog//?utm_source=openai",
+      "https://ahrefs.com/blog//?utm_source=openai",
+      "https://backlinko.com/hub/seo/ahrefs?utm_source=openai"
+    ],
+    "response_snippet": "The Ahrefs Blog is a comprehensive resource dedicated to enhancing your SEO and marketing skills. It offers detailed tutorials, case studies, and expert insights on various topics, including SEO, cont",
+    "query_id": 3,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "ahrefs developer tools",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Ahrefs offers a suite of tools primarily designed for SEO and digital marketing. While they don't have dedicated \"developer tools\" in the way that a browser might, they do provide several features tha",
+    "query_id": 4,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "tell me about ahrefs.com",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Ahrefs is a popular SEO toolset that provides a variety of tools for digital marketers, website owners, and SEO professionals. Here are some key features and functions:\n\n1. **Site Explorer**: Allows u",
+    "query_id": 5,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to backlink checker",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "To check backlinks to your website, you can use several tools and methods. Here\u2019s a step-by-step guide:\n\n### 1. Use Online Tools\nSeveral tools can help you analyze backlinks:\n\n- **Ahrefs**: Offers a c",
+    "query_id": 6,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to keyword research",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Keyword research is essential for SEO and content marketing. Here's a step-by-step guide:\n\n### 1. Define Your Goals\n   - Identify what you want to achieve (traffic, conversions, brand awareness).\n\n###",
+    "query_id": 7,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to SEO audit",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Performing an SEO audit involves a thorough evaluation of your website's performance and optimization. Here's a step-by-step guide:\n\n### 1. **Crawl Your Website**\n   - Use tools like Screaming Frog or",
+    "query_id": 8,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to site explorer",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "To use a site explorer effectively, you generally follow these steps:\n\n1. **Choose a Site Explorer Tool**: Popular options include Ahrefs, SEMrush, Moz, and Majestic.\n\n2. **Enter the URL**: Input the ",
+    "query_id": 9,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to rank tracker",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Ranking trackers are tools that help monitor the position of your website or webpages in search engine results for specific keywords. Here's how to select and use a ranking tracker effectively:\n\n### 1",
+    "query_id": 10,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to backlink checker in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.techradar.com/reviews/ahrefs?utm_source=openai",
+      "https://www.techradar.com/news/best-seo-tool?utm_source=openai",
+      "https://www.techradar.com/news/best-seo-tool?utm_source=openai",
+      "https://www.techradar.com/news/best-seo-tool?utm_source=openai",
+      "https://www.techradar.com/pro/software-services/se-ranking?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, selecting the right backlink checker is crucial for effective SEO strategies. Backlinks significantly influence search engine rankings, making their analysis and monitoring essential. Here ar",
+    "query_id": 11,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to keyword research in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.adwenplus.com/how-to-conduct-effective-keyword-research-for-seo-in-2026/?utm_source=openai",
+      "https://www.agiledigitalagency.com/blog/keyword-research/?utm_source=openai",
+      "https://www.techradar.com/best/keyword-research-tools?utm_source=openai",
+      "https://www.adwenplus.com/how-to-conduct-effective-keyword-research-for-seo-in-2026/?utm_source=openai",
+      "https://www.adwenplus.com/how-to-conduct-effective-keyword-research-for-seo-in-2026/?utm_source=openai",
+      "https://serpoptimize.net/keyword-research-that-actually-works-2026-from-seed-ideas-to-topic-clusters/?utm_source=openai",
+      "https://rivereditor.com/guides/how-to-conduct-seo-keyword-research-2026?utm_source=openai",
+      "https://www.youtube.com/watch?v=VPDe8XL7Mh8&utm_source=openai"
+    ],
+    "response_snippet": "In 2026, effective keyword research has evolved beyond merely identifying high-volume terms. The focus now is on understanding user intent, building topical authority, and creating content that aligns",
+    "query_id": 12,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to SEO audit in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Conducting an effective SEO audit in 2026 involves a comprehensive evaluation of your website's technical health, content quality, and user experience. Here's a structured approach to guide you throug",
+    "query_id": 13,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to site explorer in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.seologist.com/knowledge-sharing/beginners-guide-on-page-seo-2026/?utm_source=openai",
+      "https://atarim.io/blog/resources/how-to-improve-a-website-the-2026-performance-ux-guide/?utm_source=openai",
+      "https://bostoninstituteofanalytics.org/blog/seo-best-practices-that-actually-work-in-2026/?utm_source=openai",
+      "https://www.trysight.ai/blog/website-indexing-best-practices?utm_source=openai",
+      "https://bostoninstituteofanalytics.org/blog/seo-best-practices-that-actually-work-in-2026/?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, utilizing a Site Explorer tool effectively is crucial for comprehensive SEO analysis and strategy development. Here are some best practices to maximize its benefits:\n\n1. **Conduct Thorough Si",
+    "query_id": 14,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to rank tracker in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.miniloop.ai/blog/best-rank-tracker-2026?utm_source=openai",
+      "https://www.techradar.com/pro/software-services/se-ranking?utm_source=openai",
+      "https://smarketa.com/best-rank-tracker-softwares/?utm_source=openai",
+      "https://www.techradar.com/reviews/ahrefs?utm_source=openai",
+      "https://blog.kalema.io/ai-search/ai-seo/best-rank-tracking-tools-2026-accuracy-data-compared/?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, selecting the optimal rank tracking tool depends on your specific needs, such as real-time updates, comprehensive SEO features, or budget considerations. Here are some top options:\n\n\n\n**AccuR",
+    "query_id": 15,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "backlink checker tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a backlink checker can be a valuable tool for any website owner, SEO specialist, or digital marketer looking to analyze their link profile. Here\u2019s a detailed tutorial guide on how to perform ",
+    "query_id": 16,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "keyword research tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Sure! Here's a step-by-step tutorial guide for conducting effective keyword research.\n\n### Keyword Research Tutorial Guide\n\n#### 1. **Understand Your Goals**\n   - Define what you want to achieve: more",
+    "query_id": 17,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "SEO audit tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Here's a comprehensive guide to conducting an SEO audit. This step-by-step tutorial will help you assess the effectiveness of your SEO strategies and identify areas for improvement.\n\n### 1. **Set Your",
+    "query_id": 18,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "site explorer tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a tutorial guide for a site explorer can vary depending on the specific tool you're using, but I'll provide a general step-by-step guide that can be adapted for most site exploration tools, s",
+    "query_id": 19,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "rank tracker tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a rank tracker tutorial guide involves several steps to help users effectively track their website\u2019s search engine rankings. Here\u2019s a structured guide you can follow:\n\n### Rank Tracker Tutori",
+    "query_id": 20,
+    "category": "competitor"
+  }
+]

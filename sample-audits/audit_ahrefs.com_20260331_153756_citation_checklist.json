@@ -1,0 +1,139 @@
+{
+  "domain": "ahrefs.com",
+  "generated_at": "2026-03-31T15:38:03.632368+00:00",
+  "total_queries": 20,
+  "platforms": [
+    "ChatGPT",
+    "Perplexity",
+    "Google_AIO"
+  ],
+  "total_possible_citations": 60,
+  "queries": [
+    {
+      "id": 1,
+      "category": "brand",
+      "query": "what is ahrefs.com",
+      "rationale": "Direct brand recognition"
+    },
+    {
+      "id": 2,
+      "category": "brand",
+      "query": "ahrefs blog",
+      "rationale": "Brand + content discovery"
+    },
+    {
+      "id": 3,
+      "category": "brand",
+      "query": "who is ahrefs",
+      "rationale": "Personal brand recognition"
+    },
+    {
+      "id": 4,
+      "category": "brand",
+      "query": "ahrefs.com reviews",
+      "rationale": "Social proof / reputation"
+    },
+    {
+      "id": 5,
+      "category": "brand",
+      "query": "ahrefs developer",
+      "rationale": "Professional identity"
+    },
+    {
+      "id": 6,
+      "category": "topic_authority",
+      "query": "how to backlink checker",
+      "rationale": "Topic authority for: backlink checker"
+    },
+    {
+      "id": 7,
+      "category": "topic_authority",
+      "query": "how to keyword research",
+      "rationale": "Topic authority for: keyword research"
+    },
+    {
+      "id": 8,
+      "category": "topic_authority",
+      "query": "how to SEO audit",
+      "rationale": "Topic authority for: SEO audit"
+    },
+    {
+      "id": 9,
+      "category": "topic_authority",
+      "query": "how to site explorer",
+      "rationale": "Topic authority for: site explorer"
+    },
+    {
+      "id": 10,
+      "category": "topic_authority",
+      "query": "how to rank tracker",
+      "rationale": "Topic authority for: rank tracker"
+    },
+    {
+      "id": 11,
+      "category": "long_tail",
+      "query": "best way to backlink checker in 2026",
+      "rationale": "Long-tail variant for: backlink checker"
+    },
+    {
+      "id": 12,
+      "category": "long_tail",
+      "query": "best way to keyword research in 2026",
+      "rationale": "Long-tail variant for: keyword research"
+    },
+    {
+      "id": 13,
+      "category": "long_tail",
+      "query": "best way to SEO audit in 2026",
+      "rationale": "Long-tail variant for: SEO audit"
+    },
+    {
+      "id": 14,
+      "category": "long_tail",
+      "query": "best way to site explorer in 2026",
+      "rationale": "Long-tail variant for: site explorer"
+    },
+    {
+      "id": 15,
+      "category": "long_tail",
+      "query": "best way to rank tracker in 2026",
+      "rationale": "Long-tail variant for: rank tracker"
+    },
+    {
+      "id": 16,
+      "category": "competitor_adjacent",
+      "query": "backlink checker tutorial guide",
+      "rationale": "Competitive query for: backlink checker"
+    },
+    {
+      "id": 17,
+      "category": "competitor_adjacent",
+      "query": "keyword research tutorial guide",
+      "rationale": "Competitive query for: keyword research"
+    },
+    {
+      "id": 18,
+      "category": "competitor_adjacent",
+      "query": "SEO audit tutorial guide",
+      "rationale": "Competitive query for: SEO audit"
+    },
+    {
+      "id": 19,
+      "category": "competitor_adjacent",
+      "query": "site explorer tutorial guide",
+      "rationale": "Competitive query for: site explorer"
+    },
+    {
+      "id": 20,
+      "category": "competitor_adjacent",
+      "query": "rank tracker tutorial guide",
+      "rationale": "Competitive query for: rank tracker"
+    }
+  ],
+  "instructions": {
+    "step_1": "For each query, search on all 3 platforms",
+    "step_2": "Record whether your domain appears in the response",
+    "step_3": "Use statuses: CITED (link/mention), NOT_CITED, NO_AIO (for Google when no AI Overview appears)",
+    "step_4": "Run this test monthly for trend tracking"
+  }
+}

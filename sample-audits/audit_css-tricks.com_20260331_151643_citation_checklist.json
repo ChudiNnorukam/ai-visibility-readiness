@@ -1,0 +1,139 @@
+{
+  "domain": "css-tricks.com",
+  "generated_at": "2026-03-31T15:16:54.706478+00:00",
+  "total_queries": 20,
+  "platforms": [
+    "ChatGPT",
+    "Perplexity",
+    "Google_AIO"
+  ],
+  "total_possible_citations": 60,
+  "queries": [
+    {
+      "id": 1,
+      "category": "brand",
+      "query": "what is css-tricks.com",
+      "rationale": "Direct brand recognition"
+    },
+    {
+      "id": 2,
+      "category": "brand",
+      "query": "css-tricks blog",
+      "rationale": "Brand + content discovery"
+    },
+    {
+      "id": 3,
+      "category": "brand",
+      "query": "who is css-tricks",
+      "rationale": "Personal brand recognition"
+    },
+    {
+      "id": 4,
+      "category": "brand",
+      "query": "css-tricks.com reviews",
+      "rationale": "Social proof / reputation"
+    },
+    {
+      "id": 5,
+      "category": "brand",
+      "query": "css-tricks developer",
+      "rationale": "Professional identity"
+    },
+    {
+      "id": 6,
+      "category": "topic_authority",
+      "query": "how to CSS grid",
+      "rationale": "Topic authority for: CSS grid"
+    },
+    {
+      "id": 7,
+      "category": "topic_authority",
+      "query": "how to flexbox",
+      "rationale": "Topic authority for: flexbox"
+    },
+    {
+      "id": 8,
+      "category": "topic_authority",
+      "query": "how to web animations",
+      "rationale": "Topic authority for: web animations"
+    },
+    {
+      "id": 9,
+      "category": "topic_authority",
+      "query": "how to responsive design",
+      "rationale": "Topic authority for: responsive design"
+    },
+    {
+      "id": 10,
+      "category": "topic_authority",
+      "query": "how to frontend development",
+      "rationale": "Topic authority for: frontend development"
+    },
+    {
+      "id": 11,
+      "category": "long_tail",
+      "query": "best way to CSS grid in 2026",
+      "rationale": "Long-tail variant for: CSS grid"
+    },
+    {
+      "id": 12,
+      "category": "long_tail",
+      "query": "best way to flexbox in 2026",
+      "rationale": "Long-tail variant for: flexbox"
+    },
+    {
+      "id": 13,
+      "category": "long_tail",
+      "query": "best way to web animations in 2026",
+      "rationale": "Long-tail variant for: web animations"
+    },
+    {
+      "id": 14,
+      "category": "long_tail",
+      "query": "best way to responsive design in 2026",
+      "rationale": "Long-tail variant for: responsive design"
+    },
+    {
+      "id": 15,
+      "category": "long_tail",
+      "query": "best way to frontend development in 2026",
+      "rationale": "Long-tail variant for: frontend development"
+    },
+    {
+      "id": 16,
+      "category": "competitor_adjacent",
+      "query": "CSS grid tutorial guide",
+      "rationale": "Competitive query for: CSS grid"
+    },
+    {
+      "id": 17,
+      "category": "competitor_adjacent",
+      "query": "flexbox tutorial guide",
+      "rationale": "Competitive query for: flexbox"
+    },
+    {
+      "id": 18,
+      "category": "competitor_adjacent",
+      "query": "web animations tutorial guide",
+      "rationale": "Competitive query for: web animations"
+    },
+    {
+      "id": 19,
+      "category": "competitor_adjacent",
+      "query": "responsive design tutorial guide",
+      "rationale": "Competitive query for: responsive design"
+    },
+    {
+      "id": 20,
+      "category": "competitor_adjacent",
+      "query": "frontend development tutorial guide",
+      "rationale": "Competitive query for: frontend development"
+    }
+  ],
+  "instructions": {
+    "step_1": "For each query, search on all 3 platforms",
+    "step_2": "Record whether your domain appears in the response",
+    "step_3": "Use statuses: CITED (link/mention), NOT_CITED, NO_AIO (for Google when no AI Overview appears)",
+    "step_4": "Run this test monthly for trend tracking"
+  }
+}

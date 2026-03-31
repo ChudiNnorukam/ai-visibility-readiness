@@ -1,0 +1,122 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://x.com",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 200,
+        "content_type": "text/html; charset=utf-8",
+        "line_count": 354,
+        "char_count": 246539,
+        "first_lines": [
+          "<!DOCTYPE html><html dir=\"ltr\" lang=\"en\"><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover\" /><link rel=\"preconnect\" href=\"//abs.twimg.com\" /><link rel=\"dns-prefetch\" href=\"//abs.twimg.com\" /><link rel=\"preconnect\" href=\"//api.twitter.com\" /><link rel=\"dns-prefetch\" href=\"//api.twitter.com\" /><link rel=\"preconnect\" href=\"//api.x.com\" /><link rel=\"dns-prefetch\" href=\"//api.x.com\" /><link rel=\"preconnect\" href=\"//pbs.twimg.com\" /><link rel=\"dns-prefetch\" href=\"//pbs.twimg.com\" /><link rel=\"preconnect\" href=\"//t.co\" /><link rel=\"dns-prefetch\" href=\"//t.co\" /><link rel=\"preconnect\" href=\"//video.twimg.com\" /><link rel=\"dns-prefetch\" href=\"//video.twimg.com\" /><link nonce=\"N2I4M2ZhMjgtNDI3OS00OTk2LWEyY2ItNTJiMTJjOGI4OWRj\" rel=\"preload\" as=\"script\" crossorigin=\"anonymous\" href=\"https://abs.twimg.com/responsive-web/client-web/vendor.f1dc7e4a.js\" /><link nonce=\"N2I4M2ZhMjgtNDI3OS00OTk2LWEyY2ItNTJiMTJjOGI4OWRj\" rel=\"preload\" as=\"script\" crossorigin=\"anonymous\" href=\"https://abs.twimg.com/responsive-web/client-web/i18n/en.901ee17a.js\" /><link nonce=\"N2I4M2ZhMjgtNDI3OS00OTk2LWEyY2ItNTJiMTJjOGI4OWRj\" rel=\"preload\" as=\"script\" crossorigin=\"anonymous\" href=\"https://abs.twimg.com/responsive-web/client-web/main.f7ac183a.js\" /><meta http-equiv=\"onion-location\" content=\"https://twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid.onion/\" /><meta property=\"fb:app_id\" content=\"2231777543\" /><meta content=\"X (formerly Twitter)\" property=\"og:site_name\" /><meta name=\"google-site-verification\" content=\"reUF-TgZq93ZGtzImw42sfYglI2hY0QiGRmfc4jeKbs\" /><meta name=\"facebook-domain-verification\" content=\"x6sdcc8b5ju3bh8nbm59eswogvg6t1\" /><link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/os-x.xml\" title=\"X\">",
+          "<link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/os-grok.xml\" title=\"Grok\"><link rel=\"apple-touch-icon\" sizes=\"192x192\" href=\"https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png\" /><meta name=\"twitter-site-verification\" content=\"dbRmuape0udoTZzNr9+9iGrx5sA3hSjdDlChVP08Qh9gdHn4UwtH0jblts7f4tU1\" /><link rel=\"manifest\" href=\"/manifest.json\" crossOrigin=\"use-credentials\" /><link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/os-x.xml\" title=\"X\"><link rel=\"search\" type=\"application/opensearchdescription+xml\" href=\"/os-grok.xml\" title=\"Grok\"><link rel=\"mask-icon\" sizes=\"any\" href=\"https://abs.twimg.com/responsive-web/client-web/icon-svg.ea5ff4aa.svg\" color=\"#1D9BF0\"><link rel=\"shortcut icon\" href=\"//abs.twimg.com/favicons/twitter.3.ico\"><meta name=\"theme-color\" media=\"(prefers-color-scheme: light)\" content=\"#FFFFFF\" /><meta name=\"theme-color\" media=\"(prefers-color-scheme: dark)\" content=\"#000000\" /><meta http-equiv=\"origin-trial\" content=\"AlpCmb40F5ZjDi9ZYe+wnr/V8MF+XmY41K4qUhoq+2mbepJTNd3q4CRqlACfnythEPZqcjryfAS1+ExS0FFRcA8AAABmeyJvcmlnaW4iOiJodHRwczovL3R3aXR0ZXIuY29tOjQ0MyIsImZlYXR1cmUiOiJMYXVuY2ggSGFuZGxlciIsImV4cGlyeSI6MTY1NTI1MTE5OSwiaXNTdWJkb21haW4iOnRydWV9\" /><style>html,body{height: 100%;}::cue{white-space:normal}</style><style id=\"react-native-stylesheet\">[stylesheet-group=\"0\"]{}",
+          "body{margin:0;}",
+          "button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}",
+          "html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}"
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "blocked",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "blocked",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "blocked",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "blocked",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "blocked",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "blocked",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 1,
+        "pages_with_schema": 0,
+        "coverage_pct": 0.0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 1,
+        "total_headings": 1,
+        "heading_levels_used": [
+          1
+        ],
+        "hierarchy_clean": true,
+        "section_count": 0,
+        "paragraph_count": 3,
+        "avg_paragraph_words": 15.0,
+        "has_faq_pattern": false,
+        "headings_sample": [
+          {
+            "level": 1,
+            "text": "JavaScript is not available."
+          }
+        ]
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 246539,
+        "text_content_bytes": 492,
+        "content_ratio_pct": 0.2,
+        "content_sufficient_override": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 0,
+          "main": 0,
+          "nav": 0,
+          "section": 0,
+          "aside": 0,
+          "figure": 0,
+          "time": 0
+        },
+        "images_total": 1,
+        "images_with_alt": 1,
+        "alt_text_coverage_pct": 100.0
+      },
+      "verdict": "PARTIAL"
+    }
+  ],
+  "section_verdict": "FAIL"
+}

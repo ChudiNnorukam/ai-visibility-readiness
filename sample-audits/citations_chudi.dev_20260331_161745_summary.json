@@ -1,0 +1,27 @@
+{
+  "total_tests": 14,
+  "testable": 14,
+  "errors": 0,
+  "cited_count": 0,
+  "citation_rate_pct": 0.0,
+  "confidence_interval_95": {
+    "low_pct": 0,
+    "high_pct": 21.5
+  },
+  "confidence_label": "LOW",
+  "by_platform": {
+    "ChatGPT": {
+      "cited": 0,
+      "not_cited": 14,
+      "error": 0,
+      "total": 14,
+      "citation_rate_pct": 0.0
+    }
+  },
+  "verdict": "NOT_CITED",
+  "target_url": "https://chudi.dev",
+  "test_date": "2026-03-31T16:17:45.667364+00:00",
+  "platforms_tested": [
+    "openai"
+  ]
+}

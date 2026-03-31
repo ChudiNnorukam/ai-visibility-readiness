@@ -1,0 +1,234 @@
+[
+  {
+    "platform": "ChatGPT",
+    "query": "what is chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://forem.com/chudi_nnorukam?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/i-added-webmcp-to-my-blog-19-days-after-it-shipped-heres-the-exact-code-4agb?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer based in Berkeley, California. The site serves as a public experiment in AI-visible web architecture, inte",
+    "query_id": 1,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "who is chudi",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "\"Chudi\" could refer to different individuals or concepts depending on the context. It might be a name, possibly of a person, or it may refer to something cultural (like traditional jewelry in India). ",
+    "query_id": 2,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi.dev blog",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://dev.to/chudi_nnorukam/72-hour-cross-posting-delay-2bmb?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/multi-platform-bug-bounty-tool-14pe?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/i-trained-openclaw-to-run-my-blog-voice-dna-agentic-seo-and-the-end-of-manual-publishing-1la8?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/i-added-webmcp-to-my-blog-19-days-after-it-shipped-heres-the-exact-code-4agb?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is the personal blog of Chudi Nnorukam, where he shares insights on technology, AI, and personal development. Recent posts include:\n\n- **\"How I Cross-Post to Dev.to Without Hurting SEO (My 7",
+    "query_id": 3,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi developer tools",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://en.wikipedia.org/wiki/Apple_Developer_Tools?utm_source=openai",
+      "https://arstechnica.com/gadgets/2005/09/1336/?utm_source=openai",
+      "https://arstechnica.com/gadgets/2005/11/1769/?utm_source=openai",
+      "https://arstechnica.com/gadgets/2005/11/1769/?utm_source=openai",
+      "https://arstechnica.com/gadgets/2005/09/1336/?utm_source=openai"
+    ],
+    "response_snippet": "The Computer Hardware Understanding Development (CHUD) Tools are a suite of utilities developed by Apple to assist developers in optimizing software performance on macOS. These tools provide insights ",
+    "query_id": 4,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "tell me about chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://forem.com/chudi_nnorukam?utm_source=openai",
+      "https://chudi-blog.vercel.app/?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer based in Berkeley, California. The site serves as a public experiment in AI-visible web architecture, inte",
+    "query_id": 5,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to Claude Code hooks",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "To create code hooks in Claude (an AI model), you typically interact with it via an API provided by the platform it's hosted on. Here are some general steps you might follow:\n\n1. **Understand the Envi",
+    "query_id": 6,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI code guardrails",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Implementing AI code guardrails involves setting up safeguards to ensure that AI systems operate safely, ethically, and effectively. Here\u2019s a structured approach:\n\n### 1. **Define Objectives and Limit",
+    "query_id": 7,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI visibility",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Improving AI visibility typically refers to enhancing the understanding and transparency of AI systems. Here are some strategies you can use:\n\n### 1. **Clear Communication**\n   - **User-Friendly Inter",
+    "query_id": 8,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to developer automation",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Developing automation involves a systematic approach, combining tools, coding, and best practices. Here\u2019s a guide to get you started:\n\n### 1. Identify the Process\n- **Assess Tasks**: Identify repetiti",
+    "query_id": 9,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to building with Claude",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Building with Claude, an AI model developed by Anthropic, involves a few key steps. Here\u2019s a general outline to help you get started:\n\n1. **Access Claude**: Ensure you have access to Claude, possibly ",
+    "query_id": 10,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to Claude Code hooks in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.datacamp.com/tutorial/claude-code-best-practices/?utm_source=openai",
+      "https://www.datacamp.com/tutorial/claude-code-best-practices/?utm_source=openai",
+      "https://claudelab.net/en/articles/claude-code/claude-code-hooks-workflow-automation?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks-guide?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks-guide?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, Claude Code hooks offer a powerful mechanism to automate and customize your development workflow by executing user-defined shell commands at specific points in the code lifecycle. By leveragi",
+    "query_id": 11,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI code guardrails in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://bytetools.io/guides/ai-safety-guardrails?utm_source=openai",
+      "https://bytetools.io/guides/ai-safety-guardrails?utm_source=openai",
+      "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails?utm_source=openai",
+      "https://zylos.ai/research/2026-01-22-ai-agent-reliability-guardrails?utm_source=openai",
+      "https://www.techradar.com/pro/one-size-fits-all-ai-guardrails-do-not-work-in-the-enterprise?utm_source=openai",
+      "https://zylos.ai/research/2026-01-22-ai-agent-reliability-guardrails?utm_source=openai",
+      "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails?utm_source=openai",
+      "https://www.techradar.com/pro/microsoft-researchers-crack-ai-guardrails-with-a-single-prompt?utm_source=openai",
+      "https://www.axios.com/2026/03/03/ai-race-safety-guardrail?utm_source=openai",
+      "https://www.techradar.com/pro/one-size-fits-all-ai-guardrails-do-not-work-in-the-enterprise?utm_source=openai"
+    ],
+    "response_snippet": "As of 2026, implementing effective AI code guardrails is crucial to ensure the safety, reliability, and ethical use of AI systems. Guardrails are mechanisms that prevent AI models from producing harmf",
+    "query_id": 12,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI visibility in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Boosting AI visibility in 2026 involves several strategies that focus on innovation, engagement, and transparency. Here are some effective approaches:\n\n1. **Understand Trends**: Keep abreast of emergi",
+    "query_id": 13,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to developer automation in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.techradar.com/pro/from-hype-to-value-the-ai-trends-set-to-shape-2026?utm_source=openai",
+      "https://www.zaptest.com/future-proofing-your-enterprise-software-automation-strategies-for-2026?utm_source=openai",
+      "https://www.zaptest.com/future-proofing-your-enterprise-software-automation-strategies-for-2026?utm_source=openai",
+      "https://www.zaptest.com/future-proofing-your-enterprise-software-automation-strategies-for-2026?utm_source=openai",
+      "https://www.zaptest.com/future-proofing-your-enterprise-software-automation-strategies-for-2026?utm_source=openai",
+      "https://www.htmlpanda.com/blog/custom-software-development-tips-2026/?utm_source=openai",
+      "https://www.dipolediamond.com/process-automation-trends-7-best-practices-in-2026/?utm_source=openai",
+      "https://www.dipolediamond.com/process-automation-trends-7-best-practices-in-2026/?utm_source=openai",
+      "https://www.automateshow.com/blog/automation-tips-and-trends-for-2026-how-to-plan-your-next-move?utm_source=openai"
+    ],
+    "response_snippet": "Developing effective automation strategies in 2026 requires a comprehensive approach that integrates advanced technologies, robust practices, and a focus on scalability and adaptability. Here are key ",
+    "query_id": 14,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to building with Claude in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices?refid=sm_builders_flash_create-partyrock-app&utm_source=openai",
+      "https://joulyan.com/en/blog/claude-code-best-practices-2026-and-claudemd?utm_source=openai",
+      "https://www.blockchain-council.org/claude-ai/building-apps-faster-with-claude-ai-prds-to-mvps-iteration-loops/?utm_source=openai",
+      "https://www.gend.co/blog/build-with-claude-practical-guidance-best-practices?utm_source=openai",
+      "https://joulyan.com/en/blog/claude-code-best-practices-2026-and-claudemd?utm_source=openai",
+      "https://www.blockchain-council.org/claude-ai/building-apps-faster-with-claude-ai-prds-to-mvps-iteration-loops/?utm_source=openai",
+      "https://www.techradar.com/pro/anthropic-gives-claude-code-new-auto-mode-which-lets-it-choose-its-own-permissions?utm_source=openai"
+    ],
+    "response_snippet": "Building applications with Claude AI in 2026 offers enhanced capabilities and streamlined workflows. To maximize your development process, consider the following best practices:\n\n**1. Define Clear Pro",
+    "query_id": 15,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "Claude Code hooks tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "To effectively use Claude AI, you should explore the concept of \"Code Hooks.\" While there isn't an official comprehensive tutorial available specifically for Claude's Code Hooks, here\u2019s a basic guide ",
+    "query_id": 16,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI code guardrails tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating AI code guardrails involves setting up measures and best practices to ensure that AI systems operate safely, ethically, and within defined boundaries. Here's a step-by-step tutorial guide to ",
+    "query_id": 17,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI visibility tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a tutorial on AI visibility involves explaining how to make AI systems more transparent, understandable, and interpretable. Below is a comprehensive guide structured to cover key aspects:\n\n##",
+    "query_id": 18,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "developer automation tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a developer automation tutorial involves several steps to cover various aspects of automation. Here\u2019s a structured guide covering essential topics and tools:\n\n### 1. Introduction to Automatio",
+    "query_id": 19,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "building with Claude tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a project using Claude, an AI model similar to ChatGPT, can be broken down into several key steps. Below is a generalized tutorial guide to get you started:\n\n### Step 1: Understand Claude\n- C",
+    "query_id": 20,
+    "category": "competitor"
+  }
+]

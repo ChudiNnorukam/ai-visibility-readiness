@@ -1,0 +1,546 @@
+[
+  {
+    "query_id": 1,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What is chudi.dev?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer based in Berkeley, California. The site serves as a public experiment in AI-visible web architecture, integrating technical writing, machine-readable discovery, and agent-facing interfaces to facilitate nav"
+  },
+  {
+    "query_id": 2,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "Tell me about Chudi",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "\"Chudi\" typically refers to traditional glass bangles commonly worn by women in South Asian cultures, particularly in India and Pakistan. These bangles are often colorful and are made from glass, metal, or plastic. The term can also refer to the practice of wearing these bangles during festivals, we"
+  },
+  {
+    "query_id": 3,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What does Chudi do?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "\"Chudi\" can refer to a few different contexts, such as the traditional Indian bangles, or it could be a name. If you're referring to a specific person named Chudi, could you provide more details about their background or role? This will help me give you a more accurate answer."
+  },
+  {
+    "query_id": 4,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "Who is Chudi Nnorukam?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi Nnorukam is an AI systems architect and automation engineer specializing in designing and deploying agent-based AI automation systems. He focuses on eliminating manual workflows, scaling content, and powering recursive learning, with expertise in micro-SaaS tools, content automation, and high-"
+  },
+  {
+    "query_id": 5,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "What has Chudi Nnorukam built?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi Nnorukam is an AI Systems Architect specializing in designing and deploying agent-based AI automation systems. His work focuses on eliminating manual workflows, scaling content, and powering recursive learning. He has over five years of experience and has completed more than 20 projects. ([chu"
+  },
+  {
+    "query_id": 10,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "When working with Claude Code hooks, there are several approaches you can adopt to optimize their functionality and effectiveness:\n\n### 1. **Understand the Hook Context**\n   - **Purpose**: Define the specific purpose of each hook\u2014whether it's for pre-processing requests, modifying responses, or inte"
+  },
+  {
+    "query_id": 11,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI visibility?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Ensuring visibility of AI systems is crucial for transparency, trust, and accountability. Here are some of the best approaches:\n\n1. **Explainability**:\n   - Use models that are interpretable or provide mechanisms to explain their decisions (e.g., LIME, SHAP).\n   - Provide visualizations that clarify"
+  },
+  {
+    "query_id": 12,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI code guardrails?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Implementing AI code guardrails is essential for ensuring safety, ethical use, and compliance. Here are some of the best approaches:\n\n### 1. **Clear Guidelines and Policies**\n   - **Define Scope and Limitations:** Establish what the AI can and cannot do.\n   - **Ethical Guidelines:** Create a framewo"
+  },
+  {
+    "query_id": 15,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several authors and organizations have written extensively about Claude Code hooks, providing insights into their functionality, configuration, and practical applications. Notable contributors include:\n\n- **Anthropic**: As the developer of Claude Code, Anthropic offers comprehensive documentation on"
+  },
+  {
+    "query_id": 16,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI visibility?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several notable authors, researchers, and organizations focus on the topic of AI visibility, tackling aspects like transparency, interpretability, ethics, and societal impact. Here are some key figures and entities:\n\n1. **Kate Crawford** - A prominent researcher and author who explores the ethical i"
+  },
+  {
+    "query_id": 17,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI code guardrails?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several experts and organizations discuss AI code guardrails, including:\n\n1. **Research Institutions**: \n   - **OpenAI**, **DeepMind**, and **MIT** often publish papers addressing safety measures in AI systems.\n\n2. **Tech Companies**: \n   - Companies like **Google** and **Microsoft** have guidelines"
+  },
+  {
+    "query_id": 20,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively utilize Claude Code hooks, it's beneficial to follow resources that offer in-depth tutorials, best practices, and community insights. Here are some recommended tools and blogs:\n\n**1. Eesel.ai Blog**\n\nEesel.ai provides comprehensive guides on Claude Code best practices, including a det"
+  },
+  {
+    "query_id": 21,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI visibility?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To stay informed about AI visibility and related trends, consider following these tools and blogs:\n\n### Tools\n1. **Google Trends**: Monitor interest in AI topics over time.\n2. **BuzzSumo**: Analyze what content performs best in your niche.\n3. **Feedly**: Aggregate blog feeds and stay up-to-date with"
+  },
+  {
+    "query_id": 22,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI code guardrails?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Here are some tools, blogs, and resources you might find beneficial for implementing AI code guardrails:\n\n### Tools\n\n1. **OpenAI's API Safety Guidelines**:\n   - Learn about best practices and guidelines directly from OpenAI for implementing safety measures.\n\n2. **AI Fairness 360**:\n   - An open-sour"
+  },
+  {
+    "query_id": 25,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning Claude Code hooks in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively learn and implement Claude Code hooks in 2026, consider the following resources:\n\n1. **Official Documentation**: Anthropic's [Claude Code Hooks Guide](https://docs.claude.com/en/docs/claude-code/hooks-guide) provides comprehensive information on customizing and extending Claude Code's"
+  },
+  {
+    "query_id": 26,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning AI visibility in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "In 2026, AI visibility has become a critical factor for brands aiming to be discovered and recommended by AI-powered search engines like ChatGPT, Google Gemini, and Perplexity. To effectively enhance your brand's AI visibility, consider exploring the following resources:\n\n1. **\"What Is AI Visibility"
+  },
+  {
+    "query_id": 27,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning AI code guardrails in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "AI visibility readiness"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "As of March 31, 2026, the importance of implementing AI code guardrails has become increasingly critical to ensure the safety, reliability, and ethical use of artificial intelligence systems. To effectively learn and apply AI code guardrails, consider the following resources:\n\n**1. Industry Articles"
+  }
+]

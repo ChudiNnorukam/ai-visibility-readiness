@@ -1,0 +1,27 @@
+{
+  "total_tests": 20,
+  "testable": 20,
+  "errors": 0,
+  "cited_count": 1,
+  "citation_rate_pct": 5.0,
+  "confidence_interval_95": {
+    "low_pct": 0.9,
+    "high_pct": 23.6
+  },
+  "confidence_label": "LOW",
+  "by_platform": {
+    "ChatGPT": {
+      "cited": 1,
+      "not_cited": 19,
+      "error": 0,
+      "total": 20,
+      "citation_rate_pct": 5.0
+    }
+  },
+  "verdict": "PARTIALLY_CITED",
+  "target_url": "https://ahrefs.com",
+  "test_date": "2026-03-31T16:05:01.765667+00:00",
+  "platforms_tested": [
+    "openai"
+  ]
+}

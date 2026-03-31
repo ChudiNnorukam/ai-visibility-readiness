@@ -1,0 +1,190 @@
+# AI Visibility Readiness Audit
+
+**Prepared for:** Demo Report
+**Prepared by:** Chudi Nnorukam
+**Date:** March 31, 2026
+**URL audited:** https://chudi.dev
+**Framework:** AVR v1.0.0
+
+---
+
+## Executive Summary
+
+**Overall Status: AI-READY**
+
+This audit ran 9 automated checks across two categories: SEO Foundation (traditional search readiness) and AI Infrastructure (AI search readiness). **9 of 9 checks passed.**
+
+Your site has removed all measurable barriers to AI citation. The remaining factors (domain authority, content depth, backlinks) are built over time through publishing and link acquisition.
+
+| Section | Verdict |
+|---------|---------|
+| SEO Foundation | [PASS] |
+| AI Infrastructure | [PASS] |
+| AI Visibility | PARTIALLY_VISIBLE (29.4%) |
+| AI Citations | [NOT CITED] (0.0%) |
+
+### Top 3 Actions (in priority order)
+
+1. Run the 20-query citation test (Section 3) to establish your baseline citation rate.
+2. Build backlinks from high-DA sources to increase domain authority.
+3. Publish content monthly and re-run this audit quarterly to track progress.
+
+---
+
+## Section 1: SEO Foundation
+
+**Section Verdict:** [PASS]
+
+### 1.1 Core Web Vitals
+**Tier:** VERIFIABLE | **Verdict:** [SKIPPED]
+
+*Lighthouse skipped (--skip-lighthouse flag)*
+
+### 1.5 Page Speed
+**Tier:** VERIFIABLE | **Verdict:** [SKIPPED]
+
+*Lighthouse skipped (--skip-lighthouse flag)*
+
+### 1.2 Technical Crawlability
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **robots_txt:** status: 200, exists: True, size_bytes: 689
+- **sitemap:** status: 200, exists: True, size_bytes: 9893
+- **https:** enforced: True, http_redirects: True
+
+### 1.3 Schema Markup
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+Schema types found: Organization, SiteNavigationElement, WebSite, Person, CollectionPage
+
+### 1.6 Content Indexability
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **text_length_chars:** 9145
+- **has_substantial_content:** True
+- **paragraph_count:** 94
+- **has_noindex:** False
+- **canonical_present:** True
+- **canonical_href:** https://chudi.dev
+
+---
+
+## Section 2: AI Infrastructure Readiness
+
+**Section Verdict:** [PASS]
+
+### 2.1 Llms Txt
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **Status Code:** 200
+- **Content Type:** text/plain; charset=utf-8
+- **Line Count:** 73
+- **Char Count:** 3936
+- **Preview:** `# https://chudi.dev |  | ## Author`
+
+### 2.2 Ai Crawler Access
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+### 2.3 Structured Data Depth
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **Pages Checked:** 20
+- **Pages With Schema:** 20
+- **Coverage Pct:** 100.0
+- **Schema types:** BreadcrumbList, CollectionPage, FAQPage, ItemList, Organization, Person, SiteNavigationElement, WebApplication, WebSite
+- **Unique Type Count:** 9
+- **Has Rich Result Types:** True
+
+### 2.4 Content Structure
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **H1 Count:** 1
+- **Total Headings:** 30
+- **Hierarchy Clean:** True
+- **Section Count:** 29
+- **Paragraph Count:** 101
+- **Avg Paragraph Words:** 9.0
+- **Has Faq Pattern:** False
+  - H1: A personal site built for humans, LLM retrieval, and AI agents.
+  - H2: The flagship claim is architectural, not cosmetic.
+  - H2: Choose the track that matches how you want to think and build.
+  - H2: Build AI products like systems, not demos.
+  - H2: Automate the research loop without automating away judgment.
+
+### 2.5 Content Ratio
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+- **Total Html Bytes:** 226448
+- **Text Content Bytes:** 9678
+- **Content Ratio Pct:** 4.3
+- **Content Sufficient Override:** True
+- **Note:** Low ratio due to framework overhead, but content volume is sufficient
+
+### 2.6 Semantic Html
+**Tier:** VERIFIABLE | **Verdict:** [PASS]
+
+  - `<article>`: 8
+  - `<main>`: 2
+  - `<nav>`: 2
+  - `<section>`: 10
+  - `<time>`: 5
+- **Images Total:** 4
+- **Images With Alt:** 4
+- **Alt Text Coverage Pct:** 100.0
+
+---
+
+## Section 3: Citation Monitoring
+
+**Verdict:** [NOT CITED]
+**Confidence:** LOW
+
+- Citation rate: 0.0%
+- Cited: 0 / 14 testable queries
+- 95% CI: [0%, 21.5%]
+
+| Platform | Cited | Citation Rate |
+|----------|-------|---------------|
+| ChatGPT | 0/14 | 0.0% |
+
+---
+
+## Section 4: AI Visibility [BEST-EFFORT]
+
+Visibility measures whether AI systems KNOW about you, even without linking to your URL.
+This is different from citation (Section 3). You can be visible but not cited, or cited but not visible.
+
+**Verdict:** PARTIALLY_VISIBLE
+**Confidence:** LOW
+
+- Visibility rate: 29.4%
+- Brand recognized: 3 times
+- Recommended by AI: 1 times
+
+| Signal | Visible | Rate |
+|--------|---------|------|
+| Brand Recognition | 5/5 | 100.0% |
+| Concept Attribution | 0/6 | 0.0% |
+| Recommendation | 0/6 | 0.0% |
+
+| Platform | Visible | Rate |
+|----------|---------|------|
+| ChatGPT | 5/17 | 29.4% |
+
+---
+
+## Recommendations
+
+### Next Steps
+Your infrastructure is ready. Focus on:
+- Content quality and topical authority
+- Building backlinks from high-DA sources
+- Monthly citation monitoring to track trends
+
+---
+
+*Prepared by Chudi Nnorukam using the AI Visibility Readiness Framework v1.0.0*
+
+**Methodology:** Every check in this report is labeled [VERIFIABLE] (reproducible, backed by free tools) or [BEST-EFFORT] (point-in-time sample, confidence-labeled). We do not combine these tiers into a single score. Full methodology available on request.
+
+**Disclaimer:** Section 3 (Citation Monitoring), if included, contains point-in-time observations with explicitly labeled confidence. AI citation behavior varies by session, location, and platform updates. Re-run monthly to track trends.

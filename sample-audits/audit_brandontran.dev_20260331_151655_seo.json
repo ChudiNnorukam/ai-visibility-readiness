@@ -1,0 +1,52 @@
+{
+  "section": "1_seo_foundation",
+  "url": "https://brandontran.dev",
+  "checks": [
+    {
+      "check": "1.1_core_web_vitals",
+      "tier": "VERIFIABLE",
+      "verdict": "SKIPPED",
+      "note": "Lighthouse skipped (--skip-lighthouse flag)"
+    },
+    {
+      "check": "1.5_page_speed",
+      "tier": "VERIFIABLE",
+      "verdict": "SKIPPED",
+      "note": "Lighthouse skipped (--skip-lighthouse flag)"
+    },
+    {
+      "check": "1.2_technical_crawlability",
+      "tier": "VERIFIABLE",
+      "checks": {
+        "robots_txt": {
+          "exists": false,
+          "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: /robots.txt (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+        },
+        "sitemap": {
+          "exists": false,
+          "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: /sitemap.xml (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+        },
+        "https": {
+          "enforced": true,
+          "http_redirects": "unknown"
+        }
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "1.3_schema_markup",
+      "tier": "VERIFIABLE",
+      "schemas": [],
+      "verdict": "FAIL",
+      "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+    },
+    {
+      "check": "1.6_content_indexability",
+      "tier": "VERIFIABLE",
+      "checks": {},
+      "verdict": "FAIL",
+      "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+    }
+  ],
+  "section_verdict": "FAIL"
+}

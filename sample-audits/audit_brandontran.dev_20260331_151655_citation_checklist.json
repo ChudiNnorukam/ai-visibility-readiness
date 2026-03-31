@@ -1,0 +1,139 @@
+{
+  "domain": "brandontran.dev",
+  "generated_at": "2026-03-31T15:16:55.165032+00:00",
+  "total_queries": 20,
+  "platforms": [
+    "ChatGPT",
+    "Perplexity",
+    "Google_AIO"
+  ],
+  "total_possible_citations": 60,
+  "queries": [
+    {
+      "id": 1,
+      "category": "brand",
+      "query": "what is brandontran.dev",
+      "rationale": "Direct brand recognition"
+    },
+    {
+      "id": 2,
+      "category": "brand",
+      "query": "brandontran blog",
+      "rationale": "Brand + content discovery"
+    },
+    {
+      "id": 3,
+      "category": "brand",
+      "query": "who is brandontran",
+      "rationale": "Personal brand recognition"
+    },
+    {
+      "id": 4,
+      "category": "brand",
+      "query": "brandontran.dev reviews",
+      "rationale": "Social proof / reputation"
+    },
+    {
+      "id": 5,
+      "category": "brand",
+      "query": "brandontran developer",
+      "rationale": "Professional identity"
+    },
+    {
+      "id": 6,
+      "category": "topic_authority",
+      "query": "how to web development",
+      "rationale": "Topic authority for: web development"
+    },
+    {
+      "id": 7,
+      "category": "topic_authority",
+      "query": "how to portfolio",
+      "rationale": "Topic authority for: portfolio"
+    },
+    {
+      "id": 8,
+      "category": "topic_authority",
+      "query": "how to frontend",
+      "rationale": "Topic authority for: frontend"
+    },
+    {
+      "id": 9,
+      "category": "topic_authority",
+      "query": "how to React",
+      "rationale": "Topic authority for: React"
+    },
+    {
+      "id": 10,
+      "category": "topic_authority",
+      "query": "how to JavaScript",
+      "rationale": "Topic authority for: JavaScript"
+    },
+    {
+      "id": 11,
+      "category": "long_tail",
+      "query": "best way to web development in 2026",
+      "rationale": "Long-tail variant for: web development"
+    },
+    {
+      "id": 12,
+      "category": "long_tail",
+      "query": "best way to portfolio in 2026",
+      "rationale": "Long-tail variant for: portfolio"
+    },
+    {
+      "id": 13,
+      "category": "long_tail",
+      "query": "best way to frontend in 2026",
+      "rationale": "Long-tail variant for: frontend"
+    },
+    {
+      "id": 14,
+      "category": "long_tail",
+      "query": "best way to React in 2026",
+      "rationale": "Long-tail variant for: React"
+    },
+    {
+      "id": 15,
+      "category": "long_tail",
+      "query": "best way to JavaScript in 2026",
+      "rationale": "Long-tail variant for: JavaScript"
+    },
+    {
+      "id": 16,
+      "category": "competitor_adjacent",
+      "query": "web development tutorial guide",
+      "rationale": "Competitive query for: web development"
+    },
+    {
+      "id": 17,
+      "category": "competitor_adjacent",
+      "query": "portfolio tutorial guide",
+      "rationale": "Competitive query for: portfolio"
+    },
+    {
+      "id": 18,
+      "category": "competitor_adjacent",
+      "query": "frontend tutorial guide",
+      "rationale": "Competitive query for: frontend"
+    },
+    {
+      "id": 19,
+      "category": "competitor_adjacent",
+      "query": "React tutorial guide",
+      "rationale": "Competitive query for: React"
+    },
+    {
+      "id": 20,
+      "category": "competitor_adjacent",
+      "query": "JavaScript tutorial guide",
+      "rationale": "Competitive query for: JavaScript"
+    }
+  ],
+  "instructions": {
+    "step_1": "For each query, search on all 3 platforms",
+    "step_2": "Record whether your domain appears in the response",
+    "step_3": "Use statuses: CITED (link/mention), NOT_CITED, NO_AIO (for Google when no AI Overview appears)",
+    "step_4": "Run this test monthly for trend tracking"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://chudi.dev",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 200,
+        "content_type": "text/plain; charset=utf-8",
+        "line_count": 73,
+        "char_count": 3936,
+        "first_lines": [
+          "# https://chudi.dev",
+          "",
+          "## Author",
+          "- Name: Chudi Nnorukam",
+          "- Title: AI Product Developer"
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "allowed_by_default",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "allowed_by_default",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "allowed_by_default",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "allowed_by_default",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 20,
+        "pages_with_schema": 20,
+        "coverage_pct": 100.0,
+        "schema_types": [
+          "BreadcrumbList",
+          "CollectionPage",
+          "FAQPage",
+          "ItemList",
+          "Organization",
+          "Person",
+          "SiteNavigationElement",
+          "WebApplication",
+          "WebSite"
+        ],
+        "unique_type_count": 9,
+        "has_rich_result_types": true
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 1,
+        "total_headings": 30,
+        "heading_levels_used": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "hierarchy_clean": true,
+        "section_count": 29,
+        "paragraph_count": 101,
+        "avg_paragraph_words": 9.0,
+        "has_faq_pattern": false,
+        "headings_sample": [
+          {
+            "level": 1,
+            "text": "A personal site built for humans, LLM retrieval, and AI agents."
+          },
+          {
+            "level": 2,
+            "text": "The flagship claim is architectural, not cosmetic."
+          },
+          {
+            "level": 2,
+            "text": "Choose the track that matches how you want to think and build."
+          },
+          {
+            "level": 2,
+            "text": "Build AI products like systems, not demos."
+          },
+          {
+            "level": 2,
+            "text": "Automate the research loop without automating away judgment."
+          },
+          {
+            "level": 2,
+            "text": "Treat ADHD cognition like a systems design input, not a flaw to hide."
+          },
+          {
+            "level": 2,
+            "text": "Start with one cornerstone piece, then branch into the adjacent system."
+          },
+          {
+            "level": 2,
+            "text": "Three explicit starting points, so no one lands on the site and wonders where to"
+          },
+          {
+            "level": 2,
+            "text": "The writing points back to real products, case studies, and operational artifact"
+          },
+          {
+            "level": 2,
+            "text": "Polyphemus"
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 226448,
+        "text_content_bytes": 9678,
+        "content_ratio_pct": 4.3
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 8,
+          "main": 2,
+          "nav": 2,
+          "section": 10,
+          "aside": 0,
+          "figure": 0,
+          "time": 5
+        },
+        "images_total": 4,
+        "images_with_alt": 4,
+        "alt_text_coverage_pct": 100.0
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "section_verdict": "PARTIAL"
+}

@@ -1,0 +1,59 @@
+{
+  "section": "1_seo_foundation",
+  "url": "https://reddit.com",
+  "checks": [
+    {
+      "check": "1.1_core_web_vitals",
+      "tier": "VERIFIABLE",
+      "verdict": "SKIPPED",
+      "note": "Lighthouse skipped (--skip-lighthouse flag)"
+    },
+    {
+      "check": "1.5_page_speed",
+      "tier": "VERIFIABLE",
+      "verdict": "SKIPPED",
+      "note": "Lighthouse skipped (--skip-lighthouse flag)"
+    },
+    {
+      "check": "1.2_technical_crawlability",
+      "tier": "VERIFIABLE",
+      "checks": {
+        "robots_txt": {
+          "status": 200,
+          "exists": true,
+          "size_bytes": 538
+        },
+        "sitemap": {
+          "status": 403,
+          "exists": false,
+          "size_bytes": 0
+        },
+        "https": {
+          "enforced": true,
+          "http_redirects": true
+        }
+      },
+      "verdict": "PARTIAL"
+    },
+    {
+      "check": "1.3_schema_markup",
+      "tier": "VERIFIABLE",
+      "schemas": [],
+      "verdict": "FAIL"
+    },
+    {
+      "check": "1.6_content_indexability",
+      "tier": "VERIFIABLE",
+      "checks": {
+        "text_length_chars": 143,
+        "has_substantial_content": false,
+        "paragraph_count": 0,
+        "has_noindex": false,
+        "canonical_present": false,
+        "canonical_href": ""
+      },
+      "verdict": "FAIL"
+    }
+  ],
+  "section_verdict": "FAIL"
+}

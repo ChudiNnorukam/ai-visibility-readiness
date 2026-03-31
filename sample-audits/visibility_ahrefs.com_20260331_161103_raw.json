@@ -1,0 +1,632 @@
+[
+  {
+    "query_id": 1,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What is ahrefs.com?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 2
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: Site Explorer"
+      ]
+    },
+    "response_snippet": "Ahrefs.com is a comprehensive SEO (Search Engine Optimization) toolset that allows users to analyze websites, track rankings, and conduct competitor research. Some of its key features include:\n\n1. **Site Explorer**: Provides insights into backlinks, organic traffic, and keyword rankings for any webs"
+  },
+  {
+    "query_id": 2,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "Tell me about Ahrefs",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "ahrefs is a"
+      ]
+    },
+    "response_snippet": "Ahrefs is a powerful SEO (Search Engine Optimization) tool widely used by digital marketers, SEO professionals, and content creators. Here are some key features and aspects of Ahrefs:\n\n1. **Backlink Analysis**: Ahrefs has one of the largest backlink databases, allowing users to analyze the backlinks"
+  },
+  {
+    "query_id": 3,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What does Ahrefs do?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [
+        "referring domains"
+      ],
+      "concept_ratio": 0.33
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "ahrefs is a",
+        "product: Keywords Explorer"
+      ]
+    },
+    "response_snippet": "Ahrefs is a comprehensive SEO (Search Engine Optimization) toolset widely used for improving website performance. Its primary features include:\n\n1. **Backlink Analysis**: Ahrefs allows users to analyze the backlink profile of their websites or competitors, providing insights into link quality, ancho"
+  },
+  {
+    "query_id": 4,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "Who created ahrefs.com?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Ahrefs was founded by Dmitry Gerasimenko in 2010. The company started as a web crawler and has since evolved into a comprehensive SEO toolset used for backlink analysis, keyword research, and site audits."
+  },
+  {
+    "query_id": 5,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "Who runs Ahrefs?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Ahrefs was founded by Dmitry Gerasimenko, who is also the CEO of the company. Ahrefs is well-known for its powerful SEO tools and resources that help users analyze their website's performance, conduct keyword research, and track competitors. The company has grown significantly and is recognized in t"
+  },
+  {
+    "query_id": 10,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for backlink analysis?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [
+        "domain rating"
+      ],
+      "concept_ratio": 0.33
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Backlink analysis is crucial for understanding the health and authority of a website. Here are some of the best approaches for conducting effective backlink analysis:\n\n1. **Use SEO Tools:**\n   - Utilize tools like Ahrefs, SEMrush, Moz, or Majestic to gather comprehensive data on backlinks.\n   - Anal"
+  },
+  {
+    "query_id": 11,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for keyword research?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [
+        "keyword difficulty"
+      ],
+      "concept_ratio": 0.33
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Keyword research is essential for effective SEO and content strategy. Here are some of the best approaches:\n\n### 1. **Identify Your Goals**\n   - Define what you aim to achieve (traffic, conversions, brand awareness).\n   - Focus on relevant keywords that align with your objectives.\n\n### 2. **Use Keyw"
+  },
+  {
+    "query_id": 12,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for SEO audit?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Conducting an effective SEO audit involves several key approaches to identify areas for improvement and ensure your website is optimized for search engines. Here are the best approaches:\n\n### 1. **Technical SEO Analysis**\n   - **Crawlability:** Use tools (like Screaming Frog or Ahrefs) to analyze ho"
+  },
+  {
+    "query_id": 15,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about backlink analysis?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several experts and organizations write about backlink analysis, including:\n\n1. **SEO Professionals**: Individuals like Neil Patel, Rand Fishkin, and Brian Dean provide insights through blogs and videos.\n2. **SEO Tools Companies**: Companies like Moz, Ahrefs, SEMrush, and Majestic regularly publish "
+  },
+  {
+    "query_id": 16,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about keyword research?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Many experts and organizations focus on keyword research within digital marketing and SEO. Here are some notable sources:\n\n1. **Moz** - Offers comprehensive guides and articles on SEO, including keyword research.\n2. **Ahrefs** - Provides video tutorials, blog posts, and tools for keyword analysis.\n3"
+  },
+  {
+    "query_id": 17,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about SEO audit?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Many experts, agencies, and platforms write about SEO audits. Here are some notable sources:\n\n1. **SEO Blogs and Websites**:\n   - **Moz**: Offers comprehensive guides and articles on SEO audits.\n   - **Ahrefs**: Provides practical tips and tools for conducting SEO audits.\n   - **Search Engine Journa"
+  },
+  {
+    "query_id": 20,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for backlink analysis?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Here are some valuable tools and blogs for backlink analysis:\n\n### Tools for Backlink Analysis\n\n1. **Ahrefs**:\n   - Comprehensive backlink checker and analysis.\n   - Offers site audits, keyword research, and competitive analysis.\n\n2. **SEMrush**:\n   - Provides detailed backlink reports and competito"
+  },
+  {
+    "query_id": 21,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for keyword research?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [
+        "keyword difficulty"
+      ],
+      "concept_ratio": 0.33
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For effective keyword research, consider following these tools and blogs:\n\n### Tools\n1. **Google Keyword Planner**: Essential for finding keywords related to your business and understanding their search volume.\n2. **Ahrefs**: Offers comprehensive keyword analysis, including keyword difficulty and co"
+  },
+  {
+    "query_id": 22,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for SEO audit?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For conducting an SEO audit, several tools and blogs can significantly enhance your knowledge and efficiency. Here are some recommended tools and blogs:\n\n### Tools\n\n1. **Google Search Console**\n   - Essential for checking site performance, indexing status, and more.\n\n2. **Screaming Frog SEO Spider**"
+  },
+  {
+    "query_id": 25,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning backlink analysis in 2026",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "ahrefs offers",
+        "product: Site Explorer"
+      ]
+    },
+    "response_snippet": "To master backlink analysis in 2026, it's essential to utilize advanced tools and educational resources that provide comprehensive insights into link-building strategies. Here are some top tools and resources to consider:\n\n\n\n**Ahrefs**  \nRenowned for its extensive backlink database, Ahrefs offers to"
+  },
+  {
+    "query_id": 26,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning keyword research in 2026",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Mastering keyword research is essential for effective SEO strategies in 2026. Here are some top resources to enhance your skills:\n\n**Online Courses:**\n\n- **Keyword Research MASTERY 2026, Free Backlinks, Improve SEO**: Offered on Udemy, this course covers comprehensive keyword research techniques, in"
+  },
+  {
+    "query_id": 27,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning SEO audit in 2026",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively learn SEO auditing in 2026, it's essential to utilize a combination of comprehensive guides, practical checklists, and hands-on tools. Here are some top resources to help you master SEO audits:\n\n**1. Comprehensive Guides and Checklists:**\n\n- **The Complete SEO Audit Checklist for 2026"
+  },
+  {
+    "query_id": 28,
+    "category": "recommendation",
+    "signal": "product_recommendation",
+    "platform": "ChatGPT",
+    "query": "Is Site Explorer worth using?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: Site Explorer"
+      ]
+    },
+    "response_snippet": "Whether Site Explorer is worth using depends on your specific needs and goals. Here are some points to consider:\n\n### Advantages\n\n1. **SEO Insights**: Provides valuable data on backlinks, keyword rankings, and domain authority.\n2. **Competitor Analysis**: Helps analyze competitors' strategies, inclu"
+  },
+  {
+    "query_id": 29,
+    "category": "recommendation",
+    "signal": "product_recommendation",
+    "platform": "ChatGPT",
+    "query": "Is Keywords Explorer worth using?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "domain rating",
+        "referring domains",
+        "keyword difficulty"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: Keywords Explorer"
+      ]
+    },
+    "response_snippet": "Keywords Explorer can be a valuable tool for SEO and content marketing, depending on your needs. Here are some reasons why it might be worth using:\n\n1. **Keyword Research**: It helps identify relevant keywords with search volume, difficulty, and potential traffic estimates.\n\n2. **Competitive Analysi"
+  }
+]

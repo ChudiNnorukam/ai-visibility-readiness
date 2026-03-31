@@ -1,0 +1,58 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://brandontran.dev",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: /llms.txt (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {},
+      "verdict": "FAIL",
+      "details": {
+        "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: /robots.txt (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+      }
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 0,
+        "pages_with_schema": 0,
+        "coverage_pct": 0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {},
+      "verdict": "FAIL",
+      "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {},
+      "verdict": "FAIL",
+      "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {},
+      "verdict": "FAIL",
+      "error": "HTTPSConnectionPool(host='brandontran.dev', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='brandontran.dev', port=443): Failed to resolve 'brandontran.dev' ([Errno 8] nodename nor servname provided, or not known)\"))"
+    }
+  ],
+  "section_verdict": "FAIL"
+}

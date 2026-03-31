@@ -1,0 +1,107 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://medium.com",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 403,
+        "content_type": "text/html; charset=UTF-8",
+        "note": "HTTP 403"
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "allowed_by_default",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "allowed_by_default",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "allowed_by_default",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "allowed_by_default",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 1,
+        "pages_with_schema": 0,
+        "coverage_pct": 0.0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 0,
+        "total_headings": 0,
+        "heading_levels_used": [],
+        "hierarchy_clean": true,
+        "section_count": 0,
+        "paragraph_count": 0,
+        "avg_paragraph_words": 0,
+        "has_faq_pattern": false,
+        "headings_sample": []
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 6953,
+        "text_content_bytes": 57,
+        "content_ratio_pct": 0.8,
+        "content_sufficient_override": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 0,
+          "main": 0,
+          "nav": 0,
+          "section": 0,
+          "aside": 0,
+          "figure": 0,
+          "time": 0
+        },
+        "images_total": 0,
+        "images_with_alt": 0,
+        "alt_text_coverage_pct": 100.0
+      },
+      "verdict": "PARTIAL"
+    }
+  ],
+  "section_verdict": "FAIL"
+}

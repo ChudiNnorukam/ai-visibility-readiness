@@ -1,0 +1,158 @@
+[
+  {
+    "platform": "ChatGPT",
+    "query": "what is chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://forem.com/chudi_nnorukam?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer based in Berkeley, California. The site serves as a public experiment in AI-visible web architecture, inte",
+    "query_id": 1,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "who is chudi",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "The name \"Chudi\" can refer to various individuals or contexts, depending on cultural or regional significance. In some cultures, particularly in Nigeria, \"Chudi\" is a name often associated with men an",
+    "query_id": 2,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi.dev blog",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://dev.to/chudi_nnorukam/72-hour-cross-posting-delay-2bmb?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/multi-platform-bug-bounty-tool-14pe?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/i-trained-openclaw-to-run-my-blog-voice-dna-agentic-seo-and-the-end-of-manual-publishing-1la8?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/i-added-webmcp-to-my-blog-19-days-after-it-shipped-heres-the-exact-code-4agb?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is the personal blog of Chudi Nnorukam, where he shares insights on technology, AI, and personal development. Recent posts include:\n\n- **\"How I Cross-Post to Dev.to Without Hurting SEO (My 7",
+    "query_id": 3,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi developer tools",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "It seems like you're looking for information on \"Chudi\" developer tools. Could you clarify what specific tools, features, or technologies you're interested in? If \"Chudi\" refers to a specific framewor",
+    "query_id": 4,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "tell me about chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://forem.com/chudi_nnorukam?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer based in Berkeley, California. The site serves as a public experiment in AI-visible web architecture, inte",
+    "query_id": 5,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to Claude Code hooks",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "To effectively use Claude Code hooks, consider these steps:\n\n1. **Integration**: Start by integrating Claude with your development environment. This might involve setting up an API connection or using",
+    "query_id": 6,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI visibility",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Improving AI visibility can involve several strategies, depending on your context. Here are some key approaches:\n\n### 1. **Transparency**\n   - **Explainability**: Use models that provide insight into ",
+    "query_id": 7,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI code guardrails",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating AI code guardrails involves implementing various strategies and practices to ensure that AI systems operate safely, ethically, and effectively. Here are key steps:\n\n### 1. **Define Clear Obje",
+    "query_id": 8,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to Claude Code hooks in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://docs.claude.com/en/docs/claude-code/hooks-guide?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks?utm_source=openai",
+      "https://aiorg.dev/blog/claude-code-hooks?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, Claude Code hooks have become an essential tool for automating and customizing your development workflow. By integrating hooks, you can enforce coding standards, enhance security, and streaml",
+    "query_id": 11,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI visibility in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://oddtusk.com/our-blog/what-ai-visibility-means-in-2026-guide/?utm_source=openai",
+      "https://news.designrush.com/brand-strategies-to-dominate-ai-search-in-2026?utm_source=openai",
+      "https://oddtusk.com/our-blog/what-ai-visibility-means-in-2026-guide/?utm_source=openai",
+      "https://seenos.ai/ai-visibility-strategy/ai-visibility-trends?utm_source=openai",
+      "https://news.designrush.com/brand-strategies-to-dominate-ai-search-in-2026?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, enhancing your brand's visibility within AI-powered platforms is crucial, as traditional SEO strategies alone are no longer sufficient. AI assistants like ChatGPT, Google Gemini, and Perplexi",
+    "query_id": 12,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI code guardrails in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://bytetools.io/guides/ai-safety-guardrails?utm_source=openai",
+      "https://bytetools.io/guides/ai-safety-guardrails?utm_source=openai",
+      "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails?utm_source=openai",
+      "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails?utm_source=openai",
+      "https://www.forbes.com/councils/forbestechcouncil/2026/01/02/ai-compliance-stop-building-guardrails-start-building-an-operating-system/?utm_source=openai",
+      "https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-are-ai-guardrails?utm_source=openai",
+      "https://zylos.ai/research/2026-01-22-ai-agent-reliability-guardrails?utm_source=openai",
+      "https://zylos.ai/research/2026-01-22-ai-agent-reliability-guardrails?utm_source=openai",
+      "https://zylos.ai/research/2026-01-22-ai-agent-reliability-guardrails?utm_source=openai"
+    ],
+    "response_snippet": "As of 2026, implementing effective AI code guardrails is crucial to ensure the safety, reliability, and ethical use of AI systems. Guardrails are constraints and safety mechanisms that guide AI behavi",
+    "query_id": 13,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "Claude Code hooks tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a guide for Claude code hooks involves understanding how to work with Claude's functionalities, particularly its API or programming capabilities. Here's a step-by-step tutorial:\n\n### Claude C",
+    "query_id": 16,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI visibility tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an AI visibility tutorial guide involves outlining how to make AI systems transparent and understandable. Here\u2019s a structured approach to guide you:\n\n### AI Visibility Tutorial Guide\n\n---\n\n##",
+    "query_id": 17,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI code guardrails tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating effective AI code guardrails is essential to ensure safe, ethical, and responsible use of AI technologies. Here's a structured tutorial guide to help you understand and implement these guardr",
+    "query_id": 18,
+    "category": "competitor"
+  }
+]

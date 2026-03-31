@@ -1,0 +1,161 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://css-tricks.com",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 200,
+        "content_type": "text/plain",
+        "line_count": 80,
+        "char_count": 2808,
+        "first_lines": [
+          "# CSS-Tricks",
+          "",
+          "> CSS-Tricks is a web design and development blog covering CSS, JavaScript, HTML, and front-end techniques. Founded by Chris Coyier in 2007 and currently managed by Geoff Graham, it provides tutorials, guides, snippets, and insights for web developers and designers.",
+          "",
+          "## About"
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "allowed_by_default",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "allowed_by_default",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "allowed_by_default",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "allowed_by_default",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 20,
+        "pages_with_schema": 0,
+        "coverage_pct": 0.0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 1,
+        "total_headings": 52,
+        "heading_levels_used": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "hierarchy_clean": true,
+        "section_count": 51,
+        "paragraph_count": 17,
+        "avg_paragraph_words": 13.0,
+        "has_faq_pattern": false,
+        "headings_sample": [
+          {
+            "level": 1,
+            "text": "Form Automation Tips for Happier User and Clients"
+          },
+          {
+            "level": 2,
+            "text": "Popularthismonth"
+          },
+          {
+            "level": 2,
+            "text": "Latest Articles"
+          },
+          {
+            "level": 2,
+            "text": "Generative UI Notes"
+          },
+          {
+            "level": 2,
+            "text": "Experimenting With Scroll-Driven corner-shape Animations"
+          },
+          {
+            "level": 2,
+            "text": "JavaScript for Everyone: Destructuring"
+          },
+          {
+            "level": 2,
+            "text": "What\u2019s !important #7: random(), Folded Corners, Anchored Container Queries, and "
+          },
+          {
+            "level": 2,
+            "text": "4 Reasons That Make Tailwind Great for Building Layouts"
+          },
+          {
+            "level": 2,
+            "text": "Quick Hits"
+          },
+          {
+            "level": 2,
+            "text": "Collections"
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 173600,
+        "text_content_bytes": 6184,
+        "content_ratio_pct": 3.6
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 45,
+          "main": 1,
+          "nav": 4,
+          "section": 1,
+          "aside": 0,
+          "figure": 0,
+          "time": 46
+        },
+        "images_total": 47,
+        "images_with_alt": 1,
+        "alt_text_coverage_pct": 2.1
+      },
+      "verdict": "PARTIAL"
+    }
+  ],
+  "section_verdict": "PARTIAL"
+}

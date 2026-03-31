@@ -1,0 +1,153 @@
+{
+  "section": "2_ai_infrastructure_readiness",
+  "url": "https://ahrefs.com",
+  "checks": [
+    {
+      "check": "2.1_llms_txt",
+      "tier": "VERIFIABLE",
+      "details": {
+        "status_code": 404,
+        "content_type": "text/html; charset=utf8",
+        "note": "HTTP 404"
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.2_ai_crawler_access",
+      "tier": "VERIFIABLE",
+      "crawlers": {
+        "GPTBot": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT training + web browsing)"
+        },
+        "ChatGPT-User": {
+          "status": "allowed_by_default",
+          "operator": "OpenAI (ChatGPT real-time browsing)"
+        },
+        "ClaudeBot": {
+          "status": "allowed_by_default",
+          "operator": "Anthropic (Claude web search)"
+        },
+        "PerplexityBot": {
+          "status": "allowed_by_default",
+          "operator": "Perplexity (search index)"
+        },
+        "Google-Extended": {
+          "status": "allowed_by_default",
+          "operator": "Google (Gemini/AI Overviews training)"
+        },
+        "CCBot": {
+          "status": "allowed_by_default",
+          "operator": "Common Crawl (open dataset used by many AI systems)"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.3_structured_data_depth",
+      "tier": "VERIFIABLE",
+      "details": {
+        "pages_checked": 5,
+        "pages_with_schema": 0,
+        "coverage_pct": 0.0,
+        "schema_types": [],
+        "unique_type_count": 0,
+        "has_rich_result_types": false
+      },
+      "verdict": "FAIL"
+    },
+    {
+      "check": "2.4_content_structure",
+      "tier": "VERIFIABLE",
+      "details": {
+        "h1_count": 1,
+        "total_headings": 37,
+        "heading_levels_used": [
+          1,
+          2,
+          3
+        ],
+        "hierarchy_clean": true,
+        "section_count": 36,
+        "paragraph_count": 101,
+        "avg_paragraph_words": 8.0,
+        "has_faq_pattern": false,
+        "headings_sample": [
+          {
+            "level": 1,
+            "text": "Make your business discoverable\u2014in search, AI, and beyond"
+          },
+          {
+            "level": 2,
+            "text": "Your marketing platform\u2014built for search and AI"
+          },
+          {
+            "level": 2,
+            "text": "AI that creates results, not\u00a0noise"
+          },
+          {
+            "level": 2,
+            "text": "Lead with datathat sees further, faster, and deeper"
+          },
+          {
+            "level": 2,
+            "text": "Whatever your role, Ahrefs gives you an edge"
+          },
+          {
+            "level": 2,
+            "text": "Ahrefs Enterprise\u2013See the big picture, get answers fast"
+          },
+          {
+            "level": 2,
+            "text": "We\u2019ll support youall the way\u2014whatever your question, there\u2019s a guide, video, or "
+          },
+          {
+            "level": 2,
+            "text": "Join ourcommunity"
+          },
+          {
+            "level": 2,
+            "text": "Ahrefs is how modern marketers deliveracross the entire marketing stack"
+          },
+          {
+            "level": 3,
+            "text": "Brand & AI Search"
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.5_content_ratio",
+      "tier": "VERIFIABLE",
+      "details": {
+        "total_html_bytes": 662993,
+        "text_content_bytes": 9231,
+        "content_ratio_pct": 1.4,
+        "content_sufficient_override": true,
+        "note": "Low ratio due to framework overhead, but content volume is sufficient"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "check": "2.6_semantic_html",
+      "tier": "VERIFIABLE",
+      "details": {
+        "semantic_elements": {
+          "article": 0,
+          "main": 0,
+          "nav": 1,
+          "section": 18,
+          "aside": 0,
+          "figure": 0,
+          "time": 0
+        },
+        "images_total": 60,
+        "images_with_alt": 49,
+        "alt_text_coverage_pct": 81.7
+      },
+      "verdict": "PARTIAL"
+    }
+  ],
+  "section_verdict": "PARTIAL"
+}
