@@ -1,66 +1,176 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     width: 1280px; height: 640px;
-    background: #0d1117;
+    background: #080a0e;
     font-family: 'Inter', -apple-system, sans-serif;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center;
     overflow: hidden; position: relative;
   }
+
   .grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(48,54,68,0.3) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(48,54,68,0.3) 1px, transparent 1px);
-    background-size: 64px 64px;
+      linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
-  .glow {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(0,212,170,0.12) 0%, transparent 70%);
+
+  .mark {
+    position: absolute;
+    left: 100px; top: 50%;
+    transform: translateY(-50%);
+    width: 320px; height: 320px;
   }
-  .content { position: relative; z-index: 1; text-align: center; }
+  .mark svg { width: 100%; height: 100%; }
+
+  .mark-glow {
+    position: absolute;
+    left: 140px; top: 50%;
+    transform: translateY(-50%);
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 65%);
+    filter: blur(40px);
+  }
+
+  .content {
+    position: absolute;
+    left: 500px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 20px;
+  }
+
   .badge {
     display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid rgba(0,212,170,0.3); background: rgba(0,212,170,0.05);
-    border-radius: 999px; padding: 6px 16px; margin-bottom: 24px;
+    border: 1px solid rgba(0,212,170,0.25);
+    background: rgba(0,212,170,0.06);
+    border-radius: 999px; padding: 5px 14px;
+    width: fit-content;
   }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: #00d4aa; }
-  .badge-text { font-size: 11px; color: #00d4aa; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
-  h1 { font-size: 56px; color: #f0f0f0; font-weight: 600; line-height: 1.15; letter-spacing: -2px; margin-bottom: 16px; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4aa; }
+  .badge-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #00d4aa;
+    letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+  }
+
+  h1 {
+    font-size: 44px; color: #f0f2f4;
+    font-weight: 600; line-height: 1.12;
+    letter-spacing: -1.5px;
+    max-width: 620px;
+  }
   h1 span { color: #00d4aa; }
-  .sub { font-size: 18px; color: #8b9cb3; line-height: 1.5; max-width: 600px; margin: 0 auto 32px; }
-  .pills { display: flex; gap: 12px; justify-content: center; }
-  .pill {
-    display: flex; align-items: baseline; gap: 8px;
-    border: 1px solid rgba(48,54,68,0.8); background: rgba(22,27,34,0.8);
-    border-radius: 6px; padding: 8px 16px;
+
+  .sub {
+    font-size: 15px; color: #6b7a8d;
+    line-height: 1.6; max-width: 520px;
   }
-  .pill-num { font-size: 20px; font-weight: 700; color: #00d4aa; font-family: 'JetBrains Mono', monospace; }
-  .pill-label { font-size: 11px; color: #8b9cb3; }
-  .url { position: absolute; bottom: 24px; right: 32px; font-size: 14px; color: #00d4aa; font-family: 'JetBrains Mono', monospace; }
+  .sub strong { color: #9aa8b8; font-weight: 500; }
+
+  .pills { display: flex; gap: 10px; }
+  .pill {
+    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(0,212,170,0.15);
+    background: rgba(0,212,170,0.04);
+    border-radius: 4px; padding: 6px 12px;
+  }
+  .pill-check {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #00d4aa; font-weight: 500;
+  }
+  .pill-fail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #f87171; font-weight: 500;
+  }
+  .pill-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #6b7a8d;
+  }
+
+  .url {
+    position: absolute; bottom: 28px; right: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: #00d4aa; letter-spacing: 0.5px;
+    opacity: 0.7;
+  }
+
+  .author {
+    position: absolute; bottom: 28px; left: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; color: #4a5568;
+  }
+  .author strong { color: #6b7a8d; font-weight: 500; }
 </style>
 </head>
 <body>
   <div class="grid"></div>
-  <div class="glow"></div>
+  <div class="mark-glow"></div>
+
+  <div class="mark">
+    <svg viewBox="0 0 320 320" fill="none">
+      <!-- Arc 1: Visibility (smallest) -->
+      <path d="M 160 50 A 110 110 0 0 1 255 95"
+        stroke="#00d4aa" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+      <!-- Arc 2: Recommendability (medium) -->
+      <path d="M 160 40 A 120 120 0 0 1 276 188"
+        stroke="#00d4aa" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      <!-- Arc 3: Citability (largest) -->
+      <path d="M 160 30 A 130 130 0 0 1 230 278"
+        stroke="#00d4aa" stroke-width="3.5" stroke-linecap="round" opacity="1"/>
+      <!-- Origin dot -->
+      <circle cx="160" cy="160" r="4" fill="#00d4aa"/>
+      <!-- End dots -->
+      <circle cx="255" cy="95" r="2.5" fill="#00d4aa" opacity="0.5"/>
+      <circle cx="276" cy="188" r="2.5" fill="#00d4aa" opacity="0.7"/>
+      <circle cx="230" cy="278" r="2.5" fill="#00d4aa" opacity="1"/>
+      <!-- Arc labels -->
+      <text x="262" y="88" fill="#00d4aa" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.5">V</text>
+      <text x="283" y="185" fill="#00d4aa" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.7">R</text>
+      <text x="237" y="278" fill="#00d4aa" font-family="JetBrains Mono, monospace" font-size="9" opacity="1">C</text>
+    </svg>
+  </div>
+
   <div class="content">
     <div class="badge">
-      <div class="dot"></div>
-      <span class="badge-text">AI Visibility Auditing</span>
+      <div class="badge-dot"></div>
+      <span class="badge-text">Open Framework</span>
     </div>
-    <h1>Is Your Website<br><span>Visible to AI?</span></h1>
-    <p class="sub">15 transparent checks across SEO Foundation, AI Infrastructure, and Citation Monitoring</p>
+
+    <h1>AI Visibility<br>Readiness <span>Framework</span></h1>
+
+    <p class="sub">
+      Measure whether AI systems can <strong>find you</strong>,
+      <strong>recommend you</strong>, and <strong>cite you</strong>.
+      15 checks. 3 platforms. Open methodology.
+    </p>
+
     <div class="pills">
-      <div class="pill"><span class="pill-num">3</span><span class="pill-label">AI Platforms</span></div>
-      <div class="pill"><span class="pill-num">20</span><span class="pill-label">Queries</span></div>
-      <div class="pill"><span class="pill-num">15</span><span class="pill-label">Checks</span></div>
+      <div class="pill">
+        <span class="pill-check">PASS</span>
+        <span class="pill-label">robots.txt</span>
+      </div>
+      <div class="pill">
+        <span class="pill-fail">FAIL</span>
+        <span class="pill-label">llms.txt</span>
+      </div>
+      <div class="pill">
+        <span class="pill-check">PASS</span>
+        <span class="pill-label">schema</span>
+      </div>
+      <div class="pill">
+        <span class="pill-check">3/10</span>
+        <span class="pill-label">score</span>
+      </div>
     </div>
   </div>
+
   <span class="url">citability.dev</span>
+  <span class="author">by <strong>Chudi Nnorukam</strong></span>
 </body>
 </html>
