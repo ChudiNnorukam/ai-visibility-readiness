@@ -1,7 +1,0 @@
-{
-  "tool_name": "mcp__stitch-mcp__create_project",
-  "tool_input_preview": "{\"title\":\"citability.dev - AI Visibility Readiness\"}",
-  "error": "Error: HTTP 403: {\"id\":1774979940389,\"jsonrpc\":\"2.0\",\"result\":{\"content\":[{\"text\":\"Stitch API has not been used in project chudis-personal-brand before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/stitch.googleapis.com/overview?project=chudis-personal-brand then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.\",\"type\":\"text\"}],\"isError\":true}}",
-  "timestamp": "2026-03-31T17:59:00.947Z",
-  "retry_count": 1
-}

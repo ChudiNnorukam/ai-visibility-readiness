@@ -1,5 +1,10 @@
 # AI Visibility Readiness (AVR) Framework v1.0
 
+[![License: Source-Available](https://img.shields.io/badge/license-Source--Available-blue)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-teal)](https://python.org)
+[![Website](https://img.shields.io/badge/website-citability.dev-00d4aa)](https://citability.dev)
+[![Take the Assessment](https://img.shields.io/badge/free_assessment-Start_Now-00d4aa)](https://citability.dev/assess)
+
 **Measure whether AI systems can find, recommend, and cite your website.**
 
 Most SEO tools tell you how Google ranks you. None tell you whether ChatGPT, Perplexity, or Claude can find you. The AVR Framework fills that gap with 15 transparent, tiered checks.
@@ -153,9 +158,26 @@ FRAMEWORK.md            # Complete methodology documentation
 
 ---
 
+## Data Disclaimer
+
+The `sample-audits/` directory contains real audit outputs for publicly accessible websites.
+This data is provided for educational and benchmarking purposes only. All data was collected
+from publicly available URLs using standard HTTP requests and public APIs. No private or
+authenticated data was accessed.
+
+If you are the owner of an audited website and would like your data removed, contact
+hello@citability.dev.
+
+---
+
 ## License
 
-MIT
+**Source-Available License v1.0** (see [LICENSE](LICENSE))
+
+- Free for personal, educational, and non-commercial use
+- Attribution required: credit "Chudi Nnorukam / citability.dev"
+- Commercial use requires a separate license: hello@citability.dev
+- No reselling or rebranding without written permission
 
 ---
 

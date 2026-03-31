@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 640px;
+    background: #0d1117;
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(48,54,68,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(48,54,68,0.3) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .glow {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(0,212,170,0.12) 0%, transparent 70%);
+  }
+  .content { position: relative; z-index: 1; text-align: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(0,212,170,0.3); background: rgba(0,212,170,0.05);
+    border-radius: 999px; padding: 6px 16px; margin-bottom: 24px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #00d4aa; }
+  .badge-text { font-size: 11px; color: #00d4aa; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+  h1 { font-size: 56px; color: #f0f0f0; font-weight: 600; line-height: 1.15; letter-spacing: -2px; margin-bottom: 16px; }
+  h1 span { color: #00d4aa; }
+  .sub { font-size: 18px; color: #8b9cb3; line-height: 1.5; max-width: 600px; margin: 0 auto 32px; }
+  .pills { display: flex; gap: 12px; justify-content: center; }
+  .pill {
+    display: flex; align-items: baseline; gap: 8px;
+    border: 1px solid rgba(48,54,68,0.8); background: rgba(22,27,34,0.8);
+    border-radius: 6px; padding: 8px 16px;
+  }
+  .pill-num { font-size: 20px; font-weight: 700; color: #00d4aa; font-family: 'JetBrains Mono', monospace; }
+  .pill-label { font-size: 11px; color: #8b9cb3; }
+  .url { position: absolute; bottom: 24px; right: 32px; font-size: 14px; color: #00d4aa; font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="badge">
+      <div class="dot"></div>
+      <span class="badge-text">AI Visibility Auditing</span>
+    </div>
+    <h1>Is Your Website<br><span>Visible to AI?</span></h1>
+    <p class="sub">15 transparent checks across SEO Foundation, AI Infrastructure, and Citation Monitoring</p>
+    <div class="pills">
+      <div class="pill"><span class="pill-num">3</span><span class="pill-label">AI Platforms</span></div>
+      <div class="pill"><span class="pill-num">20</span><span class="pill-label">Queries</span></div>
+      <div class="pill"><span class="pill-num">15</span><span class="pill-label">Checks</span></div>
+    </div>
+  </div>
+  <span class="url">citability.dev</span>
+</body>
+</html>

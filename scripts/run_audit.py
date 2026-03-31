@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Chudi Nnorukam. All rights reserved.
+# Licensed under the AVR Source-Available License v1.0. See LICENSE file.
+# https://citability.dev
+
 #!/usr/bin/env python3
 """
 AVR Main Entry Point
