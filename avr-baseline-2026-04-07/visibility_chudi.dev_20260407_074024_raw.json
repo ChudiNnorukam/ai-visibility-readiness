@@ -1,0 +1,824 @@
+[
+  {
+    "query_id": 1,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What is chudi.dev?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer and developer. The site serves as a platform for sharing insights on AI-assisted development, developer productivity, and multi-agent architectures. Chudi Nnorukam is known for writing practical guides on t"
+  },
+  {
+    "query_id": 2,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "Tell me about Chudi",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "\"Chudi\" can refer to different things depending on the context. Here are a few possible meanings:\n\n1. **Bangle (Jewelry)**: In South Asian culture, particularly in India and Pakistan, \"chudi\" (or \"chudiya\") refers to traditional bangles worn by women. They are often made of glass or metal and are wo"
+  },
+  {
+    "query_id": 3,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What does Chudi do?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "\"Chudi\" can refer to various things depending on the context. In Indian culture, \"chudi\" typically refers to bangles worn by women. In some contexts, Chudi might be a name of a person or character. Could you please provide more context?"
+  },
+  {
+    "query_id": 4,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "Who is Chudi Nnorukam?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "chudi is a"
+      ]
+    },
+    "response_snippet": "Chudi Nnorukam is an AI Systems Architect specializing in designing and deploying agent-based AI automation systems tailored for neurodivergent individuals. With over five years of experience and more than 20 projects completed, he focuses on eliminating manual workflows, scaling content, and enabli"
+  },
+  {
+    "query_id": 5,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "What has Chudi Nnorukam built?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 3
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi Nnorukam is an AI Systems Architect specializing in designing and deploying agent-based AI automation systems tailored for neurodivergent individuals. His work focuses on eliminating manual workflows, scaling content, and enabling recursive learning. He has over five years of experience and ha"
+  },
+  {
+    "query_id": 10,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Claude's code hooks can enhance its responsiveness and utility across various applications. Here are some effective approaches for implementing Claude code hooks:\n\n1. **Contextual Triggers**:\n   - Use hooks that activate based on specific keywords or contexts relevant to your application. This allow"
+  },
+  {
+    "query_id": 11,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI visibility optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Optimizing AI visibility, especially in the context of machine learning models and AI-driven applications, involves several strategies across various domains. Here are some effective approaches:\n\n### 1. **Model Interpretability**\n   - Use techniques like LIME, SHAP, and feature importance scores to "
+  },
+  {
+    "query_id": 12,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Answer Engine Optimization (AEO) focuses on optimizing content to deliver concise and relevant answers that align with user queries. Here are some best approaches for AEO:\n\n1. **Focus on User Intent**:\n   - Understand the different types of search intents (informational, navigational, transactional)"
+  },
+  {
+    "query_id": 13,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI-assisted development?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "AI-assisted development can significantly enhance productivity and code quality. Here are some of the best approaches:\n\n### 1. **Code Completion and Suggestions**\n   - **Tools:** Use IDEs with AI-driven code completion (e.g., GitHub Copilot, TabNine).\n   - **Benefits:** Speeds up coding by suggestin"
+  },
+  {
+    "query_id": 14,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for multi-agent orchestration?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Multi-agent orchestration involves coordinating multiple agents to achieve common goals, especially in complex systems. Here are some of the best approaches:\n\n### 1. **Centralized Control**\n   - **Description**: A single agent (or controller) manages and coordinates the actions of all other agents.\n"
+  },
+  {
+    "query_id": 15,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several reputable sources provide in-depth information about Claude Code hooks, which are user-defined shell commands that automate tasks at specific points in Claude Code's workflow. Notable contributors include:\n\n- **Anthropic's Official Documentation**: Offers comprehensive details on configuring"
+  },
+  {
+    "query_id": 16,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI visibility optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several experts and organizations focus on AI visibility optimization, covering various aspects such as SEO, data analytics, and AI technology. Some notable contributors include:\n\n1. **Industry Experts and Authors**:\n   - **Rand Fishkin**: Co-founder of Moz and SparkToro, often discusses AI's role i"
+  },
+  {
+    "query_id": 17,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "\"Answer Engine Optimization\" (AEO) is a relatively new concept focusing on optimizing content for voice search and AI-driven platforms that provide direct answers, like Google Assistant or Siri. Many professionals in digital marketing, SEO, and content creation write about AEO, including:\n\n1. **Digi"
+  },
+  {
+    "query_id": 18,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI-assisted development?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several authors, researchers, and organizations focus on AI-assisted development, discussing its implications, practices, and applications. Here are some notable figures and sources:\n\n1. **Books and Authors**:\n   - **Jeff Dean**: Google AI researcher often speaks on AI's impact on software developme"
+  },
+  {
+    "query_id": 19,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about multi-agent orchestration?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Multi-agent orchestration is a subject of interest across various fields including artificial intelligence, computer science, and robotics. Here are some notable authors and researchers in this area:\n\n1. **Vinayak Bhushan** - Focuses on multi-agent systems and orchestration methods in distributed en"
+  },
+  {
+    "query_id": 20,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for Claude Code hooks?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively utilize Claude Code hooks, it's essential to follow authoritative resources that provide comprehensive guidance and best practices. Here are some key tools and blogs to consider:\n\n**Official Documentation:**\n\n- **Claude Code Hooks Guide:** This official guide offers an in-depth overvi"
+  },
+  {
+    "query_id": 21,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI visibility optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For AI visibility optimization, here are some valuable tools and blogs to consider:\n\n### Tools\n\n1. **Google Search Console**: Monitors your site\u2019s presence in Google search results and identifies optimization needs.\n\n2. **SEMrush**: Offers comprehensive SEO tools, including keyword research, site au"
+  },
+  {
+    "query_id": 22,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For optimizing your content for search engines, here are some essential tools and blogs to follow:\n\n### Tools\n\n1. **Google Search Console**: \n   - Helps monitor your site's performance in Google Search.\n  \n2. **SEMrush**:\n   - Comprehensive tool for keyword research, site audits, and competitor anal"
+  },
+  {
+    "query_id": 23,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI-assisted development?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Here are some valuable tools and blogs to consider for AI-assisted development:\n\n### Tools:\n1. **GitHub Copilot**: An AI-powered code completion tool integrated into your IDE, offering suggestions and automating repetitive coding tasks.\n\n2. **OpenAI Codex**: A language model that translates natural "
+  },
+  {
+    "query_id": 24,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for multi-agent orchestration?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For multi-agent orchestration, you can benefit from various tools and blogs that discuss related concepts, technologies, and frameworks. Here are some recommendations:\n\n### Tools\n\n1. **Apache Kafka**: A distributed event streaming platform useful for coordinating multiple agents.\n2. **Ray**: An open"
+  },
+  {
+    "query_id": 25,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning Claude Code hooks in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively learn and implement Claude Code hooks in 2026, consider the following resources:\n\n1. **Official Documentation**: The [Claude Docs](https://docs.claude.com/en/docs/claude-code/hooks-guide) provide comprehensive information on customizing and extending Claude Code's behavior through hoo"
+  },
+  {
+    "query_id": 26,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning AI visibility optimization in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "In 2026, optimizing your brand's visibility within AI-driven search results is crucial for maintaining a competitive edge. To effectively enhance your AI visibility, consider leveraging specialized tools and platforms designed for this purpose. Here are some top resources to assist you:\n\n\n\n**Zerply."
+  },
+  {
+    "query_id": 27,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning answer engine optimization in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To master Answer Engine Optimization (AEO) in 2026, it's essential to engage with up-to-date resources that cover the latest trends and strategies. Here are some top recommendations:\n\n**1. Comprehensive SEO Courses:**\n\n- **SEO Training Masterclass 2026: Beginner To Advanced SEO**  \n  Offered on Udem"
+  },
+  {
+    "query_id": 28,
+    "category": "recommendation",
+    "signal": "product_recommendation",
+    "platform": "ChatGPT",
+    "query": "Is citability.dev worth using?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "hooks as middleware",
+        "AVR framework",
+        "answer-first layout",
+        "AI citability",
+        "survivor-narrator"
+      ],
+      "concepts_found": [
+        "AI citability"
+      ],
+      "concept_ratio": 0.2
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: citability.dev"
+      ]
+    },
+    "response_snippet": "Citability.dev offers AI visibility auditing services designed to enhance your brand's presence across AI platforms like ChatGPT, Perplexity, and Claude. By answering 15 questions, you receive a personalized plan to improve your brand's discoverability and citability. ([citability.dev](https://citab"
+  }
+]

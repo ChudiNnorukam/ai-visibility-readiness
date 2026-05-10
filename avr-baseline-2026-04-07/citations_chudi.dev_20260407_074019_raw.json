@@ -1,0 +1,226 @@
+[
+  {
+    "platform": "ChatGPT",
+    "query": "what is chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://dev.to/chudi_nnorukam?utm_source=openai",
+      "https://dev.to/chudi_nnorukam_fb02ee5cb0/introducing-microsaasbot-382j?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer and developer based in Berkeley, California. The site serves as a live public experiment in AI-visible web",
+    "query_id": 1,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "who is chudi",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "\"Chudi\" can refer to different individuals or concepts depending on the context. It might be a name or nickname commonly used in various cultures, particularly in South Asia. If you have a specific pe",
+    "query_id": 2,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi.dev blog",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://chudi-blog.vercel.app/?utm_source=openai",
+      "https://dev.to/chudi_nnorukam/72-hour-cross-posting-delay-2bmb?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is the personal blog of Chudi Nnorukam, an AI Systems Architect specializing in automation for neurodivergent individuals. The blog features a variety of articles that delve into topics such",
+    "query_id": 3,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "chudi developer tools",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "It seems you\u2019re asking about developer tools related to \"Chudi.\" However, I'm not familiar with \"Chudi\" specifically. Could you provide more context? Are you referring to a specific software, framewor",
+    "query_id": 4,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "tell me about chudi.dev",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://dev.to/chudi_nnorukam?utm_source=openai"
+    ],
+    "response_snippet": "Chudi.dev is a personal website and blog created by Chudi Nnorukam, an AI automation engineer and developer based in Berkeley, California. The site serves as a public experiment in AI-visible web arch",
+    "query_id": 5,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to Claude Code hooks tutorial",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a tutorial for Claude Code hooks involves several steps. Here\u2019s a simplified guide on how to get started:\n\n### 1. **Understand What Claude Code Hooks Are**\n   - Claude is a language model tha",
+    "query_id": 6,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to optimize for AI search engines",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Optimizing for AI search engines involves several strategies that enhance visibility and relevance. Here are some key approaches:\n\n### 1. **Understand AI Algorithms**\n   - Familiarize yourself with ho",
+    "query_id": 7,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to answer engine optimization AEO",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Answer Engine Optimization (AEO) refers to optimizing content for voice search and AI-based answer engines. Here are some strategies:\n\n### 1. **Understand User Intent**\n   - Analyze common questions a",
+    "query_id": 8,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to multi-agent orchestration Claude",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Multi-agent orchestration with Claude, or any AI system, involves coordinating multiple agents to work together effectively. Here's a brief overview of the process:\n\n### 1. Define Goals:\n   - Clearly ",
+    "query_id": 9,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI-assisted development workflow",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an AI-assisted development workflow can enhance efficiency, improve code quality, and streamline project management. Here's a step-by-step guide to set one up:\n\n### 1. Assess Your Needs\n- **I",
+    "query_id": 10,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to Claude Code hooks tutorial in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://docs.claude.com/en/docs/claude-code/hooks-guide?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks?utm_source=openai",
+      "https://docs.claude.com/en/docs/claude-code/hooks?utm_source=openai"
+    ],
+    "response_snippet": "Claude Code hooks are user-defined shell commands that execute at various points in Claude Code's lifecycle, allowing you to customize and extend its behavior. By registering hooks, you can automate t",
+    "query_id": 11,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to optimize for AI search engines in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai",
+      "https://www.stackmatix.com/blog/ai-seo-best-practices-2026?utm_source=openai"
+    ],
+    "response_snippet": "Optimizing for AI search engines in 2026 requires a strategic approach that focuses on content clarity, authority, and structure to ensure your material is effectively utilized by AI systems. Here are",
+    "query_id": 12,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to answer engine optimization AEO in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://spctek.com/aeo-strategies-2026/?utm_source=openai",
+      "https://spctek.com/aeo-strategies-2026/?utm_source=openai",
+      "https://spctek.com/aeo-strategies-2026/?utm_source=openai",
+      "https://emacmedia.co/aeo/what-is-answer-engine-optimization-aeo-the-complete-guide-for-2026/?utm_source=openai",
+      "https://direction.com/answer-engine-optimization/?utm_source=openai",
+      "https://spctek.com/aeo-strategies-2026/?utm_source=openai",
+      "https://emacmedia.co/aeo/what-is-answer-engine-optimization-aeo-the-complete-guide-for-2026/?utm_source=openai",
+      "https://www.youtube.com/watch?v=2jzyputaTvo&utm_source=openai"
+    ],
+    "response_snippet": "Answer Engine Optimization (AEO) focuses on structuring your content so that AI systems can extract concise, trustworthy answers directly from your pages. With the increasing reliance on AI assistants",
+    "query_id": 13,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to multi-agent orchestration Claude in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.heyuan110.com/posts/ai/2026-02-26-multi-agent-orchestration/?utm_source=openai",
+      "https://claudemythos.info/claude-mythos-agent-workflows/?utm_source=openai",
+      "https://chiefviews.com/multi-agent-orchestration-in-enterprises-the-2026/?utm_source=openai",
+      "https://chiefviews.com/multi-agent-orchestration-in-enterprises-the-2026/?utm_source=openai",
+      "https://www.refactor.website/artificial-intelligence/multi-agent-orchestration-2026-latency-cost-benchmarks?utm_source=openai",
+      "https://chiefviews.com/multi-agent-orchestration-in-enterprises-the-2026/?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, effectively orchestrating multiple AI agents, such as Claude, is crucial for tackling complex tasks that single agents may struggle with. Implementing a robust multi-agent orchestration strat",
+    "query_id": 14,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI-assisted development workflow in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://coderaven.io/blog/the-ai-native-dev-workflow-software-development-in-2026/?utm_source=openai",
+      "https://dev.to/austinwdigital/ai-assisted-development-in-2026-best-practices-real-risks-and-the-new-bar-for-engineers-3fom?utm_source=openai",
+      "https://www.itpro.com/software/development/ai-software-development-2026-vibe-coding-security?utm_source=openai",
+      "https://dev.to/jubinsoni/ai-powered-dev-workflows-how-swes-are-shipping-faster-in-2026-53ml?utm_source=openai",
+      "https://apptension.com/blog/ai-assisted-development-in-2026-what-holds-up-in-prod?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, AI-assisted development has become integral to software engineering, enhancing productivity and code quality. To establish an effective AI-assisted development workflow, consider the followin",
+    "query_id": 15,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "Claude Code hooks tutorial tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a tutorial on using Claude Code Hooks involves understanding its purpose and functionality. Claude Code Hooks are typically used in conversational AI to enable developers to create custom res",
+    "query_id": 16,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "optimize for AI search engines tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Optimizing your content for AI search engines involves several key strategies that can enhance visibility and engagement. Here\u2019s a comprehensive guide to get you started:\n\n### 1. Understand AI Search ",
+    "query_id": 17,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "answer engine optimization AEO tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Sure! Here\u2019s a comprehensive guide on Answer Engine Optimization (AEO):\n\n### What is AEO?\n\nAnswer Engine Optimization (AEO) is a strategy focused on optimizing content so that search engines can easil",
+    "query_id": 18,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "multi-agent orchestration Claude tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating a multi-agent orchestration system involves multiple intelligent agents working together to accomplish tasks or solve problems. Below is a guide to help you understand the basics and set up a",
+    "query_id": 19,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI-assisted development workflow tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Here's a comprehensive guide to creating an AI-assisted development workflow. This guide will help you integrate AI tools into your software development process to enhance productivity, improve code q",
+    "query_id": 20,
+    "category": "competitor"
+  }
+]

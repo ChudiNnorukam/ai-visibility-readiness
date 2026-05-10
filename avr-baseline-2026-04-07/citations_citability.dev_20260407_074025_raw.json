@@ -1,0 +1,240 @@
+[
+  {
+    "platform": "ChatGPT",
+    "query": "what is citability.dev",
+    "status": "CITED",
+    "cited_urls": [
+      "https://citability.dev/?utm_source=openai",
+      "https://citability.dev/?utm_source=openai"
+    ],
+    "response_snippet": "Citability.dev is a platform designed to help businesses enhance their visibility and citation in AI-generated responses from platforms like ChatGPT, Perplexity, and Claude. By answering 15 targeted q",
+    "query_id": 1,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "who is citability",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://citability.ai/?utm_source=openai",
+      "https://citability.ai/?utm_source=openai"
+    ],
+    "response_snippet": "Citability is a company specializing in enhancing brand visibility within AI-powered platforms. Their services focus on tracking and improving how businesses are cited by AI models like ChatGPT, Perpl",
+    "query_id": 2,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "citability.dev blog",
+    "status": "CITED",
+    "cited_urls": [
+      "https://citability.dev/?utm_source=openai",
+      "https://citalyze.de/en/blog/?utm_source=openai"
+    ],
+    "response_snippet": "Citability.dev is a platform focused on enhancing brand visibility and citability in AI systems. Their primary service is a free assessment that evaluates your website's AI readiness across three key ",
+    "query_id": 3,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "citability developer tools",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Citability developer tools typically refer to software or platforms that help developers implement citation management features in applications or websites. These tools can assist in tracking, generat",
+    "query_id": 4,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "tell me about citability.dev",
+    "status": "CITED",
+    "cited_urls": [
+      "https://citability.dev/?utm_source=openai"
+    ],
+    "response_snippet": "Citability.dev is a platform designed to help businesses enhance their visibility and citation in AI-generated responses across platforms like ChatGPT, Perplexity, and Claude. By answering 15 targeted",
+    "query_id": 5,
+    "category": "brand"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI visibility audit tool",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an AI visibility audit tool involves several steps, focusing on analyzing how artificial intelligence impacts and interacts with user visibility across platforms. Here\u2019s a breakdown of the pr",
+    "query_id": 6,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to measure AI citability",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Measuring AI citability involves assessing how frequently and effectively AI-related research, tools, or frameworks are referenced in academic and professional contexts. Here are some key approaches t",
+    "query_id": 7,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to structured data for AI crawlers",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Structuring data for AI crawlers involves organizing the information in a way that makes it easier for AI models and search engines to understand and use it. Here are some key methods to achieve this:",
+    "query_id": 8,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to optimize for Perplexity ChatGPT",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Optimizing for Perplexity in ChatGPT involves fine-tuning its performance in generating human-like text. Here are several strategies to achieve that:\n\n### 1. **Fine-Tuning the Model**\n   - **Data Qual",
+    "query_id": 9,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "how to AI crawler optimization",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Optimizing an AI crawler involves enhancing its efficiency, effectiveness, and accuracy in gathering data from websites. Here are some key strategies:\n\n### 1. **Crawling Strategy**\n   - **Focus on Rel",
+    "query_id": 10,
+    "category": "topic_authority"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI visibility audit tool in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.andersoncollaborative.com/the-best-ai-visibility-monitoring-platforms-in-2026/?utm_source=openai",
+      "https://www.andersoncollaborative.com/the-best-ai-visibility-monitoring-platforms-in-2026/?utm_source=openai",
+      "https://www.andersoncollaborative.com/the-best-ai-visibility-monitoring-platforms-in-2026/?utm_source=openai",
+      "https://www.andersoncollaborative.com/the-best-ai-visibility-monitoring-platforms-in-2026/?utm_source=openai",
+      "https://www.andersoncollaborative.com/the-best-ai-visibility-monitoring-platforms-in-2026/?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, monitoring your brand's visibility across AI-powered search platforms is crucial for maintaining a competitive edge. Several AI visibility audit tools have emerged to assist in this endeavor.",
+    "query_id": 11,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to measure AI citability in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://saigon.digital/blog/ai-visibility-metrics?utm_source=openai",
+      "https://markets.chroniclejournal.com/chroniclejournal/article/getnews-2026-4-1-genoptima-publishes-first-industry-wide-ai-citation-rate-benchmark-report-for-q1-2026?utm_source=openai",
+      "https://quolity.ai/ai-citations-optimization/?utm_source=openai",
+      "https://searchlab.nl/en/statistics/ai-overviews-sge-statistics-2026?utm_source=openai",
+      "https://www.satelliteai.io/ai-citation-tracking?utm_source=openai",
+      "https://siftly.ai/blog/tools-measure-citation-rates-ai-generated-content-brands-2026?utm_source=openai",
+      "https://arxiv.org/abs/2602.06718?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, evaluating the citability of AI research involves a multifaceted approach that considers both traditional academic metrics and emerging indicators specific to AI-generated content. Here are k",
+    "query_id": 12,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to structured data for AI crawlers in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://www.stackmatix.com/blog/structured-data-ai-search?utm_source=openai",
+      "https://www.elevaseo.com/en/blog/seo/structured-data-guide?utm_source=openai",
+      "https://www.searchenginejournal.com/ai-search-optimization-make-your-structured-data-accessible/537843/?utm_source=openai",
+      "https://geol.ai/briefing/structured-data-in-2026-what-recent-ai-search-changes-mean-for-schema-markup-strategy?utm_source=openai",
+      "https://www.elevaseo.com/en/blog/seo/structured-data-guide?utm_source=openai"
+    ],
+    "response_snippet": "In 2026, effectively structuring data for AI crawlers is crucial for enhancing content visibility and accuracy in AI-generated responses. AI systems, such as ChatGPT and Google AI Overviews, rely heav",
+    "query_id": 13,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to optimize for Perplexity ChatGPT in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://neuwark.com/blog/how-to-optimize-for-perplexity-and-chatgpt-search-in-2026?utm_source=openai",
+      "https://www.visalytica.com/blog/perplexity-optimization?utm_source=openai",
+      "https://proofwrite.io/blog/aeo-vs-seo-optimizing-perplexity-chatgpt-in-2026?utm_source=openai",
+      "https://discoveredlabs.com/blog/perplexity-optimization-how-to-get-cited-linked-2026?utm_source=openai",
+      "https://www.visalytica.com/blog/perplexity-optimization?utm_source=openai",
+      "https://discoveredlabs.com/blog/perplexity-optimization-how-to-get-cited-linked-2026?utm_source=openai",
+      "https://proofwrite.io/blog/aeo-vs-seo-optimizing-perplexity-chatgpt-in-2026?utm_source=openai",
+      "https://cited.so/blog/how-to-optimize-content-for-ai-powered-search-engines-like-perplexity?utm_source=openai"
+    ],
+    "response_snippet": "Optimizing your content for AI-powered search engines like Perplexity and ChatGPT in 2026 requires a strategic approach that focuses on clarity, structure, and relevance. Here are key strategies to en",
+    "query_id": 14,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "best way to AI crawler optimization in 2026",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://surferstack.com/guides/how-to-build-an-ai-search-optimization-strategy-from-scratch-in-2026?utm_source=openai",
+      "https://surferstack.com/guides/how-to-build-an-ai-search-optimization-strategy-from-scratch-in-2026?utm_source=openai",
+      "https://koanthic.com/en/ai-crawler-optimization-complete-guide-for-2026/?utm_source=openai",
+      "https://gradientgroup.com/state-of-ai-search-optimization-2026/?utm_source=openai",
+      "https://seenos.ai/geo-technical?utm_source=openai",
+      "https://seenos.ai/geo-technical?utm_source=openai",
+      "https://koanthic.com/en/ai-crawler-optimization-complete-guide-for-2026/?utm_source=openai",
+      "https://koanthic.com/en/ai-crawler-optimization-complete-guide-for-2026/?utm_source=openai",
+      "https://www.superlines.io/articles/ai-search-optimization?utm_source=openai",
+      "https://gradientgroup.com/state-of-ai-search-optimization-2026/?utm_source=openai"
+    ],
+    "response_snippet": "Optimizing your website for AI crawlers in 2026 is crucial to ensure your content is effectively discovered, understood, and utilized by AI systems. This process, known as AI crawl optimization, invol",
+    "query_id": 15,
+    "category": "long_tail"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI visibility audit tool tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an AI visibility audit tool is a comprehensive process that involves several key steps. I\u2019ll provide a structured guide to help you understand how to conduct an AI visibility audit effectivel",
+    "query_id": 16,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "measure AI citability tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [
+      "https://amworldgroup.com/glossary/ai/citability?utm_source=openai",
+      "https://citability.ai/?utm_source=openai",
+      "https://resollm.ai/blog/structure-content-to-improve-ai-citability/?utm_source=openai",
+      "https://www.newshub.co.uk/news/2026/03/03/critical-prepare-for-answer-engines-from-visibility-to-citability/?utm_source=openai",
+      "https://www.citationrate.com/?utm_source=openai",
+      "https://www.tacmind.com/blog/ai-search-editorial-guidelines?utm_source=openai"
+    ],
+    "response_snippet": "In the evolving landscape of AI-driven search, ensuring your content is easily discoverable and citable by AI systems is crucial for maintaining brand visibility. This process, known as \"citability,\" ",
+    "query_id": 17,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "structured data for AI crawlers tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating structured data for AI crawlers can significantly enhance your website's visibility and help search engines understand your content better. Here's a structured guide to help you implement it ",
+    "query_id": 18,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "optimize for Perplexity ChatGPT tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an optimized tutorial guide for using Perplexity ChatGPT can help users navigate the platform effectively. Here\u2019s a structured approach:\n\n### Perplexity ChatGPT Tutorial Guide\n\n#### Introduct",
+    "query_id": 19,
+    "category": "competitor"
+  },
+  {
+    "platform": "ChatGPT",
+    "query": "AI crawler optimization tutorial guide",
+    "status": "NOT_CITED",
+    "cited_urls": [],
+    "response_snippet": "Creating an effective AI crawler requires optimizing it for both performance and relevance. Here\u2019s a structured tutorial guide that covers the essential steps:\n\n### 1. Define Objectives\n- **Goal Ident",
+    "query_id": 20,
+    "category": "competitor"
+  }
+]

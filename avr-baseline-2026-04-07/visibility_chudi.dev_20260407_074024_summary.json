@@ -1,0 +1,37 @@
+{
+  "target_url": "https://chudi.dev",
+  "brand_name": "Chudi",
+  "test_date": "2026-04-07T07:40:24.372948+00:00",
+  "total_tests": 24,
+  "testable": 24,
+  "visible_count": 6,
+  "known_count": 3,
+  "recommended_count": 2,
+  "visibility_rate_pct": 25.0,
+  "confidence_label": "LOW",
+  "by_category": {
+    "brand_recognition": {
+      "visible": 5,
+      "total": 5,
+      "rate_pct": 100.0
+    },
+    "concept_attribution": {
+      "visible": 0,
+      "total": 10,
+      "rate_pct": 0.0
+    },
+    "recommendation": {
+      "visible": 1,
+      "total": 9,
+      "rate_pct": 11.1
+    }
+  },
+  "by_platform": {
+    "ChatGPT": {
+      "visible": 6,
+      "total": 24,
+      "rate_pct": 25.0
+    }
+  },
+  "verdict": "PARTIALLY_VISIBLE"
+}

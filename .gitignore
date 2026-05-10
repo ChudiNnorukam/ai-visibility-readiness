@@ -1,0 +1,55 @@
+# Secrets + credentials
+.env
+.env.local
+.env.bak.*
+.envrc
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+
+# Pi / OMC harness state (per-machine, not portable)
+.omc/
+
+# Operator-private prospect data (do NOT publish)
+prospect-scans/
+
+# Audit pipeline OUTPUTS (regenerated on each run; tracking would balloon the repo)
+sample-audits/
+audit_*.md
+audit_*.json
+audit_*.html
+audit_*.pdf
+visibility_*.json
+citations_*.json
+
+# Exception: dated baseline measurement sets are intentionally archived for trend reference
+!avr-baseline-*/
+!avr-baseline-*/**
+
+# Local SQLite DBs (rebuilt from import scripts)
+dashboard/*.db
+*.sqlite
+*.sqlite3
+
+# Build / bundler outputs
+dist/
+build/
+node_modules/
+
+# Logs
+*.log
+logs/

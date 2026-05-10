@@ -1,0 +1,37 @@
+{
+  "target_url": "https://citability.dev",
+  "brand_name": "citability.dev",
+  "test_date": "2026-04-07T07:40:10.987348+00:00",
+  "total_tests": 25,
+  "testable": 25,
+  "visible_count": 11,
+  "known_count": 3,
+  "recommended_count": 9,
+  "visibility_rate_pct": 44.0,
+  "confidence_label": "LOW",
+  "by_category": {
+    "brand_recognition": {
+      "visible": 5,
+      "total": 5,
+      "rate_pct": 100.0
+    },
+    "concept_attribution": {
+      "visible": 2,
+      "total": 10,
+      "rate_pct": 20.0
+    },
+    "recommendation": {
+      "visible": 4,
+      "total": 10,
+      "rate_pct": 40.0
+    }
+  },
+  "by_platform": {
+    "ChatGPT": {
+      "visible": 11,
+      "total": 25,
+      "rate_pct": 44.0
+    }
+  },
+  "verdict": "PARTIALLY_VISIBLE"
+}

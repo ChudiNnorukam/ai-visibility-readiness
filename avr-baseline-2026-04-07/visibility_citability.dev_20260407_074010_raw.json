@@ -1,0 +1,853 @@
+[
+  {
+    "query_id": 1,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What is citability.dev?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 2
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "citability.dev is a",
+        "citability.dev offers"
+      ]
+    },
+    "response_snippet": "Citability.dev is a platform designed to help businesses enhance their visibility and citation in AI-generated responses from platforms like ChatGPT, Perplexity, and Claude. By answering 15 targeted questions, users can identify why their brand may not be recognized by these AI systems and receive a"
+  },
+  {
+    "query_id": 2,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "Tell me about citability.dev",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 2
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "citability.dev is a",
+        "citability.dev offers"
+      ]
+    },
+    "response_snippet": "Citability.dev is a platform designed to help businesses enhance their visibility and citation in AI-generated responses across platforms like ChatGPT, Perplexity, and Claude. By answering 15 targeted questions, users receive a personalized plan to improve their brand's presence in AI outputs. ([cit"
+  },
+  {
+    "query_id": 3,
+    "category": "brand_recognition",
+    "signal": "direct_ask",
+    "platform": "ChatGPT",
+    "query": "What does citability.dev do?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": true,
+        "brand_mentioned": true,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "KNOWN",
+      "mention_count": 2
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "citability.dev is a"
+      ]
+    },
+    "response_snippet": "Citability.dev is a platform that helps businesses enhance their brand visibility and citation in AI-generated responses from platforms like ChatGPT, Perplexity, and Claude. By answering 15 questions, users receive a personalized plan to improve their AI presence. The service evaluates three key are"
+  },
+  {
+    "query_id": 4,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "Who is Chudi Nnorukam?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi Nnorukam is an AI Systems Architect specializing in designing and deploying agent-based AI automation systems tailored for neurodivergent individuals, particularly those with ADHD. He focuses on eliminating manual workflows, scaling content, and enabling recursive learning through micro-SaaS t"
+  },
+  {
+    "query_id": 5,
+    "category": "brand_recognition",
+    "signal": "owner_recognition",
+    "platform": "ChatGPT",
+    "query": "What has Chudi Nnorukam built?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": true,
+        "described_accurately": false
+      },
+      "level": "PARTIALLY_KNOWN",
+      "mention_count": 1
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Chudi Nnorukam is an AI Systems Architect specializing in designing and deploying agent-based AI automation systems tailored for neurodivergent individuals. His work focuses on eliminating manual workflows, scaling content, and enabling recursive learning. He has over five years of experience and ha"
+  },
+  {
+    "query_id": 10,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI visibility auditing?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AI Visibility Audit"
+      ]
+    },
+    "response_snippet": "AI visibility auditing is essential for ensuring transparency, accountability, and ethical compliance in AI systems. Here are some of the best approaches to effectively conduct AI visibility audits:\n\n### 1. **Define Clear Objectives**\n   - **Identify Stakeholders**: Engage relevant stakeholders incl"
+  },
+  {
+    "query_id": 11,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI citability measurement?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Measuring the citability of AI-generated content or AI models involves various methodologies and considerations. Here are some effective approaches:\n\n### 1. **Citation Analysis**\n   - **Citation Indexing**: Use databases like Google Scholar, Scopus, or Web of Science to track citations of papers rel"
+  },
+  {
+    "query_id": 12,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Answer Engine Optimization (AEO) focuses on optimizing content to be effectively used by answer engines like Google\u2019s featured snippets, voice search, and other automated systems. Here are some best approaches for AEO:\n\n### 1. **Focus on User Intent**\n   - Understand what users are searching for and"
+  },
+  {
+    "query_id": 13,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for structured data for AI?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Structured data is essential for AI applications since it is highly organized and easily analyzed. Here are some of the best approaches for leveraging structured data in AI:\n\n### 1. **Data Preprocessing**\n   - **Cleaning:** Remove duplicates, fix inaccuracies, and handle missing values.\n   - **Norma"
+  },
+  {
+    "query_id": 14,
+    "category": "concept_attribution",
+    "signal": "topic_expertise",
+    "platform": "ChatGPT",
+    "query": "What are the best approaches for AI crawler optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Optimizing an AI crawler involves several strategies to enhance its performance, efficiency, and effectiveness in gathering data. Here are some best approaches:\n\n### 1. **Crawl Depth and Breadth Control**\n   - **Depth First Search (DFS)** vs **Breadth First Search (BFS)**: Choose the appropriate str"
+  },
+  {
+    "query_id": 15,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI visibility auditing?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AI Visibility Audit"
+      ]
+    },
+    "response_snippet": "Several organizations, researchers, and authors focus on AI visibility auditing, covering topics like transparency, accountability, and ethics in artificial intelligence. Key contributors include:\n\n1. **Academic Researchers**: Many university researchers publish papers on AI explainability and visib"
+  },
+  {
+    "query_id": 16,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI citability measurement?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several researchers and institutions have contributed to the study of AI's impact on citation practices and the development of tools for citation analysis:\n\n- **Zuyao Xu et al.** conducted a comprehensive study titled \"GhostCite: A Large-Scale Analysis of Citation Validity in the Age of Large Langua"
+  },
+  {
+    "query_id": 17,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Answer Engine Optimization (AEO) is a relatively new concept focused on optimizing content for voice search and AI-driven answer engines like Google Assistant, Siri, and others. Here are some experts and resources that discuss AEO:\n\n1. **Search Engine Land** - Articles discussing trends and strategi"
+  },
+  {
+    "query_id": 18,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about structured data for AI?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Several experts and organizations write about structured data for AI, covering various aspects like data integration, machine learning, and data governance. Key contributors include:\n\n1. **Data Scientists and Researchers**: Many publish papers and articles in academic journals or platforms like arXi"
+  },
+  {
+    "query_id": 19,
+    "category": "concept_attribution",
+    "signal": "author_association",
+    "platform": "ChatGPT",
+    "query": "Who writes about AI crawler optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "Various experts, bloggers, and organizations focus on AI crawler optimization. Here are some notable sources:\n\n1. **Industry Blogs**: Websites like Moz, Search Engine Journal, and SEMrush frequently publish articles about SEO and crawler optimization, including AI aspects.\n\n2. **Academic Journals**:"
+  },
+  {
+    "query_id": 20,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI visibility auditing?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AI Visibility Audit"
+      ]
+    },
+    "response_snippet": "For AI visibility auditing, consider following these tools and blogs to stay updated and enhance your understanding:\n\n### Tools\n1. **Google AI Tools**\n   - Provides resources for AI evaluation and transparency.\n  \n2. **Pandas and NumPy**\n   - For data analysis and manipulation, which is essential fo"
+  },
+  {
+    "query_id": 21,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI citability measurement?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [
+        "AI citability"
+      ],
+      "concept_ratio": 0.25
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To effectively measure AI citability, it's essential to utilize specialized tools and stay informed through authoritative blogs. Here are some recommendations:\n\n**AI Citation Analysis Tools:**\n\n1. **AirOps**: This platform monitors citations across major AI engines like ChatGPT, Gemini, Perplexity, "
+  },
+  {
+    "query_id": 22,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for answer engine optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For optimizing your content for answer engines and improving visibility in voice search, AI-powered search, and voice assistants, here are some essential tools, blogs, and resources to consider:\n\n### Tools\n\n1. **Ahrefs**\n   - Great for keyword research, content analysis, and backlinks.\n\n2. **SEMrush"
+  },
+  {
+    "query_id": 23,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for structured data for AI?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "When exploring structured data for AI, several tools, blogs, and resources are highly recommended:\n\n### Tools\n\n1. **Google Cloud AI Platform**: Offers services for machine learning, including tools for handling structured data.\n2. **AWS SageMaker**: A robust platform for building, training, and depl"
+  },
+  {
+    "query_id": 24,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "What tools or blogs should I follow for AI crawler optimization?",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "For AI crawler optimization, consider following these tools and blogs:\n\n### Tools:\n1. **Google Search Console**: To monitor and optimize your site's visibility in search results.\n2. **Screaming Frog SEO Spider**: A powerful tool for crawling websites and finding SEO issues.\n3. **Ahrefs**: Provides i"
+  },
+  {
+    "query_id": 25,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning AI visibility auditing in 2026",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AI Visibility Audit"
+      ]
+    },
+    "response_snippet": "As of April 2026, auditing AI visibility has become crucial for brands aiming to maintain a strong online presence. Traditional SEO methods are no longer sufficient due to the rise of AI-driven search platforms like ChatGPT, Google AI Overviews, Perplexity, Gemini, and Claude. To effectively audit a"
+  },
+  {
+    "query_id": 26,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning AI citability measurement in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [
+        "AI citability"
+      ],
+      "concept_ratio": 0.25
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "In 2026, understanding and enhancing AI citability\u2014the likelihood that AI systems reference your content\u2014is crucial for digital visibility. To effectively learn and implement AI citability measurement, consider the following resources:\n\n1. **cAItable**: This platform offers tools to analyze and impr"
+  },
+  {
+    "query_id": 27,
+    "category": "recommendation",
+    "signal": "recommendation",
+    "platform": "ChatGPT",
+    "query": "Best resources for learning answer engine optimization in 2026",
+    "visible": false,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": false,
+      "recommended_as": []
+    },
+    "response_snippet": "To master Answer Engine Optimization (AEO) in 2026, it's essential to engage with resources that address the evolving landscape of search engines and AI-driven content delivery. Here are some top recommendations:\n\n**1. Specialized SEO Tools with AEO Capabilities**\n\n- **Clearscope**: An AI-powered co"
+  },
+  {
+    "query_id": 28,
+    "category": "recommendation",
+    "signal": "product_recommendation",
+    "platform": "ChatGPT",
+    "query": "Is AI Visibility Audit worth using?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [],
+      "concept_ratio": 0.0
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AI Visibility Audit"
+      ]
+    },
+    "response_snippet": "An AI Visibility Audit evaluates how well your brand is represented across AI platforms like ChatGPT, Claude, Gemini, and Perplexity. Given the increasing reliance on AI for information and recommendations, understanding your brand's presence in these systems is crucial.\n\n**Benefits of an AI Visibil"
+  },
+  {
+    "query_id": 29,
+    "category": "recommendation",
+    "signal": "product_recommendation",
+    "platform": "ChatGPT",
+    "query": "Is AVR Framework worth using?",
+    "visible": true,
+    "brand_recognition": {
+      "signals": {
+        "domain_mentioned": false,
+        "brand_mentioned": false,
+        "owner_mentioned": false,
+        "described_accurately": false
+      },
+      "level": "UNKNOWN",
+      "mention_count": 0
+    },
+    "concept_attribution": {
+      "concepts_checked": [
+        "AI citability",
+        "AVR framework",
+        "visibility vs citability",
+        "AI recommendability"
+      ],
+      "concepts_found": [
+        "AVR framework"
+      ],
+      "concept_ratio": 0.25
+    },
+    "recommendation": {
+      "recommended": true,
+      "recommended_as": [
+        "product: AVR Framework"
+      ]
+    },
+    "response_snippet": "The AVR Framework (often associated with AVR microcontrollers) can be quite beneficial, depending on your project requirements. Here are some factors to consider:\n\n### Advantages:\n\n1. **Ease of Use**: It simplifies the development process for both beginners and experienced developers by providing a "
+  }
+]
