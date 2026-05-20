@@ -5,8 +5,8 @@ Runs 7 calibration queries before each audit so the audit report can include
 a receipt proving the tool just calibrated correctly:
 
   - 5 known-positive queries against Wikipedia (expect Perplexity to cite
-    Wikipedia at least 4/5 — Wikipedia is the canonical reference).
-  - 2 known-negative queries against an .invalid TLD (RFC 2606 — should
+    Wikipedia at least 4/5, Wikipedia is the canonical reference).
+  - 2 known-negative queries against an .invalid TLD (RFC 2606, should
     NEVER be cited by any engine; any cite is a fabrication signal).
 
 Cached for 24h to amortize cost (~$0.50 per fresh calibration). Operator
@@ -32,9 +32,9 @@ CACHE_TTL_SECONDS = 24 * 3600
 # specifically should cite wikipedia.org for direct brand queries on it.
 KNOWN_POSITIVE_TARGET = "https://en.wikipedia.org"
 KNOWN_POSITIVE_BRAND = "Wikipedia"
-EXPECTED_PERPLEXITY_BRAND_HITS_MIN = 4  # of 5 — allow 1 miss for noise
+EXPECTED_PERPLEXITY_BRAND_HITS_MIN = 4  # of 5, allow 1 miss for noise
 
-# Known-negative: .invalid TLD per RFC 2606 — guaranteed no engine has
+# Known-negative: .invalid TLD per RFC 2606, guaranteed no engine has
 # legit citation source for this URL. Any cite = definitive fabrication.
 KNOWN_NEGATIVE_TARGET = "https://nonexistent-test-domain-2026-avr-calibration.invalid"
 KNOWN_NEGATIVE_BRAND = "InventedTestBrand47821AvrCalibration"
@@ -140,7 +140,7 @@ def run_calibration(force: bool = False) -> dict:
                 r = fn(q, KNOWN_NEGATIVE_TARGET)
                 if r["status"] == "CITED":
                     neg_hits_per_engine[name] += 1
-                # ERROR on negative test is OK — counts as no false positive
+                # ERROR on negative test is OK, counts as no false positive
             except Exception:
                 pass
     receipt["checks"]["negative_no_false_positives"] = {
@@ -166,7 +166,7 @@ def format_receipt_markdown(receipt: dict) -> str:
     lines = [
         "## Methodology Calibration Receipt",
         "",
-        f"**Status:** {overall} — calibration ran {age} at {receipt['ts_iso']}",
+        f"**Status:** {overall}, calibration ran {age} at {receipt['ts_iso']}",
         "",
         "Before measuring this site, the audit ran a 7-query smoke test against "
         "two reference targets to verify the citation extraction is working as "
