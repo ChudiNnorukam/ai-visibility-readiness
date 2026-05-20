@@ -488,6 +488,27 @@ def run_visibility_test(
         target_url = f"https://{target_url}"
 
     domain = target_url.replace("https://", "").replace("http://", "").split("/")[0]
+
+    # Argument fallback: when --concepts or --products are not provided,
+    # fall back to --topics so concept_attribution and recommendation
+    # checks have something to match against. Without this, those checks
+    # silently return 0/N across all queries even when responses are well-
+    # formed. See citability-skill-evolution-2026-05-20-case-study.
+    effective_concepts = key_concepts if key_concepts else (topics or [])
+    effective_products = products if products else (topics or [])
+    if not key_concepts and effective_concepts:
+        print(f"NOTE: --concepts not provided; using --topics as fallback for "
+              f"concept_attribution checks: {effective_concepts}")
+    if not products and effective_products:
+        print(f"NOTE: --products not provided; using --topics as fallback for "
+              f"recommendation checks: {effective_products}")
+    if not effective_concepts:
+        print("WARN: no --concepts or --topics; concept_attribution signal "
+              "will return 0/N (no match list). Pass --topics or --concepts.")
+    if not effective_products:
+        print("WARN: no --products or --topics; recommendation signal will "
+              "rely on brand-name patterns only. Pass --topics or --products.")
+
     available = _check_keys()
 
     if platforms:
@@ -536,10 +557,13 @@ def run_visibility_test(
                 }
                 print("ERROR")
             else:
-                # Run all three checks on every response
+                # Run all three checks on every response.
+                # concept and recommendation use the topics-fallback values
+                # resolved at function entry so missing CLI args degrade gracefully
+                # (verbose) instead of silently zeroing out.
                 brand_check = check_brand_recognition(response_text, target_url, brand_name, owner_name)
-                concept_check = check_concept_attribution(response_text, key_concepts or [])
-                rec_check = check_recommendation(response_text, target_url, brand_name, products)
+                concept_check = check_concept_attribution(response_text, effective_concepts)
+                rec_check = check_recommendation(response_text, target_url, brand_name, effective_products)
 
                 # Determine visibility level for this query
                 visible = brand_check["level"] != "UNKNOWN" or rec_check["recommended"] or concept_check["concept_ratio"] > 0.3
