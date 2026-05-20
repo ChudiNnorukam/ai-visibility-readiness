@@ -181,20 +181,19 @@ def generate_report(
         brand_n = by_cat.get("brand_recognition", {}).get("visible", 0)
         brand_t = by_cat.get("brand_recognition", {}).get("total", 0)
         if brand_t:
-            lines.append(f"| AI Visibility (Brand Recognition) | {visibility_results.get('verdict', 'N/A')} — {brand_rate}% ({brand_n}/{brand_t}) |")
+            lines.append(f"| AI Visibility (Brand Recognition) | {visibility_results.get('verdict', 'N/A')}, {brand_rate}% ({brand_n}/{brand_t}) |")
         else:
             lines.append(f"| AI Visibility | {visibility_results.get('verdict', 'N/A')} |")
     if citation_results:
         lines.append(f"| AI Citations | {verdict_emoji(citation_results.get('verdict', 'NOT_CITED'))} ({citation_results.get('citation_rate_pct', 0)}%) |")
 
-    # Top 3 actions
-    lines.extend([
-        "",
-        "### Top 3 Actions (in priority order)",
-        "",
-    ])
-    for i, action in enumerate(top_actions, 1):
-        lines.append(f"{i}. {action}")
+    # Top actions (header reflects actual count; section omitted when empty)
+    if top_actions:
+        n = len(top_actions)
+        header = f"### Top {n} Action{'s' if n > 1 else ''} (in priority order)"
+        lines.extend(["", header, ""])
+        for i, action in enumerate(top_actions, 1):
+            lines.append(f"{i}. {action}")
 
     # Calibration receipt (only present for --live-test runs that didn't --skip-calibration)
     if calibration_receipt:
@@ -302,7 +301,7 @@ def generate_report(
                         lines.append(f"- **{label}:** {v}")
                 lines.append("")
 
-    # Section 3 — when calibration failed and AI tests were withheld, render
+    # Section 3, when calibration failed and AI tests were withheld, render
     # CALIBRATION_FAILED placeholder instead of pretending we have numbers.
     calibration_failed = (
         calibration_receipt is not None
@@ -315,7 +314,7 @@ def generate_report(
             "",
             "## Section 3: Citation Monitoring",
             "",
-            "**Status:** CALIBRATION_FAILED — site-level numbers withheld.",
+            "**Status:** CALIBRATION_FAILED: site-level numbers withheld.",
             "",
             "The methodology calibration that validates this section's numbers failed",
             "(see Calibration Receipt above). Re-run after resolving the calibration",
@@ -326,7 +325,7 @@ def generate_report(
             "",
             "## Section 4: AI Visibility [BEST-EFFORT]",
             "",
-            "**Status:** CALIBRATION_FAILED — site-level numbers withheld.",
+            "**Status:** CALIBRATION_FAILED: site-level numbers withheld.",
             "",
             "Same reason as Section 3 above.",
             "",
@@ -370,14 +369,14 @@ def generate_report(
             "Visibility measures whether AI systems KNOW about you, even without linking to your URL.",
             "This is different from citation (Section 3). You can be visible but not cited, or cited but not visible.",
             "",
-            "**Per-signal scores (the load-bearing numbers — see methodology note):**",
+            "**Per-signal scores (the load-bearing numbers, see methodology note):**",
             "",
         ])
 
         by_cat_pre = visibility_results.get("by_category", {}) or {}
         sig_descriptions = {
             "brand_recognition": "Brand recognition (does the model know you exist when asked directly)",
-            "concept_attribution": "Topic association (does the model link you to your topics — paraphrase-tolerant)",
+            "concept_attribution": "Topic association (does the model link you to your topics, paraphrase-tolerant)",
             "recommendation": "Active recommendation (does the model recommend you to users)",
         }
         for cat in ("brand_recognition", "concept_attribution", "recommendation"):
@@ -387,12 +386,22 @@ def generate_report(
                 lines.append(f"- **{desc}:** {cd['visible']}/{cd['total']} = {cd['rate_pct']}%")
         lines.append("")
 
+        agg_pct = visibility_results.get("visibility_rate_pct", 0)
+        agg_visible = visibility_results.get("visible_count", 0)
+        agg_testable = visibility_results.get("testable", 0)
+        agg_total = visibility_results.get("total_tests", 0)
+        agg_unknown = agg_total - agg_testable if (agg_total and agg_testable) else 0
+        agg_line = (
+            f"- Aggregate visibility: {agg_pct}% "
+            f"({agg_visible}/{agg_testable} testable; "
+            f"{agg_unknown}/{agg_total} queries excluded as UNKNOWN)"
+        )
         lines.extend([
             f"**Verdict:** {visibility_results.get('verdict', 'N/A')}",
             f"**Confidence:** {visibility_results.get('confidence_label', 'LOW')}",
             "",
-            "*Aggregate (averages incompatible signals — interpret per-signal above):*",
-            f"- Aggregate visibility: {visibility_results.get('visibility_rate_pct', 0)}%",
+            "*Aggregate (denominator excludes UNKNOWN responses; per-signal rates above use full denominators, so they will not match):*",
+            agg_line,
             f"- Brand recognized in {visibility_results.get('known_count', 0)} responses",
             f"- Active recommendations in {visibility_results.get('recommended_count', 0)} responses",
             "",
