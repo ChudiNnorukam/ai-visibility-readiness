@@ -136,11 +136,19 @@ def _query_gemini(query: str) -> str:
     knowledge. Gemini's google_search grounding tool is NOT enabled here so
     the response reflects what the model knows, not what the search index
     currently says. Citation tests in citation_auto.py do enable grounding.
+
+    60s per-call timeout (added 2026-05-21): without it, a hung Gemini
+    connection stalls the whole visibility test indefinitely. The other 3
+    platforms (OpenAI 90s, Perplexity 30s, Anthropic 90s) all carry timeouts;
+    Gemini was the lone unbounded path. Repro: chudi.dev visibility runs
+    2026-05-21 both hung at 0% CPU for 25+ min on a single Gemini call.
+    _query_with_retry already retries up to 2x on exception, so the
+    effective max wait is ~3 minutes per query.
     """
     from google import genai
     from google.genai import types
 
-    client = genai.Client()
+    client = genai.Client(http_options=types.HttpOptions(timeout=60_000))
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=query,
