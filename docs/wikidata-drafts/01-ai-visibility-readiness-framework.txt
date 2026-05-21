@@ -1,0 +1,72 @@
+============================================================
+WIKIDATA Q-ITEM DRAFT 1 OF 3
+Label: AI Visibility Readiness Framework
+Submission URL: https://www.wikidata.org/wiki/Special:NewItem
+DO NOT auto-submit. Operator paste-only.
+============================================================
+
+LABELS
+  en: AI Visibility Readiness Framework
+
+DESCRIPTIONS
+  en: Open-source framework for measuring whether AI answer engines can find, recommend, and cite a website
+
+ALIASES (en)
+  AVR Framework
+  AVR
+  AI Visibility Readiness
+  AIVR
+
+STATEMENTS
+----------------------------------------
+P31  instance of  -->  Q1130645 (open-source software)
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+
+P31  instance of  -->  Q1417149 (methodology)
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+
+P856 official website  -->  https://chudi.dev/framework
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+
+P571 inception  -->  2026 (year precision)
+  reference:
+    P854 reference URL  https://github.com/ChudiNnorukam/ai-visibility-readiness
+    P813 retrieved      2026-05-21
+
+P1324 source code repository URL  -->  https://github.com/ChudiNnorukam/ai-visibility-readiness
+  reference:
+    P854 reference URL  https://github.com/ChudiNnorukam/ai-visibility-readiness
+    P813 retrieved      2026-05-21
+
+P275 copyright license  -->  <CHECK LICENSE FILE IN REPO BEFORE SUBMISSION>
+  If MIT:        Q334661
+  If Apache 2.0: Q309877
+  If GPL-3.0:    Q10513450
+
+P50  author  -->  <Q-ID for Chudi Nnorukam if exists, else use P2093 author name string with value "Chudi Nnorukam">
+
+P973 described at URL  -->  https://www.freecodecamp.org/news/<chudi-fcc-post-slug>
+  reference:
+    P854 reference URL  https://www.freecodecamp.org/news/<chudi-fcc-post-slug>
+    P813 retrieved      2026-05-21
+  NOTE: post authored by Chudi Nnorukam, may not satisfy independent-source requirement
+
+
+PRE-SUBMIT CHECKLIST
+----------------------------------------
+[ ] Verify LICENSE file in repo; pick correct P275 Q-ID
+[ ] Verify exact FCC guest post URL slug
+[ ] Decide P50 strategy: create Chudi Q-item first, or use P2093 fallback
+[ ] WAIT GATE: at least 1 third-party article (NOT authored by Chudi) covers framework by name
+[ ] Pick primary P31: open-source software vs software framework vs methodology
+
+NOTABILITY RISK: MEDIUM-HIGH
+  Criterion 2 (clearly identifiable conceptual entity) is the strongest match.
+  Risk: single-author + thin independent-source backing.
+  Mitigation: wait for first independent third-party coverage before submitting.

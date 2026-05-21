@@ -1,0 +1,58 @@
+============================================================
+WIKIDATA Q-ITEM DRAFT 2 OF 3
+Label: AVR Score
+Submission URL: https://www.wikidata.org/wiki/Special:NewItem
+DO NOT auto-submit. Operator paste-only.
+DEPENDS ON: Draft 01 (AI Visibility Readiness Framework) accepted first.
+============================================================
+
+LABELS
+  en: AVR Score
+
+DESCRIPTIONS
+  en: 0-to-100 composite scoring metric defined by the AI Visibility Readiness Framework, combining Visibility, Recommendability, and Citability components from per-query AI-engine response receipts
+
+ALIASES (en)
+  AI Visibility Readiness Score
+  AIVR Score
+  AVR composite score
+
+STATEMENTS
+----------------------------------------
+P31  instance of  -->  Q1907075 (metric)
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+  ALTERNATIVES (pick ONE):
+    Q174728  (rating system)
+    Q4373292 (scoring system)
+
+P361 part of  -->  <Q-ID of AI Visibility Readiness Framework, from draft 01>
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+  NOTE: this is the structural-need anchor (Criterion 3). Required.
+
+P856 official website  -->  https://chudi.dev/framework
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+
+
+VALUE DEFINITION (for description / talk page; Wikidata has no direct property)
+----------------------------------------
+  Range:       0 to 100 (linear)
+  Composition: V (Visibility) + R (Recommendability) + C (Citability)
+  Spec:        https://chudi.dev/framework
+
+
+PRE-SUBMIT CHECKLIST
+----------------------------------------
+[ ] WAIT GATE: Framework Q-item (draft 01) exists AND >14 days no deletion nomination
+[ ] Fill P361 part-of value with Framework Q-ID
+[ ] Pick ONE primary P31 from {Q1907075, Q174728, Q4373292}; default Q1907075 (metric)
+[ ] Check Wikidata for existing 'AVR Score' label collision; disambiguate if needed
+
+NOTABILITY RISK: MEDIUM
+  Criterion 3 (structural need) applies via the P361 anchor to the Framework Q-item.
+  Risk vanishes if Framework Q-item is accepted; risk reappears if Framework is deleted.

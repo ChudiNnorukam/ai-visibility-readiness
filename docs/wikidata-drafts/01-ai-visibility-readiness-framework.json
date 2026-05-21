@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "drafted_at": "2026-05-21",
+    "drafted_by": "claude-code-session-76e4b4d8",
+    "submission_method": "https://www.wikidata.org/wiki/Special:NewItem (operator paste)",
+    "do_not_auto_submit": true,
+    "wait_gate": "submit only after >=1 independent third-party source (NOT authored by Chudi) covers the framework by name",
+    "notability_criterion": "Criterion 2 (clearly identifiable conceptual entity)",
+    "risk_level": "MEDIUM-HIGH (single-author + modest third-party coverage)",
+    "submit_order": 1
+  },
+  "labels": {
+    "en": "AI Visibility Readiness Framework"
+  },
+  "descriptions": {
+    "en": "Open-source framework for measuring whether AI answer engines can find, recommend, and cite a website"
+  },
+  "aliases": {
+    "en": [
+      "AVR Framework",
+      "AVR",
+      "AI Visibility Readiness",
+      "AIVR"
+    ]
+  },
+  "statements": [
+    {
+      "property": "P31",
+      "label": "instance of",
+      "value_qid": "Q1130645",
+      "value_label": "open-source software",
+      "note": "Q1130645 is open-source software. Alternative: Q188860 (free software) or Q21127166 (software framework). Operator picks based on which feels most accurate. Methodology-only (no installable artifact) might prefer Q15621286 (intellectual work) or Q1417149 (methodology); current draft uses open-source software because the framework is published with a public GitHub repo."
+    },
+    {
+      "property": "P31",
+      "label": "instance of",
+      "value_qid": "Q1417149",
+      "value_label": "methodology",
+      "note": "Dual classification: framework is both an open-source artifact AND a measurement methodology. Both classifications are valid on Wikidata."
+    },
+    {
+      "property": "P856",
+      "label": "official website",
+      "value_url": "https://chudi.dev/framework",
+      "note": "Canonical framework spec lives at chudi.dev/framework v1.1.0 (observed 2026-04-18)."
+    },
+    {
+      "property": "P50",
+      "label": "author",
+      "value_qid_pending": "<Q-ID for Chudi Nnorukam, pending creation if no Wikidata entry exists>",
+      "note": "If Chudi Nnorukam does not yet have a Q-item, this statement can be deferred or use P2093 (author name string) with value 'Chudi Nnorukam' as fallback."
+    },
+    {
+      "property": "P571",
+      "label": "inception",
+      "value_date": "2026-01-01T00:00:00Z",
+      "value_precision": "year",
+      "note": "Per operator prompt: 2026-Q1. Use year precision (P571 supports calendar-precision qualifier). Adjust to a specific month/day if a public commit or release tag pins the inception more precisely."
+    },
+    {
+      "property": "P1324",
+      "label": "source code repository URL",
+      "value_url": "https://github.com/ChudiNnorukam/ai-visibility-readiness",
+      "note": "Public GitHub repo containing FRAMEWORK.md + GLOSSARY.md + overlays/."
+    },
+    {
+      "property": "P275",
+      "label": "copyright license",
+      "value_qid_pending": "<verify actual license from LICENSE file in repo before submission>",
+      "note": "If MIT, value_qid is Q334661. If Apache 2.0, Q309877. If GPL-3.0, Q10513450. DO NOT submit without verifying the actual license."
+    },
+    {
+      "property": "P973",
+      "label": "described at URL",
+      "value_url": "https://www.freecodecamp.org/news/<chudi-fcc-post-slug>",
+      "note": "FCC guest post URL (verify exact slug from chudi-blog drafts/ or live URL before submission). This is the highest-DA third-party citation currently available."
+    }
+  ],
+  "references_per_statement": {
+    "all": [
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://chudi.dev/framework",
+        "qualifier_P813_retrieved": "2026-05-21"
+      },
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://github.com/ChudiNnorukam/ai-visibility-readiness",
+        "qualifier_P813_retrieved": "2026-05-21"
+      },
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://www.freecodecamp.org/news/<chudi-fcc-post-slug>",
+        "qualifier_P813_retrieved": "2026-05-21",
+        "note": "INDEPENDENCE CAVEAT: this post was authored by Chudi Nnorukam, so it is not strictly an independent secondary source. Wikidata patrollers may flag it as such."
+      }
+    ]
+  },
+  "operator_pre_submit_checklist": [
+    "Verify exact LICENSE in github.com/ChudiNnorukam/ai-visibility-readiness (MIT? Apache? GPL?) and update P275 value_qid",
+    "Verify exact FCC guest post URL slug",
+    "Decide whether to create a Q-item for Chudi Nnorukam first (so P50 author has a Q-link) or fall back to P2093 author name string",
+    "Wait gate: confirm at least ONE third-party article (NOT authored by Chudi) covers the framework by name; cite it as a second P854 reference for stronger Criterion 2 backing",
+    "Decide between Q1130645 (open-source software) vs Q21127166 (software framework) vs Q1417149 (methodology) for the primary P31 statement; the dual-instance-of in this draft may invite patroller pushback"
+  ]
+}

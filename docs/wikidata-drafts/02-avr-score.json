@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "drafted_at": "2026-05-21",
+    "drafted_by": "claude-code-session-76e4b4d8",
+    "submission_method": "https://www.wikidata.org/wiki/Special:NewItem (operator paste)",
+    "do_not_auto_submit": true,
+    "wait_gate": "submit ONLY after AI Visibility Readiness Framework Q-item (draft 01) is created AND not deletion-nominated within 14 days",
+    "notability_criterion": "Criterion 3 (structural need; supports Framework item's statements)",
+    "risk_level": "MEDIUM (depends on Framework Q-item being accepted first)",
+    "submit_order": 2,
+    "anchors_to": "AI Visibility Readiness Framework (draft 01)"
+  },
+  "labels": {
+    "en": "AVR Score"
+  },
+  "descriptions": {
+    "en": "0-to-100 composite scoring metric defined by the AI Visibility Readiness Framework, combining Visibility, Recommendability, and Citability components from per-query AI-engine response receipts"
+  },
+  "aliases": {
+    "en": [
+      "AI Visibility Readiness Score",
+      "AIVR Score",
+      "AVR composite score"
+    ]
+  },
+  "statements": [
+    {
+      "property": "P31",
+      "label": "instance of",
+      "value_qid_options": [
+        {"qid": "Q1907075", "label": "metric", "preferred": true, "note": "metric is the closest match for a 0-100 scoring rollup"},
+        {"qid": "Q174728", "label": "rating system", "alternative": true, "note": "if metric feels too generic"},
+        {"qid": "Q4373292", "label": "scoring system", "alternative": true}
+      ],
+      "operator_decision": "pick ONE for submission (default: Q1907075 metric)"
+    },
+    {
+      "property": "P361",
+      "label": "part of",
+      "value_qid_pending": "<Q-ID of AI Visibility Readiness Framework, once draft 01 is accepted>",
+      "note": "This is the structural-need anchor (Criterion 3). AVR Score is part of the AVR Framework; without the framework existing as a Q-item, this statement has no anchor."
+    },
+    {
+      "property": "P856",
+      "label": "official website",
+      "value_url": "https://chudi.dev/framework",
+      "note": "AVR Score is defined within the framework spec at chudi.dev/framework; no separate page exists."
+    },
+    {
+      "property": "P2295",
+      "label": "net profit",
+      "value_skip": true,
+      "note": "SKIP. No financial property applies to a measurement metric."
+    }
+  ],
+  "value_definition": {
+    "min": 0,
+    "max": 100,
+    "scale": "linear",
+    "composition": "Visibility (V) + Recommendability (R) + Citability (C); see avr-naming-rule node body for the canonical formula and component definitions",
+    "where_defined": "https://chudi.dev/framework (canonical spec)",
+    "note_for_wikidata": "Wikidata does not have a single property for 'metric range' or 'composite formula'. Use the description field for the 0-100 range; the formula is best documented at the official-website P856 target."
+  },
+  "references_per_statement": {
+    "all": [
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://chudi.dev/framework",
+        "qualifier_P813_retrieved": "2026-05-21"
+      },
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://github.com/ChudiNnorukam/ai-visibility-readiness",
+        "qualifier_P813_retrieved": "2026-05-21",
+        "note": "framework repo also defines the scoring composition"
+      }
+    ]
+  },
+  "operator_pre_submit_checklist": [
+    "WAIT GATE: AI Visibility Readiness Framework Q-item (draft 01) must be created AND remain undeleted for at least 14 days before submitting AVR Score",
+    "Once Framework Q-item exists, fill the P361 part-of value_qid with its Q-ID",
+    "Pick ONE primary P31: metric (Q1907075) vs rating system (Q174728) vs scoring system (Q4373292). Default: metric.",
+    "Confirm Wikidata accepts 'AVR Score' as an English label; if a different existing Wikidata entity already holds that label, may need to disambiguate ('AVR Score (visibility metric)')"
+  ]
+}

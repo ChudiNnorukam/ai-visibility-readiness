@@ -1,0 +1,55 @@
+============================================================
+WIKIDATA Q-ITEM DRAFT 3 OF 3
+Label: calibration receipt
+Submission URL: https://www.wikidata.org/wiki/Special:NewItem
+DO NOT auto-submit. Operator paste-only.
+DEPENDS ON: Drafts 01 + 02 accepted AND stable for 30+ days.
+STRONGLY RECOMMENDED TO DEFER until third-party adoption visible.
+============================================================
+
+LABELS
+  en: calibration receipt
+
+DESCRIPTIONS
+  en: Timestamped forensic record of one AI-engine query response containing model version, raw verbatim output, citation extraction, and replay-safe hash; the unit of evidence in the AI Visibility Readiness Framework
+
+ALIASES (en)
+  AVR calibration receipt
+  AI visibility receipt
+  signed query receipt
+
+STATEMENTS
+----------------------------------------
+P31  instance of  -->  Q1437361 (concept)
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+  ALTERNATIVES (pick ONE):
+    Q186506  (record, information collection)
+    Q189290  (data structure)
+
+P361 part of  -->  <Q-ID of AI Visibility Readiness Framework, from draft 01>
+  reference:
+    P854 reference URL  https://chudi.dev/framework
+    P813 retrieved      2026-05-21
+
+P856 official website  -->  https://citability.dev/docs
+  reference:
+    P854 reference URL  https://citability.dev/docs
+    P813 retrieved      2026-05-21
+  NOTE: verify the URL exists and has a calibration-receipt definition before submission
+
+
+PRE-SUBMIT CHECKLIST
+----------------------------------------
+[ ] STRONGLY RECOMMENDED: defer indefinitely until cite-back-tracking-spec metric shows
+    'calibration receipt' appearing in third-party content
+[ ] If proceeding anyway: verify https://citability.dev/docs has the term defined
+[ ] Pick ONE primary P31 from {Q1437361, Q186506, Q189290}; default Q1437361
+[ ] Fill P361 part-of with Framework Q-ID
+
+NOTABILITY RISK: HIGH
+  Concept is novel, only one source family (chudi.dev + citability.dev), no
+  third-party adoption to anchor Criterion 2 (clearly identifiable conceptual
+  entity backed by serious public references).
+  Mitigation: WAIT for third-party term usage before submitting.

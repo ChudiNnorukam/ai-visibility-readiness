@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "drafted_at": "2026-05-21",
+    "drafted_by": "claude-code-session-76e4b4d8",
+    "submission_method": "https://www.wikidata.org/wiki/Special:NewItem (operator paste)",
+    "do_not_auto_submit": true,
+    "wait_gate": "submit ONLY after BOTH Framework (draft 01) and AVR Score (draft 02) are accepted AND stable for 30+ days",
+    "notability_criterion": "Criterion 3 (structural need) IF anchored to accepted Framework + AVR Score; otherwise no criterion satisfied",
+    "risk_level": "HIGH (concept is novel, only one source, no third-party adoption)",
+    "submit_order": 3,
+    "anchors_to": "AI Visibility Readiness Framework (draft 01) + AVR Score (draft 02)",
+    "OPERATOR_NOTE": "This is the riskiest of the three drafts. Pre-staged per operator request but submission is strongly discouraged until terminology adoption can be demonstrated (cite-back-tracking-spec metric shows 'calibration receipt' appears in third-party content)."
+  },
+  "labels": {
+    "en": "calibration receipt"
+  },
+  "descriptions": {
+    "en": "Timestamped forensic record of one AI-engine query response containing model version, raw verbatim output, citation extraction, and replay-safe hash; the unit of evidence in the AI Visibility Readiness Framework"
+  },
+  "aliases": {
+    "en": [
+      "AVR calibration receipt",
+      "AI visibility receipt",
+      "signed query receipt"
+    ]
+  },
+  "statements": [
+    {
+      "property": "P31",
+      "label": "instance of",
+      "value_qid_options": [
+        {"qid": "Q1437361", "label": "concept", "preferred": true, "note": "concept is the safest catch-all if no better fit exists"},
+        {"qid": "Q186506", "label": "record (information collection)", "alternative": true},
+        {"qid": "Q189290", "label": "data structure", "alternative": true, "note": "if framing it as a technical artifact rather than a conceptual abstraction"}
+      ],
+      "operator_decision": "pick ONE (default Q1437361 concept; Q189290 if the operator wants technical-artifact framing)"
+    },
+    {
+      "property": "P361",
+      "label": "part of",
+      "value_qid_pending": "<Q-ID of AI Visibility Readiness Framework, once draft 01 is accepted>",
+      "note": "Structural-need anchor #1 (Criterion 3)."
+    },
+    {
+      "property": "P527",
+      "label": "has part",
+      "value_skip": true,
+      "note": "Conceptually, a calibration receipt has parts (timestamp, model version, raw output, citation extraction, hash) but each part is not Wikidata-worthy on its own. SKIP."
+    },
+    {
+      "property": "P856",
+      "label": "official website",
+      "value_url": "https://citability.dev/docs",
+      "note": "citability.dev operationalizes the AVR Framework and is the canonical implementation reference for calibration receipts. If citability.dev/docs does not yet exist as a page, fall back to https://citability.dev or use https://chudi.dev/framework."
+    }
+  ],
+  "references_per_statement": {
+    "all": [
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://chudi.dev/framework",
+        "qualifier_P813_retrieved": "2026-05-21",
+        "note": "AVR Framework spec defines calibration receipt as the per-query unit of evidence"
+      },
+      {
+        "property": "P854",
+        "label": "reference URL",
+        "value_url": "https://citability.dev/docs",
+        "qualifier_P813_retrieved": "2026-05-21",
+        "note": "citability.dev methodology documentation; VERIFY this URL exists and contains a calibration receipt section before submission"
+      }
+    ]
+  },
+  "operator_pre_submit_checklist": [
+    "STRONGLY RECOMMENDED: defer indefinitely until cite-back-tracking-spec metric shows 'calibration receipt' appearing in third-party content (competitor listicles, academic papers, vendor blogs). This is the deletion-protection signal.",
+    "If proceeding anyway: verify https://citability.dev/docs exists and contains calibration receipt definition; create the page first if not.",
+    "Pick ONE primary P31 from {Q1437361, Q186506, Q189290}; default Q1437361 (concept).",
+    "Fill P361 part-of value with Framework Q-ID (depends on draft 01 acceptance).",
+    "Consider waiting until calibration receipt is referenced from at least ONE academic paper or recognized industry blog before submitting; without external adoption, this Q-item is the most likely of the three to be deletion-nominated."
+  ]
+}
