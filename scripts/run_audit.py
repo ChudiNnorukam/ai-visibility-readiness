@@ -18,6 +18,11 @@ from report_generator import generate_report
 from section_webmcp_agent_readiness import run_section_webmcp_agent_readiness
 from section_fact_block_density import run_section_fact_block_density
 from section_citation_decay import run_section_citation_decay
+from section_bot_response_code import run_section_bot_response_code
+from section_markdown_negotiation import run_section_markdown_negotiation
+from section_robots_ai_rules import run_section_robots_ai_rules
+from section_agent_readiness_tier import run_section_agent_readiness_tier
+from section_crawl_signal import run_section_crawl_signal
 
 
 def run_audit(
@@ -200,6 +205,63 @@ def run_audit(
             print(f"  Saved: {cd_path}")
         except Exception as e:
             print(f"  WARN: citation-decay section failed: {type(e).__name__}: {e}")
+
+        # AVR v1.1.0 sections 9-13: Cloudflare Radar-derived checks (May 2026).
+        # All free ($0); HTTP GET probes only.
+        try:
+            print(f"\n[v1.1.0/9] Running Bot Response Code audit...")
+            bot_resp_results = run_section_bot_response_code(url)
+            br_path = os.path.join(output_dir, f"{report_name}_botresponse.json")
+            with open(br_path, "w") as f:
+                json.dump(bot_resp_results, f, indent=2)
+            print(f"  Section verdict: {bot_resp_results.get('section_verdict', 'N/A')} ({bot_resp_results.get('pass_count', 0)}/{bot_resp_results.get('total_checks', 0)} bots get 200)")
+            print(f"  Saved: {br_path}")
+        except Exception as e:
+            print(f"  WARN: bot-response-code section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/10] Running Markdown Negotiation audit...")
+            md_results = run_section_markdown_negotiation(url)
+            md_path = os.path.join(output_dir, f"{report_name}_markdown.json")
+            with open(md_path, "w") as f:
+                json.dump(md_results, f, indent=2)
+            print(f"  Section verdict: {md_results.get('section_verdict', 'N/A')}")
+            print(f"  Saved: {md_path}")
+        except Exception as e:
+            print(f"  WARN: markdown-negotiation section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/11] Running AI Rules in robots.txt audit...")
+            robots_results = run_section_robots_ai_rules(url)
+            rob_path = os.path.join(output_dir, f"{report_name}_robotsai.json")
+            with open(rob_path, "w") as f:
+                json.dump(robots_results, f, indent=2)
+            print(f"  Section verdict: {robots_results.get('section_verdict', 'N/A')} ({robots_results.get('pass_count', 0)}/{robots_results.get('total_checks', 0)} checks pass)")
+            print(f"  Saved: {rob_path}")
+        except Exception as e:
+            print(f"  WARN: robots-ai-rules section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/12] Running Agent Readiness Tier audit...")
+            tier_results = run_section_agent_readiness_tier(url)
+            tier_path = os.path.join(output_dir, f"{report_name}_agenttier.json")
+            with open(tier_path, "w") as f:
+                json.dump(tier_results, f, indent=2)
+            print(f"  Section verdict: {tier_results.get('section_verdict', 'N/A')} (score: {tier_results.get('agent_tier_score', 0)}/4)")
+            print(f"  Saved: {tier_path}")
+        except Exception as e:
+            print(f"  WARN: agent-readiness-tier section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/13] Running Crawl Signal check...")
+            crawl_results = run_section_crawl_signal(url)
+            crawl_path = os.path.join(output_dir, f"{report_name}_crawlsignal.json")
+            with open(crawl_path, "w") as f:
+                json.dump(crawl_results, f, indent=2)
+            print(f"  Section verdict: {crawl_results.get('section_verdict', 'N/A')} ({crawl_results.get('pass_count', 0)}/{crawl_results.get('total_checks', 0)} checks pass)")
+            print(f"  Saved: {crawl_path}")
+        except Exception as e:
+            print(f"  WARN: crawl-signal section failed: {type(e).__name__}: {e}")
 
     report_path = os.path.join(output_dir, f"{report_name}.md")
     with open(report_path, "w") as f:
