@@ -15,6 +15,9 @@ from seo_foundation import run_seo_foundation
 from ai_readiness import run_ai_readiness
 from citation_monitor import generate_query_checklist
 from report_generator import generate_report
+from section_webmcp_agent_readiness import run_section_webmcp_agent_readiness
+from section_fact_block_density import run_section_fact_block_density
+from section_citation_decay import run_section_citation_decay
 
 
 def run_audit(
@@ -33,6 +36,7 @@ def run_audit(
     force_calibrate: bool = False,
     vertical: str | None = None,
     vertical_ctx: dict | None = None,
+    full_v11: bool = False,
 ) -> str:
     """Run the full AVR audit on a URL.
 
@@ -158,6 +162,45 @@ def run_audit(
         calibration_receipt=calibration_receipt,
     )
 
+    # AVR v1.1.0 sections 6/7/8 — Agent Readiness + Fact-Block Density + Citation Decay Rate.
+    # Free ($0); run on every --full-v11 audit regardless of --live-test status.
+    webmcp_results = None
+    factblock_results = None
+    decay_results = None
+    if full_v11:
+        try:
+            print(f"\n[v1.1.0/6] Running Agent Readiness audit (WebMCP + AgentCard)...")
+            webmcp_results = run_section_webmcp_agent_readiness(url)
+            webmcp_path = os.path.join(output_dir, f"{report_name}_webmcp.json")
+            with open(webmcp_path, "w") as f:
+                json.dump(webmcp_results, f, indent=2)
+            print(f"  Section verdict: {webmcp_results.get('section_verdict', 'N/A')}")
+            print(f"  Saved: {webmcp_path}")
+        except Exception as e:
+            print(f"  WARN: agent-readiness section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/7] Running Fact-Block Density audit...")
+            factblock_results = run_section_fact_block_density(url)
+            fb_path = os.path.join(output_dir, f"{report_name}_factblock.json")
+            with open(fb_path, "w") as f:
+                json.dump(factblock_results, f, indent=2)
+            print(f"  Section verdict: {factblock_results.get('section_verdict', 'N/A')} (score: {factblock_results.get('extractability_score', 0)}/100)")
+            print(f"  Saved: {fb_path}")
+        except Exception as e:
+            print(f"  WARN: fact-block-density section failed: {type(e).__name__}: {e}")
+
+        try:
+            print(f"\n[v1.1.0/8] Running Citation Decay Rate audit (Bing CSV)...")
+            decay_results = run_section_citation_decay()
+            cd_path = os.path.join(output_dir, f"{report_name}_decay.json")
+            with open(cd_path, "w") as f:
+                json.dump(decay_results, f, indent=2)
+            print(f"  Section verdict: {decay_results.get('section_verdict', 'N/A')} (confidence: {decay_results.get('confidence', 'N/A')})")
+            print(f"  Saved: {cd_path}")
+        except Exception as e:
+            print(f"  WARN: citation-decay section failed: {type(e).__name__}: {e}")
+
     report_path = os.path.join(output_dir, f"{report_name}.md")
     with open(report_path, "w") as f:
         f.write(report)
@@ -268,6 +311,11 @@ Cost: Infrastructure audit is free. Live testing costs ~$2 per audit.
     live.add_argument("--skip-calibration", action="store_true",
                       help="Skip calibration entirely (operator accepts the risk of un-validated numbers)")
 
+    # AVR v1.1.0 sections (all free, $0 API spend)
+    v11 = parser.add_argument_group("AVR v1.1.0 sections (free)")
+    v11.add_argument("--full-v11", action="store_true",
+                     help="Run AVR v1.1.0 sections 6/7/8: Agent Readiness (WebMCP+AgentCard) + Fact-Block Density + Citation Decay Rate. $0 cost.")
+
     # Vertical profile options (per verticals.py)
     vert = parser.add_argument_group("vertical profile (per verticals.py)")
     vert.add_argument("--vertical", choices=["local-healthcare", "saas-tool", "personal-brand", "tech-publisher"],
@@ -324,6 +372,7 @@ Cost: Infrastructure audit is free. Live testing costs ~$2 per audit.
         force_calibrate=args.force_calibrate,
         vertical=args.vertical,
         vertical_ctx=vertical_ctx or None,
+        full_v11=args.full_v11,
     )
 
 
