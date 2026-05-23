@@ -92,13 +92,22 @@ First-to-market metric (verified 2026-05-22 across 8 competitor public surfaces)
 
 ## Case-study evidence
 
+Updated 2026-05-23 after the 5-page Fact-Block remediation arc + card-title demotion arc completed. All 5 audited chudi.dev URLs reach EXTRACTABLE; citability.dev maintains AGENT-READY 3/3 with meaningful W3 endpoint resolution. The CI workflow at `.github/workflows/avr-fact-block-audit.yml` (in chudi-blog) now hard-fails any post-deploy regression below EXTRACTABLE on any of the 5 URLs.
+
 | Site | §2.7 Agent Readiness | §7 Fact-Block | §8 Citation Decay |
 |---|---|---|---|
-| chudi.dev | **AGENT-READY 3/3** | 40/100 NOT-EXTRACTABLE | GROWING (retention 1.65) |
-| chudi.dev/framework | **AGENT-READY 3/3** | 51/100 PARTIALLY-EXTRACTABLE | (uses Bing data) |
+| chudi.dev | **AGENT-READY 3/3** | **100/100 EXTRACTABLE** (was 40) | GROWING (retention 1.65) |
+| chudi.dev/framework | **AGENT-READY 3/3** | **100/100 EXTRACTABLE** (was 51) | (uses Bing data) |
+| chudi.dev/about | (not audited) | **88/100 EXTRACTABLE** (was 72) | (uses Bing data) |
+| chudi.dev/blog | (not audited) | **100/100 EXTRACTABLE** (was 20) | (uses Bing data) |
+| chudi.dev/topics | (not audited) | **80/100 EXTRACTABLE** (was 0) | (uses Bing data) |
 | citability.dev | **AGENT-READY 3/3 (meaningful endpoints)** | 50/100 PARTIALLY-EXTRACTABLE | GROWING |
 
-All verdicts verified on production 2026-05-22 to 2026-05-23. Full reports in `sample-audits/audit_chudi.dev_20260523_070001.md` and `sample-audits/audit_citability.dev_20260523_070001.md`.
+All verdicts verified on production 2026-05-22 to 2026-05-23. Full reports in `sample-audits/audit_chudi.dev_20260523_070001.md` and `sample-audits/audit_citability.dev_20260523_070001.md`. The card-title demotion commit (chudi-blog 46668ff9) was the unlock for chudi.dev root — it moved 6 statement `<h2>`/`<h3>` card titles to `<p role="heading" aria-level=N>` so the audit's heading extraction no longer counts dynamic card text against the F4 question-rate denominator. Visual styling and screen-reader ARIA semantics preserved.
+
+### CI hard-fail status
+
+chudi-blog ships a GitHub Action at `.github/workflows/avr-fact-block-audit.yml` (added 2026-05-23) that triggers on `deployment_status: success` with `environment: Production`, clones avr-pipeline, audits the 5 chudi.dev URLs in the table above, posts an `avr-fact-block-density` commit status check, and EXITS NON-ZERO if any URL drops below EXTRACTABLE. Flipped from fail-soft to hard-fail on chudi-blog commit `c548df2d` after all 5 URLs reached EXTRACTABLE. Any deploy that regresses below the baseline will surface in the GitHub commit timeline + the workflow run summary.
 
 ## Tests
 

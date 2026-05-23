@@ -117,3 +117,49 @@ Three rules, two pages, ~3 hours of editing. The remediation cost is small. The 
 - `dc-20260523T070000-*` — full 8-section audit produced 2026-05-23 07:00 UTC
 - `dc-20260523T071100-*` — /framework-specific audit produced 2026-05-23 07:11 UTC (this baseline)
 - `dc-20260523T071058-avr11-publication-arc` — this remediation plan authored
+
+## FAQ implementation gotchas (empirical lessons 2026-05-23)
+
+Two failure modes the audit caught during the 5-page remediation arc. Both cost a follow-up commit each, both are now documented so future authors skip the detour.
+
+### Gotcha #1: Use `<h3>` for Q/A pairs, not `<dt>/<dd>`
+
+**What the audit does:** `section_fact_block_density.py`'s `extract_sections` walks `h1`/`h2`/`h3` tags only. The F4 question-format-rate check counts question-shaped `h2`+`h3` headings as a fraction of all `h2`+`h3` headings. The F5 FAQ check looks for an `h1`/`h2`/`h3` heading whose text matches `^(faq|frequently asked|q\s*&\s*a|questions and answers)` near the tail of the page.
+
+**The trap:** `<dt>` (description-term) is semantically a Q/A label, and `<dd>` (description-detail) is its answer. They render beautifully in a description list. But the audit doesn't see them as headings, so:
+- 5 dt-shaped Q/A pairs contribute ZERO question signals to F4
+- F5 cannot detect a "Frequently asked" pattern hiding inside a `<dt>`
+
+**The fix:** use `<h3>` for the Q and `<p>` for the A. If the design system wants a description-list visual, recreate it with CSS on `h3` + `p` siblings (e.g., flex column, border-left).
+
+**Empirical contact:** chudi.dev root v1 used `<dt>/<dd>` (commit d3228420). Audit returned F4 16% + F5 FAIL. v2 (commit 1765f0c8) swapped to `<h3>/<p>` — F4 jumped to 26.7% + F5 PASS in the same audit run. The two-commit detour took ~30 minutes and one Vercel cache-bust commit to resolve.
+
+### Gotcha #2: Icons go AFTER the heading text, with `aria-hidden="true"`
+
+**What the audit does:** BeautifulSoup's `get_text(strip=True)` extracts heading content in **document order**, concatenating child element text with whitespace stripping. The F5 regex `^(faq|frequently asked|...)` requires the FIRST word of the extracted text to be one of those terms.
+
+**The trap:** Material Symbols / Material Icons / FontAwesome / similar icon libraries are commonly placed BEFORE the heading text:
+```html
+<h2>
+  <span class="material-symbols-outlined">quiz</span>
+  Frequently asked questions
+</h2>
+```
+This renders perfectly visually. But BeautifulSoup extracts: `"quiz Frequently asked questions"`. The F5 regex sees "quiz" as the first word and returns no match. F5 FAILS.
+
+**The fix:** put the icon AFTER the heading text, mark `aria-hidden="true"` so screen readers don't double-read it:
+```html
+<h2>
+  Frequently asked questions
+  <span aria-hidden="true" class="material-symbols-outlined">quiz</span>
+</h2>
+```
+Now BeautifulSoup extracts `"Frequently asked questions quiz"` — first word "Frequently" matches. F5 PASSES.
+
+**Empirical contact:** chudi.dev/about v1 of the FAQ section put the `<span>quiz</span>` BEFORE "Frequently asked questions" (commit d378074f). Audit returned 78/100 + F5 FAIL despite F1-F4 looking good. The icon-after-text fix (commit d4dfbba8) lifted /about to 88/100 EXTRACTABLE in one line change.
+
+### Bonus: the broader principle
+
+The audit reads HTML the way an AI extractor would. Anything that visually decorates a heading but doesn't carry semantic answer content (icons, badges, kicker labels) should be marked `aria-hidden="true"` AND placed after the canonical heading text, OR moved outside the heading element entirely. The visual design stays identical; the extraction surface stays clean.
+
+This generalizes beyond FAQ sections: any time the F5 check or the F4 question-format check fails on what looks like a well-shaped heading, suspect a child-element ordering issue first.
