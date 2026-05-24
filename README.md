@@ -1,4 +1,4 @@
-# avr-pipeline
+# ai-visibility-readiness
 
 The **AI Visibility Readiness (AVR) Framework** v1.1.0 — a transparent, tiered audit methodology for measuring whether a website is ready for traditional search AND for AI-powered search (Google AI Mode, AI Overviews, Perplexity, ChatGPT, Claude, Gemini, Microsoft Copilot).
 
@@ -36,8 +36,8 @@ AVR v1.0 treated Google AI surfaces as secondary, recommended `llms.txt` as a §
 ## Quick start
 
 ```bash
-git clone https://github.com/ChudiNnorukam/avr-pipeline.git
-cd avr-pipeline
+git clone https://github.com/ChudiNnorukam/ai-visibility-readiness.git
+cd ai-visibility-readiness
 pip install -r scripts/requirements.txt
 
 # Free 5-section audit (1+2+6+7+8). No API spend.
@@ -107,7 +107,7 @@ All verdicts verified on production 2026-05-22 to 2026-05-23. Full reports in `s
 
 ### CI hard-fail status
 
-chudi-blog ships a GitHub Action at `.github/workflows/avr-fact-block-audit.yml` (added 2026-05-23) that triggers on `deployment_status: success` with `environment: Production`, clones avr-pipeline, audits the 5 chudi.dev URLs in the table above, posts an `avr-fact-block-density` commit status check, and EXITS NON-ZERO if any URL drops below EXTRACTABLE. Flipped from fail-soft to hard-fail on chudi-blog commit `c548df2d` after all 5 URLs reached EXTRACTABLE. Any deploy that regresses below the baseline will surface in the GitHub commit timeline + the workflow run summary.
+chudi-blog ships a GitHub Action at `.github/workflows/avr-fact-block-audit.yml` (added 2026-05-23) that triggers on `deployment_status: success` with `environment: Production`, clones ai-visibility-readiness, audits the 5 chudi.dev URLs in the table above, posts an `avr-fact-block-density` commit status check, and EXITS NON-ZERO if any URL drops below EXTRACTABLE. Flipped from fail-soft to hard-fail on chudi-blog commit `c548df2d` after all 5 URLs reached EXTRACTABLE. Any deploy that regresses below the baseline will surface in the GitHub commit timeline + the workflow run summary.
 
 ## Tests
 
