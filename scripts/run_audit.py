@@ -23,6 +23,7 @@ from section_markdown_negotiation import run_section_markdown_negotiation
 from section_robots_ai_rules import run_section_robots_ai_rules
 from section_agent_readiness_tier import run_section_agent_readiness_tier
 from section_crawl_signal import run_section_crawl_signal
+from section_content_intent_signaling import run_section_content_intent_signaling
 
 
 def run_audit(
@@ -262,6 +263,18 @@ def run_audit(
             print(f"  Saved: {crawl_path}")
         except Exception as e:
             print(f"  WARN: crawl-signal section failed: {type(e).__name__}: {e}")
+
+        # AVR v1.2.0 section 14: Content Intent Signaling (ai-train/search/ai-input).
+        try:
+            print(f"\n[v1.2.0/14] Running Content Intent Signaling audit...")
+            intent_results = run_section_content_intent_signaling(url)
+            intent_path = os.path.join(output_dir, f"{report_name}_contentintent.json")
+            with open(intent_path, "w") as f:
+                json.dump(intent_results, f, indent=2)
+            print(f"  Section verdict: {intent_results.get('section_verdict', 'N/A')} ({intent_results.get('pass_count', 0)}/{intent_results.get('total_checks', 0)} checks pass)")
+            print(f"  Saved: {intent_path}")
+        except Exception as e:
+            print(f"  WARN: content-intent-signaling section failed: {type(e).__name__}: {e}")
 
     report_path = os.path.join(output_dir, f"{report_name}.md")
     with open(report_path, "w") as f:
