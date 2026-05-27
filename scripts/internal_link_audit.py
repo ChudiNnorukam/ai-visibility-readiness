@@ -24,6 +24,12 @@ from bs4 import BeautifulSoup
 UA = "citability.dev/internal-link-audit/1.0"
 TIMEOUT = 10
 
+GENERIC_ANCHORS = {
+    "click here", "here", "read more", "learn more", "this post", "this article",
+    "this page", "link", "source", "more", "continue reading", "see more",
+    "check it out", "go", "visit", "read", "details", "info",
+}
+
 
 def fetch(url: str) -> tuple[int, str]:
     try:
@@ -145,6 +151,19 @@ def run_internal_link_audit(url: str, max_depth: int = 3, max_pages: int = 100) 
     low_div = [{"page": t, "anchors": list(a), "inbound": inbound_count[t]}
                for t, a in anchor_div.items() if len(a) <= 1 and inbound_count.get(t, 0) >= 3]
 
+    generic_anchor_pages = []
+    for target, anchors in anchor_div.items():
+        generic_count = sum(1 for a in anchors if a.lower().strip() in GENERIC_ANCHORS)
+        total = len(anchors)
+        if total > 0 and generic_count / total > 0.5:
+            generic_anchor_pages.append({
+                "page": target,
+                "generic_anchors": [a for a in anchors if a.lower().strip() in GENERIC_ANCHORS],
+                "good_anchors": [a for a in anchors if a.lower().strip() not in GENERIC_ANCHORS],
+                "inbound": inbound_count.get(target, 0),
+                "generic_ratio": round(generic_count / total, 2),
+            })
+
     findings = {"critical": [], "high": [], "medium": [], "low": [], "info": []}
     for o in orphans[:20]:
         findings["critical"].append({"type": "ORPHAN", "page": o, "detail": "0 inbound internal links"})
@@ -161,13 +180,19 @@ def run_internal_link_audit(url: str, max_depth: int = 3, max_pages: int = 100) 
     for nf in nofollow_internal[:10]:
         findings["low"].append({"type": "NOFOLLOW-INTERNAL", "source": nf["source"],
                                 "target": nf["target"], "detail": "rel=nofollow on internal link"})
+    for item in generic_anchor_pages[:10]:
+        findings["medium"].append({
+            "type": "GENERIC-ANCHOR",
+            "page": item["page"],
+            "detail": f"{item['generic_ratio']*100:.0f}% generic anchors ({', '.join(item['generic_anchors'][:3])})"
+        })
 
-    checks_pass = sum([not orphans, within_3 >= 95, authority_conc <= 50, not dead_links, not nofollow_internal])
+    checks_pass = sum([not orphans, within_3 >= 95, authority_conc <= 50, not dead_links, not nofollow_internal, not generic_anchor_pages])
     verdict = "LINKING-HEALTHY" if checks_pass >= 4 else "LINKING-PARTIAL" if checks_pass >= 2 else "LINKING-POOR"
 
     return {
         "section_id": "L3.1", "section_name": "Internal Linking Audit",
-        "section_verdict": verdict, "pass_count": checks_pass, "total_checks": 5,
+        "section_verdict": verdict, "pass_count": checks_pass, "total_checks": 6,
         "stats": {
             "pages_crawled": len(visited), "pages_in_sitemap": len(sitemap_urls),
             "total_internal_links": total_links, "avg_links_per_page": round(avg_links, 1),
@@ -180,6 +205,7 @@ def run_internal_link_audit(url: str, max_depth: int = 3, max_pages: int = 100) 
         "top_pages_by_inbound": [{"url": u, "inbound": d["inbound_count"], "title": d.get("title", "")}
                                   for u, d in sorted_by_inbound[:10]],
         "low_anchor_diversity": low_div[:10], "nofollow_internal": nofollow_internal[:10],
+        "generic_anchor_pages": generic_anchor_pages[:10],
         "findings": findings, "url_audited": url,
     }
 
