@@ -628,13 +628,23 @@ def run_visibility_test(
     for r in all_results:
         p = r.get("platform", "unknown")
         if p not in platforms_summary:
-            platforms_summary[p] = {"visible": 0, "total": 0}
+            platforms_summary[p] = {"visible": 0, "total": 0, "errored": 0}
         platforms_summary[p]["total"] += 1
+        if "error" in r:
+            platforms_summary[p]["errored"] += 1
         if r.get("visible"):
             platforms_summary[p]["visible"] += 1
 
     for pdata in platforms_summary.values():
+        # rate_pct kept (visible / total) for backward compat with historical
+        # scans + the dashboard. testable_rate_pct (visible / testable) excludes
+        # errored queries from the denominator so an all-errored platform reads
+        # as "0/0 untestable", not a misleading "0% invisible". Added 2026-05-28
+        # after the chudi.dev run where 19/19 Claude queries errored on a depleted
+        # API credit balance and showed as "0%", indistinguishable from regression.
+        pdata["testable"] = pdata["total"] - pdata["errored"]
         pdata["rate_pct"] = round(pdata["visible"] / pdata["total"] * 100, 1) if pdata["total"] > 0 else 0
+        pdata["testable_rate_pct"] = round(pdata["visible"] / pdata["testable"] * 100, 1) if pdata["testable"] > 0 else None
 
     # Verdict — keyed off brand_recognition rate (the cleanest signal). The
     # aggregate visibility_rate averages incompatible signals across a query
@@ -651,6 +661,34 @@ def run_visibility_test(
     else:
         verdict = "INVISIBLE"
 
+    # Per-platform error surfacing (added 2026-05-28). A platform that errors on
+    # every query (depleted credit balance, rate-limit, 503s) otherwise hides as
+    # "0% visible". Surface count + categorized sample so the failure self-identifies.
+    def _categorize_error(msg: str) -> str:
+        m = (msg or "").lower()
+        if "credit balance" in m or "plans & billing" in m or "purchase credits" in m:
+            return "credit_balance_too_low"
+        if any(x in m for x in ("429", "rate limit", "rate_limit", "too many requests", "resource_exhausted", "quota")):
+            return "rate_limited"
+        if "503" in m or "unavailable" in m or "high demand" in m or "overloaded" in m:
+            return "service_unavailable"
+        if "timeout" in m or "timed out" in m:
+            return "timeout"
+        if "authentication" in m or "401" in m or "invalid x-api-key" in m:
+            return "auth_error"
+        return "other"
+
+    errors_by_platform = {}
+    for r in all_results:
+        if "error" in r:
+            p = r.get("platform", "unknown")
+            if p not in errors_by_platform:
+                errors_by_platform[p] = {"count": 0, "category": None, "sample": None}
+            errors_by_platform[p]["count"] += 1
+            if errors_by_platform[p]["category"] is None:
+                errors_by_platform[p]["category"] = _categorize_error(r["error"])
+                errors_by_platform[p]["sample"] = r["error"][:200]
+
     summary = {
         "target_url": target_url,
         "brand_name": brand_name,
@@ -664,6 +702,7 @@ def run_visibility_test(
         "confidence_label": "LOW",  # single round is always LOW
         "by_category": categories,
         "by_platform": platforms_summary,
+        "errors_by_platform": errors_by_platform,
         "verdict": verdict,
     }
 
