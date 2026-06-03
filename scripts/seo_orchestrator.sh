@@ -34,6 +34,12 @@ MKTG="$HOME/Projects/business/marketing-agent"
 AIVR="$HOME/Projects/business/ai-visibility-readiness"
 SCRIPTS="$AIVR/scripts"
 LOG_DIR="$HOME/.claude/cron/seo"
+
+# The gsc-ctr agent needs google-api-python-client, installed in the 3.13
+# framework Python (this matches the original cron's interpreter). seo_weekly +
+# seo_status run on /usr/bin/python3 (stdlib / system deps). Fall back to PATH.
+PY_FRAMEWORK="/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
+[ -x "$PY_FRAMEWORK" ] || PY_FRAMEWORK="$(command -v python3 || echo /usr/bin/python3)"
 mkdir -p "$LOG_DIR"
 RUN_LOG="$LOG_DIR/orchestrator.log"
 STATUS_HISTORY="$LOG_DIR/status-history.jsonl"
@@ -119,7 +125,7 @@ if [ "$DO_CTR" -eq 1 ]; then
   if [ "$APPLY" -eq 1 ] && [ "$DRYRUN" -eq 0 ]; then
     CTR_ARGS+=(--apply)
   fi
-  run_step "gsc-ctr-pr-agent (ctr)" "$SCRIPTS" /usr/bin/python3 gsc-ctr-pr-agent.py "${CTR_ARGS[@]}"
+  run_step "gsc-ctr-pr-agent (ctr)" "$SCRIPTS" "$PY_FRAMEWORK" gsc-ctr-pr-agent.py "${CTR_ARGS[@]}"
 fi
 
 # --- status roll-up: ALWAYS, regardless of step outcomes --------------------
