@@ -11,12 +11,19 @@
 # Both are "single entrypoints", at their own layer.
 #
 # Usage:
-#   seo_orchestrator.sh --cadence daily        # daily blog-seo workflow (chudi-blog)
+#   seo_orchestrator.sh --cadence auto         # LAUNCHD ENTRYPOINT: full blog suite +
+#                                              #   weekly(Sun) + ctr(Mon) + status, day-gated
+#   seo_orchestrator.sh --cadence blog         # all 9 chudi-blog workflows (voice Sun-gated)
 #   seo_orchestrator.sh --cadence weekly       # weekly marketing-agent SEO
-#   seo_orchestrator.sh --cadence ctr          # weekly GSC/BWT CTR agent (dry-run)
+#   seo_orchestrator.sh --cadence ctr          # GSC/BWT CTR agent (dry-run)
 #   seo_orchestrator.sh --cadence ctr --apply  # ... and open the review PR
 #   seo_orchestrator.sh --cadence status       # just the roll-up (read-only)
-#   seo_orchestrator.sh --cadence all          # daily + weekly + ctr + status
+#   seo_orchestrator.sh --cadence all          # blog + weekly + ctr + status (ignores day gating)
+#   seo_orchestrator.sh --cadence auto --dry-run   # kickstart-test: full path, NO live writes
+#
+# The 9 blog workflows (exec seo aeo geo aao system brand ranking-agent voice) were 9
+# staggered crontab jobs that silently died when the Mac slept (cron skips missed jobs).
+# Consolidated here + scheduled via one launchd agent (StartCalendarInterval = catch-up-on-wake).
 #
 # Flags:
 #   --engine gsc|bing|both   CTR engine(s)   (default: gsc)
@@ -89,26 +96,55 @@ run_step() {
   return 0
 }
 
+# Global dry-run can also be forced via env (used by the launchd kickstart-test).
+[ "${SEO_ORCH_DRYRUN:-0}" = "1" ] && DRYRUN=1
+
 log "=========================================================="
 log "ORCHESTRATOR RUN  cadence=$CADENCE engine=$ENGINE apply=$APPLY dry_run=$DRYRUN"
 
+DOW=$(date +%u)   # 1=Mon ... 7=Sun
+
 # --- cadence -> step flags (bash 3.2 safe; no case fall-through) -------------
-DO_DAILY=0; DO_WEEKLY=0; DO_CTR=0
+# The 9 chudi-blog workflows, in their original staggered order (exec first).
+# voice was a Sunday-only cron, so it is day-gated below.
+BLOG_WORKFLOWS="exec seo aeo geo aao system brand ranking-agent"
+
+DO_BLOG=0; DO_WEEKLY=0; DO_CTR=0
 case "$CADENCE" in
-  daily)  DO_DAILY=1 ;;
-  weekly) DO_WEEKLY=1 ;;
-  ctr)    DO_CTR=1 ;;
-  status) : ;;  # roll-up only
-  all)    DO_DAILY=1; DO_WEEKLY=1; DO_CTR=1 ;;
-  *) log "unknown cadence: $CADENCE (expected daily|weekly|ctr|status|all)"; exit 2 ;;
+  blog|daily) DO_BLOG=1 ;;                 # daily kept as an alias to blog
+  weekly)     DO_WEEKLY=1 ;;
+  ctr)        DO_CTR=1 ;;
+  status)     : ;;                         # roll-up only
+  all)        DO_BLOG=1; DO_WEEKLY=1; DO_CTR=1 ;;
+  auto)       # the launchd entrypoint: blog daily, weekly Sun, ctr Mon
+              DO_BLOG=1
+              [ "$DOW" -eq 7 ] && DO_WEEKLY=1   # Sunday
+              [ "$DOW" -eq 1 ] && DO_CTR=1      # Monday
+              ;;
+  *) log "unknown cadence: $CADENCE (expected blog|weekly|ctr|status|auto|all)"; exit 2 ;;
 esac
 
-# --- dispatch ---------------------------------------------------------------
-if [ "$DO_DAILY" -eq 1 ]; then
+# run one chudi-blog workflow (DRY_RUN-aware). Each blog-*.sh sources lib.sh,
+# which sets its own PATH (npx/tsx/node) and logs to content/blog-agent.log.
+run_blog() {
+  local name="$1"
   if [ "$DRYRUN" -eq 1 ]; then
-    run_step "blog-seo (daily)" "$BLOG" env DRY_RUN=true /bin/bash scripts/workflows/blog-seo.sh
+    run_step "blog-$name" "$BLOG" env DRY_RUN=true /bin/bash "scripts/workflows/blog-$name.sh"
   else
-    run_step "blog-seo (daily)" "$BLOG" /bin/bash scripts/workflows/blog-seo.sh
+    run_step "blog-$name" "$BLOG" /bin/bash "scripts/workflows/blog-$name.sh"
+  fi
+}
+
+# --- dispatch ---------------------------------------------------------------
+if [ "$DO_BLOG" -eq 1 ]; then
+  for wf in $BLOG_WORKFLOWS; do
+    run_blog "$wf"
+  done
+  # voice: Sunday only (matches the original Sun 06:00 cron), or on a full 'all' run.
+  if [ "$DOW" -eq 7 ] || [ "$CADENCE" = "all" ]; then
+    run_blog voice
+  else
+    log "STEP SKIP: blog-voice (Sunday-only; today is dow=$DOW)"
   fi
 fi
 
