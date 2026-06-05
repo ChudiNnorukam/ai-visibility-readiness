@@ -17,11 +17,10 @@ Setup:
   3. python citation_auto.py test https://chudi.dev --topics "Claude Code hooks" "AI visibility"
 
 Cost per audit (~80 queries with Gemini added):
-  OpenAI (gpt-4.1 + web search):     ~$0.60
-  Perplexity (sonar):                ~$0.30
-  Anthropic (haiku + web search):    ~$0.30
-  Gemini (2.5-flash + grounding):    ~$0.20
-  Total:                             ~$1.40
+  OpenAI (gpt-4.1 + web search)
+  Perplexity (sonar)
+  Anthropic (haiku + web search)
+  Gemini (2.5-flash + grounding)
 """
 
 import argparse
@@ -733,12 +732,12 @@ Examples:
   python citation_auto.py test example.com -o reports/
 
 Platforms:
-  openai      ChatGPT with web search (gpt-4.1, ~$0.01/query)
-  perplexity  Perplexity sonar search (~$0.005/query)
-  anthropic   Claude with web search (haiku, ~$0.005/query)
-  gemini      Google Gemini with Search grounding (2.5-flash, ~$0.003/query)
+  openai      ChatGPT with web search (gpt-4.1)
+  perplexity  Perplexity sonar search
+  anthropic   Claude with web search (haiku)
+  gemini      Google Gemini with Search grounding (2.5-flash)
 
-Cost: ~$1.40 per full audit (20 queries x 4 platforms)
+Coverage: 20 queries x 4 platforms
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

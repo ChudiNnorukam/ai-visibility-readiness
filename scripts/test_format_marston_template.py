@@ -259,7 +259,7 @@ def main() -> int:
     else:
         print("PASS: all 7 sections of the auto-draft pipeline verified.")
         print()
-        print("To exercise the live API (one Haiku call, ~$0.005):")
+        print("To exercise the live API (one Haiku call):")
         print("  ANTHROPIC_API_KEY=sk-... python3 format_marston_template.py \\")
         print(f"    --audit-dir {AUDIT_DIR} \\")
         print(f"    --audit-base {CURR_BASE} \\")

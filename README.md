@@ -8,16 +8,16 @@ Authored by [Chudi Nnorukam](https://chudi.dev). Implemented by [citability.dev]
 
 AVR runs **eight sections** of audit signals. Every check is labelled `[VERIFIABLE]` (a deterministic HTTP/HTML probe with primary-source evidence) or `[BEST-EFFORT]` (a polled AI engine response subject to sampling variance). The framework never fakes a composite "AI Visibility Score" by averaging signals that measure different things.
 
-| § | Section | Cost | Label | Verdict bands |
-|---|---|---|---|---|
-| 1 | SEO Foundation | $0 | VERIFIABLE | PASS / PARTIAL / FAIL |
-| 2 | AI Infrastructure | $0 | VERIFIABLE | PASS / PARTIAL / FAIL |
-| 3 | Citation Monitoring (live) | ~$0.60 | BEST-EFFORT | CITED / PARTIALLY_CITED / NOT_CITED |
-| 4 | AI Visibility (live) | ~$0.60 | BEST-EFFORT | HIGHLY / PARTIALLY / BARELY / INVISIBLE |
-| 5 | Calibration Receipt | ~$0.10 | VERIFIABLE | PASS / FAIL |
-| 6 | **Agent Readiness (§2.7, v1.1.0)** | $0 | VERIFIABLE | AGENT-READY / AGENT-PARTIAL / AGENT-NOT-READY |
-| 7 | **Fact-Block Density (v1.1.0)** | $0 | VERIFIABLE | EXTRACTABLE / PARTIALLY-EXTRACTABLE / NOT-EXTRACTABLE |
-| 8 | **Citation Decay Rate (v1.1.0, the moat metric)** | $0 | VERIFIABLE | GROWING / STABLE / DECLINING / DATA-INSUFFICIENT |
+| § | Section | Label | Verdict bands |
+|---|---|---|---|
+| 1 | SEO Foundation | VERIFIABLE | PASS / PARTIAL / FAIL |
+| 2 | AI Infrastructure | VERIFIABLE | PASS / PARTIAL / FAIL |
+| 3 | Citation Monitoring (live) | BEST-EFFORT | CITED / PARTIALLY_CITED / NOT_CITED |
+| 4 | AI Visibility (live) | BEST-EFFORT | HIGHLY / PARTIALLY / BARELY / INVISIBLE |
+| 5 | Calibration Receipt | VERIFIABLE | PASS / FAIL |
+| 6 | **Agent Readiness (§2.7, v1.1.0)** | VERIFIABLE | AGENT-READY / AGENT-PARTIAL / AGENT-NOT-READY |
+| 7 | **Fact-Block Density (v1.1.0)** | VERIFIABLE | EXTRACTABLE / PARTIALLY-EXTRACTABLE / NOT-EXTRACTABLE |
+| 8 | **Citation Decay Rate (v1.1.0, the moat metric)** | VERIFIABLE | GROWING / STABLE / DECLINING / DATA-INSUFFICIENT |
 
 Sections 6, 7, and 8 are the v1.1.0 additions. No other AI visibility tool (Semrush, BrightEdge, Conductor, Otterly, Profound, Peec AI, LLMrefs, Knowatoa) tracks all three as of 2026-05-22.
 
@@ -43,7 +43,7 @@ pip install -r scripts/requirements.txt
 # Free 5-section audit (1+2+6+7+8). No API spend.
 python3 scripts/run_audit.py YOUR_URL --skip-lighthouse --full-v11
 
-# Full 8-section audit with live AI polling. ~$2 API spend.
+# Full 8-section audit with live AI polling.
 python3 scripts/run_audit.py YOUR_URL --skip-lighthouse --live-test --full-v11 \
   --brand "Your Brand" \
   --owner "Owner Name" \

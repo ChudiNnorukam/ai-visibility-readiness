@@ -16,7 +16,7 @@ Setup:
   Same .env as citation_auto.py (OPENAI_API_KEY, PERPLEXITY_API_KEY, ANTHROPIC_API_KEY)
 
 Cost per audit (~30 queries):
-  Similar to citation testing, ~$0.60-$1.00 depending on platforms available.
+  Live API queries, varies by platform.
 """
 
 import argparse
@@ -774,7 +774,7 @@ Visibility Signals (different from citations):
   VISIBLE        AI mentions brand/concepts without direct recommendation
   NOT_VISIBLE    AI shows no awareness of the brand
 
-Cost: ~$0.60-$1.00 per audit depending on platforms
+Coverage: live API queries, varies by platform
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

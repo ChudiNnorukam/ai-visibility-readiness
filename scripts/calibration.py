@@ -9,7 +9,7 @@ a receipt proving the tool just calibrated correctly:
   - 2 known-negative queries against an .invalid TLD (RFC 2606, should
     NEVER be cited by any engine; any cite is a fabrication signal).
 
-Cached for 24h to amortize cost (~$0.50 per fresh calibration). Operator
+Cached for 24h to amortize cost. Operator
 can force fresh with `--force-calibrate`.
 
 Resolution decisions (2026-04-30 plan):
