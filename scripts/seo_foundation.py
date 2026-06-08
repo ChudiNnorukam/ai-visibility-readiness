@@ -13,6 +13,43 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
+# Realistic crawler UA for infra fetches. Many WordPress security stacks
+# (Wordfence/Sucuri/iThemes) UA-filter and 403 the default `python-requests`
+# string, producing FALSE robots.txt/sitemap failures even when the endpoints
+# return 200 to real AI crawlers and browsers. A browser-like UA reflects what
+# an actual client (and the major AI crawlers, which send identifiable UAs and
+# are typically allow-listed) experiences. See `_fetch_infra` for the
+# bot-gating signal that surfaces UA-filtering as a finding instead of a false
+# negative. (Root cause of the Marston Weeks 1-4 false-403; fixed 2026-06-08.)
+CRAWLER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
+INFRA_HEADERS = {"User-Agent": CRAWLER_UA}
+
+
+def _fetch_infra(url: str, timeout: int = 10):
+    """GET an infra endpoint with a realistic UA, plus detect UA-gating.
+
+    Returns (response_or_None, bot_gated). `bot_gated` is True when the
+    realistic UA succeeds (2xx) but the default python-requests UA is blocked
+    (401/403/406/429) on the SAME url, i.e. the host WAF UA-filters generic
+    bots. That is a real finding worth surfacing, and the root cause of the
+    historical false-403s.
+    """
+    try:
+        resp = requests.get(url, timeout=timeout, headers=INFRA_HEADERS)
+    except requests.RequestException:
+        return None, False
+    bot_gated = False
+    if resp.ok:
+        try:
+            bare = requests.get(url, timeout=timeout)
+            bot_gated = bare.status_code in (401, 403, 406, 429)
+        except requests.RequestException:
+            bot_gated = False
+    return resp, bot_gated
+
 
 def check_core_web_vitals(url: str) -> dict:
     """Check 1.1: Core Web Vitals via Lighthouse CLI."""
@@ -90,27 +127,30 @@ def check_technical_crawlability(url: str) -> dict:
         "verdict": "FAIL",
     }
 
-    # Check robots.txt
-    try:
-        resp = requests.get(f"{base}/robots.txt", timeout=10)
+    # Check robots.txt (realistic UA: the default python-requests UA gets
+    # WAF-403'd on many WP sites, which previously produced false negatives)
+    resp, bot_gated = _fetch_infra(f"{base}/robots.txt")
+    if resp is not None:
         result["checks"]["robots_txt"] = {
             "status": resp.status_code,
             "exists": resp.status_code == 200,
             "size_bytes": len(resp.content),
+            "bot_gated": bot_gated,
         }
-    except requests.RequestException as e:
-        result["checks"]["robots_txt"] = {"exists": False, "error": str(e)}
+    else:
+        result["checks"]["robots_txt"] = {"exists": False, "error": "request failed"}
 
     # Check sitemap
-    try:
-        resp = requests.get(f"{base}/sitemap.xml", timeout=10)
+    resp, bot_gated = _fetch_infra(f"{base}/sitemap.xml")
+    if resp is not None:
         result["checks"]["sitemap"] = {
             "status": resp.status_code,
             "exists": resp.status_code == 200,
             "size_bytes": len(resp.content) if resp.status_code == 200 else 0,
+            "bot_gated": bot_gated,
         }
-    except requests.RequestException as e:
-        result["checks"]["sitemap"] = {"exists": False, "error": str(e)}
+    else:
+        result["checks"]["sitemap"] = {"exists": False, "error": "request failed"}
 
     # Check HTTPS
     if parsed.scheme == "https":
@@ -155,7 +195,7 @@ def check_schema_markup(url: str) -> dict:
     }
 
     try:
-        resp = requests.get(url, timeout=15, headers={"User-Agent": "AVR-Auditor/1.0"})
+        resp = requests.get(url, timeout=15, headers=INFRA_HEADERS)
         soup = BeautifulSoup(resp.text, "lxml")
         ld_scripts = soup.find_all("script", type="application/ld+json")
 
@@ -265,7 +305,7 @@ def check_content_indexability(url: str) -> dict:
     }
 
     try:
-        resp = requests.get(url, timeout=15, headers={"User-Agent": "AVR-Auditor/1.0"})
+        resp = requests.get(url, timeout=15, headers=INFRA_HEADERS)
         html = resp.text
         soup = BeautifulSoup(html, "lxml")
 

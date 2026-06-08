@@ -29,8 +29,17 @@ import math
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import Lock, Semaphore
+
+# Live calls run concurrently ACROSS platforms with a per-platform cap that
+# protects each provider's rate limit. Metric-invariant: each (query, platform)
+# citation result is computed purely from that call, and compute_results sums
+# are order-independent. Set AVR_PER_PLATFORM_CONCURRENCY=1 to force serial.
+# (Was fully serial; parallelized 2026-06-08 to fit the audit timeout budget.)
+PER_PLATFORM_CONCURRENCY = max(1, int(os.environ.get("AVR_PER_PLATFORM_CONCURRENCY", "4")))
 
 # Load .env from project root
 env_path = Path(__file__).parent.parent / ".env"
@@ -642,26 +651,46 @@ def run_citation_test(
     total_queries = len(queries) * len(active)
     print(f"Running {len(queries)} queries x {len(active)} platforms = {total_queries} tests\n")
 
-    # Run tests
-    all_results = []
-    for i, q in enumerate(queries, 1):
+    # Build tasks in q-major, platform-minor order so assembled all_results is
+    # identical to the prior serial ordering.
+    tasks = []  # (idx, q, platform_key)
+    for q in queries:
         for platform_key in active:
-            func = PLATFORM_FUNCTIONS[platform_key]
-            platform_name = PLATFORM_NAMES[platform_key]
+            tasks.append((len(tasks), q, platform_key))
 
-            print(f"  [{i * len(active)}/{total_queries}] {platform_name}: {q['query'][:50]}...", end=" ", flush=True)
+    results_by_idx = [None] * len(tasks)
+    per_platform = {p: Semaphore(PER_PLATFORM_CONCURRENCY) for p in active}
+    progress = {"done": 0}
+    progress_lock = Lock()
+
+    def _run_task(task):
+        tidx, q, platform_key = task
+        func = PLATFORM_FUNCTIONS[platform_key]
+        platform_name = PLATFORM_NAMES[platform_key]
+
+        # Per-platform semaphore caps each provider's concurrency; cross-provider
+        # calls overlap. 0.5s politeness stays inside the slot (per-platform).
+        with per_platform[platform_key]:
             result = _call_with_retry(func, q["query"], target_url)
-            result["query_id"] = q["id"]
-            result["category"] = q["category"]
-            all_results.append(result)
+            time.sleep(0.5)
+        result["query_id"] = q["id"]
+        result["category"] = q["category"]
 
+        with progress_lock:
+            progress["done"] += 1
             status_display = result["status"]
             if status_display == "CITED":
                 status_display = "CITED <<"
-            print(status_display)
+            print(f"  [{progress['done']}/{total_queries}] {platform_name}: {q['query'][:50]}... {status_display}", flush=True)
 
-            # Rate limiting: small delay between API calls
-            time.sleep(0.5)
+        return tidx, result
+
+    max_workers = max(1, len(active) * PER_PLATFORM_CONCURRENCY)
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        for tidx, result in ex.map(_run_task, tasks):
+            results_by_idx[tidx] = result
+
+    all_results = results_by_idx
 
     # Compute summary
     summary = compute_results(all_results)

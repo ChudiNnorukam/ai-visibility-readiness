@@ -24,8 +24,18 @@ import json
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import Lock, Semaphore
+
+# Live calls run concurrently ACROSS platforms with a per-platform cap that
+# protects each provider's rate limit. This is metric-invariant: each
+# (query, platform) result is computed purely from that call's response text,
+# and the summary is order-independent. Set AVR_PER_PLATFORM_CONCURRENCY=1 to
+# force fully-serial behavior. (Was fully serial; 160 sequential calls took
+# ~30 min and blew the 900s audit timeout. Parallelized 2026-06-08.)
+PER_PLATFORM_CONCURRENCY = max(1, int(os.environ.get("AVR_PER_PLATFORM_CONCURRENCY", "4")))
 
 # Load .env from project root
 env_path = Path(__file__).parent.parent / ".env"
@@ -540,65 +550,82 @@ def run_visibility_test(
     total_tests = len(queries) * len(active)
     print(f"Running {len(queries)} queries x {len(active)} platforms = {total_tests} tests\n")
 
-    all_results = []
-    test_num = 0
-
+    # Build the task list in q-major, platform-minor order so the assembled
+    # all_results is byte-identical to the prior serial ordering.
+    tasks = []  # (idx, q, platform_key)
     for q in queries:
         for platform_key in active:
-            test_num += 1
-            func = QUERY_FUNCTIONS[platform_key]
-            platform_name = PLATFORM_NAMES[platform_key]
+            tasks.append((len(tasks), q, platform_key))
 
-            print(f"  [{test_num}/{total_tests}] {platform_name}: {q['query'][:50]}...", end=" ", flush=True)
+    results_by_idx = [None] * len(tasks)
+    per_platform = {p: Semaphore(PER_PLATFORM_CONCURRENCY) for p in active}
+    progress = {"done": 0}
+    progress_lock = Lock()
 
+    def _run_task(task):
+        tidx, q, platform_key = task
+        func = QUERY_FUNCTIONS[platform_key]
+        platform_name = PLATFORM_NAMES[platform_key]
+
+        # Per-platform semaphore caps concurrency to one provider's rate budget;
+        # calls to DIFFERENT providers still overlap. The 0.5s politeness delay
+        # stays inside the slot so it throttles per-platform, not globally.
+        with per_platform[platform_key]:
             response_text, err = _query_with_retry(func, q["query"])
-
-            if err and not response_text:
-                result = {
-                    "query_id": q["id"],
-                    "category": q["category"],
-                    "signal": q["signal"],
-                    "platform": platform_name,
-                    "query": q["query"],
-                    "visible": False,
-                    "error": err,
-                }
-                print("ERROR")
-            else:
-                # Run all three checks on every response.
-                # concept and recommendation use the topics-fallback values
-                # resolved at function entry so missing CLI args degrade gracefully
-                # (verbose) instead of silently zeroing out.
-                brand_check = check_brand_recognition(response_text, target_url, brand_name, owner_name)
-                concept_check = check_concept_attribution(response_text, effective_concepts)
-                rec_check = check_recommendation(response_text, target_url, brand_name, effective_products)
-
-                # Determine visibility level for this query
-                visible = brand_check["level"] != "UNKNOWN" or rec_check["recommended"] or concept_check["concept_ratio"] > 0.3
-
-                result = {
-                    "query_id": q["id"],
-                    "category": q["category"],
-                    "signal": q["signal"],
-                    "platform": platform_name,
-                    "query": q["query"],
-                    "visible": visible,
-                    "brand_recognition": brand_check,
-                    "concept_attribution": concept_check,
-                    "recommendation": rec_check,
-                    "response_snippet": response_text[:300],
-                }
-
-                status = "VISIBLE" if visible else "NOT_VISIBLE"
-                if brand_check["level"] == "KNOWN":
-                    status = "KNOWN"
-                elif rec_check["recommended"]:
-                    status = "RECOMMENDED"
-
-                print(status)
-
-            all_results.append(result)
             time.sleep(0.5)
+
+        if err and not response_text:
+            result = {
+                "query_id": q["id"],
+                "category": q["category"],
+                "signal": q["signal"],
+                "platform": platform_name,
+                "query": q["query"],
+                "visible": False,
+                "error": err,
+            }
+            status = "ERROR"
+        else:
+            # Run all three checks on every response. Each is a pure function of
+            # the response text + this query's params, so concurrency cannot
+            # change any individual result (metric invariance).
+            brand_check = check_brand_recognition(response_text, target_url, brand_name, owner_name)
+            concept_check = check_concept_attribution(response_text, effective_concepts)
+            rec_check = check_recommendation(response_text, target_url, brand_name, effective_products)
+
+            visible = brand_check["level"] != "UNKNOWN" or rec_check["recommended"] or concept_check["concept_ratio"] > 0.3
+
+            result = {
+                "query_id": q["id"],
+                "category": q["category"],
+                "signal": q["signal"],
+                "platform": platform_name,
+                "query": q["query"],
+                "visible": visible,
+                "brand_recognition": brand_check,
+                "concept_attribution": concept_check,
+                "recommendation": rec_check,
+                "response_snippet": response_text[:300],
+            }
+
+            status = "VISIBLE" if visible else "NOT_VISIBLE"
+            if brand_check["level"] == "KNOWN":
+                status = "KNOWN"
+            elif rec_check["recommended"]:
+                status = "RECOMMENDED"
+
+        with progress_lock:
+            progress["done"] += 1
+            print(f"  [{progress['done']}/{total_tests}] {platform_name}: {q['query'][:50]}... {status}", flush=True)
+
+        return tidx, result
+
+    max_workers = max(1, len(active) * PER_PLATFORM_CONCURRENCY)
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        for tidx, result in ex.map(_run_task, tasks):
+            results_by_idx[tidx] = result
+
+    all_results = results_by_idx
 
     # Compute summary
     total = len(all_results)
