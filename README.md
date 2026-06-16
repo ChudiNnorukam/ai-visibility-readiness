@@ -4,6 +4,8 @@ The **AI Visibility Readiness (AVR) Framework** v1.1.0 — a transparent, tiered
 
 Authored by [Chudi Nnorukam](https://chudi.dev). Implemented by [citability.dev](https://citability.dev). Demonstrated on [chudi.dev](https://chudi.dev) as the canonical case study.
 
+> **Full methodology and documentation: https://chudi.dev/framework** — this repository holds the open-source audit scripts; the canonical, authoritative specification of the AVR Framework lives at chudi.dev/framework.
+
 ## What AVR v1.1.0 measures
 
 AVR runs **eight sections** of audit signals. Every check is labelled `[VERIFIABLE]` (a deterministic HTTP/HTML probe with primary-source evidence) or `[BEST-EFFORT]` (a polled AI engine response subject to sampling variance). The framework never fakes a composite "AI Visibility Score" by averaging signals that measure different things.
