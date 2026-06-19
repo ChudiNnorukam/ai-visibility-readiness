@@ -359,6 +359,38 @@ def generate_report(
                 lines.append(f"| {platform} | {pdata['cited']}/{pdata['total']} | {pdata.get('citation_rate_pct', 0)}% |")
             lines.append("")
 
+        # Fan-out coverage (Section 3b) — present only when the citation test ran
+        # in --fan-out-mode. Surfaces the top gap sub-queries: the synthetic
+        # decomposition sub-questions where the site was NOT cited on any platform.
+        fan = citation_results.get("fan_out_coverage")
+        if fan:
+            gaps = fan.get("gap_sub_queries", [])
+            covered = fan.get("covered_sub_queries", [])
+            lines.extend([
+                "### Fan-Out Coverage [BEST-EFFORT]",
+                "",
+                f"**Seed topic:** {fan.get('seed_topic', '')} ({fan.get('query_type', 'unknown')} query)",
+                f"**Coverage:** {fan.get('coverage_rate_pct', 0)}% of {fan.get('sub_queries_generated', 0)} "
+                f"sub-queries cited (confidence: {fan.get('confidence_label', 'LOW')})",
+                "",
+                "When an AI engine answers this topic, it fans out into several sub-queries. "
+                "Each gap below is a sub-query where the engine answered without citing your site, "
+                "a concrete place to win a citation.",
+                "",
+            ])
+            if gaps:
+                lines.append(f"**Top fan-out gaps ({min(len(gaps), 5)} of {len(gaps)}):**")
+                lines.append("")
+                for g in gaps[:5]:
+                    lines.append(f"- {g}")
+                lines.append("")
+            if covered:
+                lines.append(f"**Already cited in {len(covered)} sub-quer{'y' if len(covered) == 1 else 'ies'}:** "
+                             + ", ".join(covered[:3]) + ("..." if len(covered) > 3 else ""))
+                lines.append("")
+            lines.append(f"> {fan.get('disclaimer', '')}")
+            lines.append("")
+
     # Section 4: AI Visibility (if available)
     if visibility_results:
         lines.extend([

@@ -30,6 +30,7 @@ class VerticalProfile:
     indirect_citation_sources: list[str]  # third-party domains for indirect-citation check
     calibration_anchors: dict[str, str]   # {"high": url, "mid": url, "low": url}
     query_template_builder: Callable[[dict], list[dict]]  # builds queries from context
+    default_fan_out_seed: str = ""        # sharp seed for fan-out coverage mode (citation_auto --fan-out-mode)
 
 
 def _build_local_healthcare_queries(ctx: dict) -> list[dict]:
@@ -220,6 +221,7 @@ VERTICALS = {
             "low": "https://drsmith-dental.example.com",  # placeholder; operator picks a real DR<30 local practice
         },
         query_template_builder=_build_local_healthcare_queries,
+        default_fan_out_seed="best {practice_type} in {city}",
     ),
     "saas-tool": VerticalProfile(
         name="saas-tool",
@@ -247,6 +249,7 @@ VERTICALS = {
             "low": "https://citability.dev",  # known floor (own product)
         },
         query_template_builder=_build_saas_queries,
+        default_fan_out_seed="best {category} software for teams",
     ),
     "personal-brand": VerticalProfile(
         name="personal-brand",
@@ -275,6 +278,7 @@ VERTICALS = {
             "low": "https://chudi.dev",  # known floor (own site)
         },
         query_template_builder=_build_personal_brand_queries,
+        default_fan_out_seed="top experts and resources for {expertise}",
     ),
     "tech-publisher": VerticalProfile(
         name="tech-publisher",
@@ -301,6 +305,7 @@ VERTICALS = {
             "low": "https://chudi.dev",
         },
         query_template_builder=lambda ctx: [],  # use the default citation_auto.py templates
+        default_fan_out_seed="how to learn {topic}",
     ),
 }
 

@@ -24,6 +24,7 @@ Cost per audit (~80 queries with Gemini added):
 """
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -468,6 +469,88 @@ def generate_queries(
     return queries
 
 
+FAN_OUT_DISCLAIMER = (
+    "Sub-queries are an LLM approximation of how an AI engine would decompose this "
+    "topic, NOT the platform's native internal fan-out. Coverage reflects citability "
+    "across likely sub-queries, not verified platform-native decomposition. [BEST-EFFORT]"
+)
+
+
+def _fan_out_cache_path(output_dir: str, domain: str, seed: str) -> str:
+    key = hashlib.md5(f"{domain}|{seed}".encode()).hexdigest()[:12]
+    return os.path.join(output_dir, f"fan_out_panel_{key}.json")
+
+
+def generate_fan_out_panel(
+    seed: str,
+    domain: str,
+    brand: str | None = None,
+    output_dir: str = ".",
+    n: int = 10,
+    refresh: bool = False,
+) -> list[dict]:
+    """Generate a query-type-aware synthetic fan-out panel for one seed topic.
+
+    Calibrated 2026-06-19 against live Google AI Mode (codex node
+    citability-fan-out-coverage-feature): real engines decompose COMMERCIAL
+    queries by use-case SEGMENT + named entity, HOW-TO queries by sub-task
+    MECHANISM (incl. non-obvious ones), INFORMATIONAL queries by tactic/concept.
+    A naive "list 8-12 sub-questions" prompt produced keyword modifiers instead
+    and scored ~57% overlap; steering by query type targets 70%+.
+
+    Panel is CACHED per (domain, seed) so the coverage rate doesn't drift on the
+    generation step between runs ("lock the panel" —
+    ai-citation-measurement-methodology). Regenerate only with refresh=True.
+    """
+    cache_path = _fan_out_cache_path(output_dir, domain, seed)
+    if not refresh and os.path.exists(cache_path):
+        with open(cache_path) as f:
+            return json.load(f)
+
+    brand_name = brand or _derive_brand_from_domain(domain)
+    from anthropic import Anthropic
+    client = Anthropic(timeout=90.0)
+
+    instruction = (
+        f'A user asks an AI search engine about: "{seed}".\n'
+        "AI engines decompose one query into several sub-queries before answering. "
+        "First CLASSIFY the query as one of: commercial (comparing/choosing products or tools), "
+        "how-to (process/steps), or informational (concept/explanation).\n"
+        f"Then list the {n} sub-queries the engine most likely fans out to, using these rules:\n"
+        "- commercial: decompose by USE-CASE SEGMENT (who it's for / what job) and NAMED-ENTITY "
+        "comparison, NOT keyword modifiers like 'cheapest' / 'free' / 'pricing'.\n"
+        "- how-to: decompose by SUB-TASK / MECHANISM, including non-obvious mechanical sub-intents.\n"
+        "- informational: decompose by TACTIC / CONCEPT / sub-topic.\n"
+        'Return ONLY a JSON object: {"query_type": "...", "sub_queries": ["...", ...]} '
+        f"with exactly {n} sub_queries, each phrased as a natural user query. No commentary."
+    )
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=1024,
+        temperature=0,
+        messages=[{"role": "user", "content": instruction}],
+    )
+    text = "".join(b.text for b in resp.content if b.type == "text")
+    # Model may wrap the JSON in prose/fences — slice to the outermost braces.
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end == -1:
+        raise ValueError(f"fan-out generation returned no JSON object: {text[:200]!r}")
+    parsed = json.loads(text[start:end + 1])
+    query_type = parsed.get("query_type", "unknown")
+    subs = [str(q).strip() for q in parsed.get("sub_queries", []) if str(q).strip()][:n]
+    if not subs:
+        raise ValueError("fan-out generation returned zero sub_queries")
+
+    panel = [
+        {"id": i + 1, "category": "fan_out", "query": q, "query_type": query_type, "seed": seed}
+        for i, q in enumerate(subs)
+    ]
+    os.makedirs(output_dir, exist_ok=True)
+    with open(cache_path, "w") as f:
+        json.dump(panel, f, indent=2)
+    return panel
+
+
 def compute_results(results: list[dict]) -> dict:
     """Compute citation rate and confidence from test results."""
     total = len(results)
@@ -607,8 +690,16 @@ def run_citation_test(
     brand: str | None = None,
     vertical: str | None = None,
     vertical_ctx: dict | None = None,
+    fan_out_seed: str | None = None,
+    fan_out_refresh: bool = False,
 ) -> dict:
     """Run automated citation testing across available AI platforms.
+
+    When fan_out_seed is set, the query panel is a query-type-aware synthetic
+    fan-out of that seed topic (see generate_fan_out_panel) instead of the
+    standard 20-query brand/topic panel, and the summary gains a
+    fan_out_coverage block. BEST-EFFORT: the panel approximates engine
+    decomposition, it is not platform-native fan-out.
 
     Args:
         target_url: The domain to check citations for
@@ -646,8 +737,17 @@ def run_citation_test(
     print(f"  Date: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"{'='*60}\n")
 
-    # Generate queries
-    queries = generate_queries(domain, topics, brand=brand, vertical=vertical, vertical_ctx=vertical_ctx)
+    # Generate queries — fan-out panel (query-type-aware synthetic decomposition
+    # of a seed) or the standard 20-query brand/topic panel.
+    fan_out_query_type = None
+    if fan_out_seed:
+        queries = generate_fan_out_panel(
+            fan_out_seed, domain, brand=brand, output_dir=output_dir, refresh=fan_out_refresh
+        )
+        fan_out_query_type = queries[0].get("query_type") if queries else None
+        print(f"Fan-out panel: {len(queries)} sub-queries (type: {fan_out_query_type}) for seed '{fan_out_seed}'")
+    else:
+        queries = generate_queries(domain, topics, brand=brand, vertical=vertical, vertical_ctx=vertical_ctx)
     total_queries = len(queries) * len(active)
     print(f"Running {len(queries)} queries x {len(active)} platforms = {total_queries} tests\n")
 
@@ -675,6 +775,8 @@ def run_citation_test(
             time.sleep(0.5)
         result["query_id"] = q["id"]
         result["category"] = q["category"]
+        if q.get("query_type"):
+            result["query_type"] = q["query_type"]
 
         with progress_lock:
             progress["done"] += 1
@@ -697,6 +799,35 @@ def run_citation_test(
     summary["target_url"] = target_url
     summary["test_date"] = datetime.now(timezone.utc).isoformat()
     summary["platforms_tested"] = list(active.keys())
+
+    # Fan-out coverage: in fan-out mode every sub-query shares category "fan_out",
+    # so the overall citation_rate_pct + Wilson CI already IS the coverage rate.
+    # Surface it as a named block with the mandatory approximation disclaimer.
+    if fan_out_seed:
+        # Per sub-query coverage: a sub-query is COVERED if ANY platform cited the
+        # site for it, else it is a GAP. Order preserved from the panel.
+        by_q: dict[str, bool] = {}
+        for r in all_results:
+            q = r.get("query", "")
+            by_q.setdefault(q, False)
+            if r["status"] == "CITED":
+                by_q[q] = True
+        gaps = [q for q, cited in by_q.items() if not cited]
+        covered = [q for q, cited in by_q.items() if cited]
+        summary["fan_out_coverage"] = {
+            "seed_topic": fan_out_seed,
+            "query_type": fan_out_query_type,
+            "sub_queries_generated": len(queries),
+            "coverage_rate_pct": summary["citation_rate_pct"],
+            "confidence_interval_95": summary["confidence_interval_95"],
+            "confidence_label": summary["confidence_label"],
+            "per_query_category": summary["by_category"].get("fan_out", {}),
+            "covered_sub_queries": covered,
+            "gap_sub_queries": gaps,
+            "label": "BEST-EFFORT",
+            "disclaimer": FAN_OUT_DISCLAIMER,
+        }
+        summary["disclaimer"] = FAN_OUT_DISCLAIMER
 
     # Save raw results
     os.makedirs(output_dir, exist_ok=True)
@@ -745,9 +876,28 @@ def run_citation_test(
     print(f"")
     print(f"  Raw results: {raw_path}")
     print(f"  Summary: {summary_path}")
+    if fan_out_seed:
+        fc = summary["fan_out_coverage"]
+        print(f"")
+        print(f"  FAN-OUT COVERAGE (seed: '{fc['seed_topic']}', type: {fc['query_type']}):")
+        print(f"    {fc['coverage_rate_pct']}% of {fc['sub_queries_generated']} sub-queries cited "
+              f"(confidence: {fc['confidence_label']}, 95% CI [{fc['confidence_interval_95']['low_pct']}%, "
+              f"{fc['confidence_interval_95']['high_pct']}%])")
+        print(f"    NOTE: {FAN_OUT_DISCLAIMER}")
     print(f"{'='*60}")
 
     return summary
+
+
+class _DefaultSeedDict(dict):
+    """format_map helper: unknown placeholders fall back to the first topic so a
+    vertical seed template never raises KeyError on a missing ctx key."""
+    def __init__(self, mapping, fallback):
+        super().__init__(mapping)
+        self._fallback = fallback
+
+    def __missing__(self, key):
+        return self._fallback
 
 
 def main():
@@ -783,6 +933,9 @@ Coverage: 20 queries x 4 platforms
     test_p.add_argument("--vertical", choices=["local-healthcare", "saas-tool", "personal-brand", "tech-publisher"],
                         help="Vertical profile for query templates (geo-aware for local-healthcare, etc.)")
     test_p.add_argument("--platforms", nargs="*", choices=["openai", "perplexity", "anthropic", "gemini"], help="Which platforms to test (default: all with keys)")
+    test_p.add_argument("--fan-out-mode", action="store_true", help="Run query-type-aware fan-out coverage instead of the standard 20-query panel (requires --fan-out-seed)")
+    test_p.add_argument("--fan-out-seed", help="Seed topic to decompose into a synthetic fan-out panel (e.g. 'best AI visibility tools')")
+    test_p.add_argument("--fan-out-refresh", action="store_true", help="Regenerate the cached fan-out panel instead of reusing it")
     test_p.add_argument("-o", "--output", default=".", help="Output directory")
 
     args = parser.parse_args()
@@ -812,9 +965,28 @@ Coverage: 20 queries x 4 platforms
             "use_cases": args.topics or [],   # SaaS uses use_cases
             "expertise": args.topics or [],   # Personal-brand uses expertise
         }
+        # Fan-out seed resolution: explicit --fan-out-seed wins; otherwise fall
+        # back to the vertical's sharp default-seed template (ponytail: filled
+        # from --topics, leaves the city/practice_type cases to an explicit seed).
+        fan_out_seed = args.fan_out_seed
+        if (args.fan_out_mode or args.fan_out_seed) and not fan_out_seed and args.vertical:
+            try:
+                from verticals import get_vertical
+                tmpl = get_vertical(args.vertical).default_fan_out_seed
+            except Exception:
+                tmpl = ""
+            if tmpl:
+                first_topic = (args.topics or ["this category"])[0]
+                seed_ctx = {"category": first_topic, "topic": first_topic,
+                            "expertise": first_topic, "practice_type": "provider", "city": ""}
+                fan_out_seed = " ".join(tmpl.format_map(_DefaultSeedDict(seed_ctx, first_topic)).split())
+        if args.fan_out_mode and not fan_out_seed:
+            parser.error("--fan-out-mode requires --fan-out-seed (or --vertical with a default seed)")
+        fan_out_seed = fan_out_seed if (args.fan_out_mode or args.fan_out_seed) else None
         run_citation_test(
             args.url, args.topics, args.output, args.platforms,
             brand=args.brand, vertical=args.vertical, vertical_ctx=vertical_ctx,
+            fan_out_seed=fan_out_seed, fan_out_refresh=args.fan_out_refresh,
         )
 
     else:
