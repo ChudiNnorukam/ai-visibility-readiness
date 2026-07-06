@@ -405,6 +405,7 @@ def generate_queries(
     brand: str | None = None,
     vertical: str | None = None,
     vertical_ctx: dict | None = None,
+    owner: str | None = None,
 ) -> list[dict]:
     """Generate 20 test queries for citation testing.
 
@@ -420,7 +421,11 @@ def generate_queries(
     Topic templates use natural-English phrasings so engines treat them as
     real user queries rather than generated test queries.
     """
-    brand_name = brand or _derive_brand_from_domain(domain)
+    # Use the full brand string as-is (never strip TLD); fall back to full domain.
+    # _derive_brand_from_domain strips the TLD, which produces bare tokens like
+    # "chudi" that collide with common given names / unrelated words. Full domain
+    # (e.g. "chudi.dev") or the explicit --brand value is always unambiguous.
+    brand_name = brand or domain
 
     # Vertical-aware path
     if vertical:
@@ -429,6 +434,7 @@ def generate_queries(
             v = get_vertical(vertical)
             ctx = dict(vertical_ctx or {})
             ctx.setdefault("brand", brand_name)
+            ctx.setdefault("owner", owner)
             queries = v.query_template_builder(ctx)
             if queries:
                 return queries
@@ -439,10 +445,13 @@ def generate_queries(
 
     queries = []
 
-    # 5 brand queries — ask about the brand by NAME, not by domain
+    # 5 brand queries — ask about the brand by NAME, not by domain.
+    # When an owner name is available, person-centric queries use it so the
+    # brand anchor is unambiguous (e.g. "Who is Chudi Nnorukam?" instead of
+    # "Who runs chudi.dev?" which triggers domain-lookup results).
     queries.extend([
         {"id": 1, "category": "brand", "query": f"What is {brand_name} and what does it do?"},
-        {"id": 2, "category": "brand", "query": f"Who runs {brand_name}?"},
+        {"id": 2, "category": "brand", "query": f"Who is {owner}?" if owner else f"Who runs {brand_name}?"},
         {"id": 3, "category": "brand", "query": f"Tell me about {brand_name} and its main offerings."},
         {"id": 4, "category": "brand", "query": f"What is {brand_name} known for?"},
         {"id": 5, "category": "brand", "query": f"Is {brand_name} a reliable source?"},
@@ -692,6 +701,7 @@ def run_citation_test(
     vertical_ctx: dict | None = None,
     fan_out_seed: str | None = None,
     fan_out_refresh: bool = False,
+    owner: str | None = None,
 ) -> dict:
     """Run automated citation testing across available AI platforms.
 
@@ -747,7 +757,7 @@ def run_citation_test(
         fan_out_query_type = queries[0].get("query_type") if queries else None
         print(f"Fan-out panel: {len(queries)} sub-queries (type: {fan_out_query_type}) for seed '{fan_out_seed}'")
     else:
-        queries = generate_queries(domain, topics, brand=brand, vertical=vertical, vertical_ctx=vertical_ctx)
+        queries = generate_queries(domain, topics, brand=brand, vertical=vertical, vertical_ctx=vertical_ctx, owner=owner)
     total_queries = len(queries) * len(active)
     print(f"Running {len(queries)} queries x {len(active)} platforms = {total_queries} tests\n")
 
@@ -928,7 +938,8 @@ Coverage: 20 queries x 4 platforms
     # test command
     test_p = sub.add_parser("test", help="Run citation test on a URL")
     test_p.add_argument("url", help="Target URL to test citations for")
-    test_p.add_argument("--brand", help="Brand name to use in queries (e.g., 'Wikipedia', 'freeCodeCamp'). Defaults to derived-from-domain.")
+    test_p.add_argument("--brand", help="Brand name to use in queries (e.g., 'Wikipedia', 'freeCodeCamp'). Defaults to full domain.")
+    test_p.add_argument("--owner", help="Owner / author full name (e.g., 'Chudi Nnorukam'). Used in person-centric brand queries to avoid bare-token ambiguity.")
     test_p.add_argument("--topics", nargs="*", help="Topics the site covers")
     test_p.add_argument("--vertical", choices=["local-healthcare", "saas-tool", "personal-brand", "tech-publisher"],
                         help="Vertical profile for query templates (geo-aware for local-healthcare, etc.)")
@@ -937,6 +948,8 @@ Coverage: 20 queries x 4 platforms
     test_p.add_argument("--fan-out-seed", help="Seed topic to decompose into a synthetic fan-out panel (e.g. 'best AI visibility tools')")
     test_p.add_argument("--fan-out-refresh", action="store_true", help="Regenerate the cached fan-out panel instead of reusing it")
     test_p.add_argument("-o", "--output", default=".", help="Output directory")
+    test_p.add_argument("--emit-queries", action="store_true",
+                        help="Print the query set as JSON and exit 0; no API call, no key required")
 
     args = parser.parse_args()
 
@@ -961,10 +974,27 @@ Coverage: 20 queries x 4 platforms
         # builder pick what it needs.
         vertical_ctx = {
             "brand": args.brand,
+            "owner": args.owner,
             "topics": args.topics or [],
             "use_cases": args.topics or [],   # SaaS uses use_cases
             "expertise": args.topics or [],   # Personal-brand uses expertise
         }
+        if args.emit_queries:
+            url = args.url if args.url.startswith("http") else f"https://{args.url}"
+            domain = url.replace("https://", "").replace("http://", "").split("/")[0]
+            queries = generate_queries(domain, args.topics, brand=args.brand,
+                                       vertical=args.vertical, vertical_ctx=vertical_ctx,
+                                       owner=args.owner)
+            print(json.dumps({
+                "mode": "citations",
+                "url": url,
+                "queries": [
+                    {"id": q["id"], "category": q["category"], "platform": "all", "prompt": q["query"]}
+                    for q in queries
+                ],
+            }, indent=2))
+            sys.exit(0)
+
         # Fan-out seed resolution: explicit --fan-out-seed wins; otherwise fall
         # back to the vertical's sharp default-seed template (ponytail: filled
         # from --topics, leaves the city/practice_type cases to an explicit seed).
@@ -987,6 +1017,7 @@ Coverage: 20 queries x 4 platforms
             args.url, args.topics, args.output, args.platforms,
             brand=args.brand, vertical=args.vertical, vertical_ctx=vertical_ctx,
             fan_out_seed=fan_out_seed, fan_out_refresh=args.fan_out_refresh,
+            owner=args.owner,
         )
 
     else:

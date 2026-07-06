@@ -816,10 +816,26 @@ Coverage: live API queries, varies by platform
     test_p.add_argument("--concepts", nargs="*", help="Unique concepts/terminology from the brand")
     test_p.add_argument("--platforms", nargs="*", choices=["openai", "perplexity", "anthropic", "gemini"])
     test_p.add_argument("-o", "--output", default=".", help="Output directory")
+    test_p.add_argument("--emit-queries", action="store_true",
+                        help="Print the query set as JSON and exit 0; no API call, no key required")
 
     args = parser.parse_args()
 
     if args.command == "test":
+        if args.emit_queries:
+            url = args.url if args.url.startswith("http") else f"https://{args.url}"
+            domain = url.replace("https://", "").replace("http://", "").split("/")[0]
+            effective_products = args.products if args.products else (args.topics or [])
+            queries = generate_visibility_queries(domain, args.brand, args.owner, args.topics, effective_products)
+            print(json.dumps({
+                "mode": "visibility",
+                "url": url,
+                "queries": [
+                    {"id": q["id"], "category": q["category"], "platform": "all", "prompt": q["query"]}
+                    for q in queries
+                ],
+            }, indent=2))
+            sys.exit(0)
         run_visibility_test(
             args.url, args.brand, args.owner, args.topics,
             args.products, args.concepts, args.output, args.platforms,
