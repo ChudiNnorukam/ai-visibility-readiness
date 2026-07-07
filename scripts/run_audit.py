@@ -43,6 +43,7 @@ def run_audit(
     vertical: str | None = None,
     vertical_ctx: dict | None = None,
     full_v11: bool = False,
+    allow_skip_on_client: bool = False,
 ) -> str:
     """Run the full AVR audit on a URL.
 
@@ -58,10 +59,23 @@ def run_audit(
         owner: Owner/author name for visibility testing
         products: Product names for visibility testing
         concepts: Key concepts/terminology for visibility testing
+        allow_skip_on_client: Override the ship-gate that blocks --skip-lighthouse on client runs
 
     Returns:
         Path to the generated report
     """
+    # Ship-gate: a $497/client run must never ship with a SKIPPED Core Web Vitals check.
+    # Lighthouse is free; there is no excuse to skip it on a paid deliverable.
+    # The buyer-facing "completing this measurement" copy is a fallback for genuinely-impossible
+    # cases (Lighthouse ran but was blocked by the site), not the default.
+    if client_name and skip_lighthouse and not allow_skip_on_client:
+        print(
+            "ERROR: A $497/client audit must include Core Web Vitals; "
+            "remove --skip-lighthouse, or pass --allow-skip-on-client to override.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     if not url.startswith("http"):
         url = f"https://{url}"
 
@@ -386,6 +400,18 @@ Cost: Infrastructure audit is free. Live testing costs ~$2 per audit.
     live.add_argument("--skip-calibration", action="store_true",
                       help="Skip calibration entirely (operator accepts the risk of un-validated numbers)")
 
+    # Consulting / client run overrides
+    client_grp = parser.add_argument_group("consulting run overrides")
+    client_grp.add_argument(
+        "--allow-skip-on-client",
+        action="store_true",
+        help=(
+            "Override the ship-gate that requires Lighthouse for client/consulting runs. "
+            "Use only when Lighthouse is genuinely impossible (auth-walled, blocks probes). "
+            "Without this flag, --client + --skip-lighthouse is refused."
+        ),
+    )
+
     # AVR v1.1.0 sections (all free, $0 API spend)
     v11 = parser.add_argument_group("AVR v1.1.0 sections (free)")
     v11.add_argument("--full-v11", action="store_true",
@@ -448,6 +474,7 @@ Cost: Infrastructure audit is free. Live testing costs ~$2 per audit.
         vertical=args.vertical,
         vertical_ctx=vertical_ctx or None,
         full_v11=args.full_v11,
+        allow_skip_on_client=args.allow_skip_on_client,
     )
 
 
