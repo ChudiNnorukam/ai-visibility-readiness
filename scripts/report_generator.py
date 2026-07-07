@@ -347,21 +347,22 @@ def _render_live_probe_section(
     live_probe: dict,
     site_name: str,
 ) -> list[str]:
-    """Render 'What AI assistants say about your practice right now' from live probe data.
+    """Render 'What AI assistants recommend right now (and whether you're on the list)'.
 
     HONESTY GUARDS (critical):
-    - All competitor/practice names come from live_probe data ONLY; never hardcoded here.
-    - site_appeared (from data) drives the punchline; never assumed False.
+    - All competitor/firm names come from live_probe data ONLY; never hardcoded here.
+    - site_appeared (from data) drives the gap score; never assumed.
+    - Gap score is derived from data: queries where site appeared / total queries.
     - Degrades safely when probes is empty: shows a promise, never an invented answer.
-    A $497 report never shows an invented AI answer.
+    - A $497 report never shows an invented AI answer.
     """
     probes = live_probe.get("probes", [])
-    site_name_safe = site_name or "your practice"
+    site_name_safe = site_name or "your firm"
     city = live_probe.get("city", "your area")
 
     lines: list[str] = [
         "",
-        "## What AI assistants say about your practice right now",
+        "## What AI assistants recommend right now (and whether you're on the list)",
         "",
     ]
 
@@ -373,59 +374,99 @@ def _render_live_probe_section(
         ])
         return lines
 
-    # Build engine list for the intro line (dedupe, preserve order)
-    engine_names: list[str] = []
+    # Gap score: derived from data, never hardcoded.
+    total_queries = len(probes)
+    cited_queries = sum(1 for p in probes if p.get("site_appeared", False))
+
+    # Unique engines in order of first appearance — used in the provenance note.
+    unique_engines: list[str] = []
     for p in probes:
-        ename = p.get("engine")
-        if ename and ename not in engine_names:
-            engine_names.append(ename)
+        ename = p.get("engine", "")
+        if ename and ename not in unique_engines:
+            unique_engines.append(ename)
+    engines_str = ", ".join(unique_engines) if unique_engines else "AI assistants"
 
-    if len(engine_names) == 1:
-        engine_str = engine_names[0]
-    elif len(engine_names) == 2:
-        engine_str = f"{engine_names[0]} and {engine_names[1]}"
-    else:
-        engine_str = ", ".join(engine_names[:-1]) + f", and {engine_names[-1]}"
-
-    sample_query = probes[0].get("query") or f"Who's a good dentist near me in {city}?"
+    # Prominent gap score line - the key buyer takeaway
+    gap_line = (
+        f"**{site_name_safe} was cited in {cited_queries} of {total_queries} "
+        f"AI answer{'s' if total_queries != 1 else ''} we tested.**"
+    )
     lines.extend([
-        f"We asked {engine_str}: *'{sample_query}'*",
+        gap_line,
+        "",
+        f"We tested {total_queries} different ways a potential client in {city} might ask "
+        "an AI assistant who to hire. Here is what each AI recommended, and whether you were included.",
         "",
     ])
 
-    for probe in probes:
+    # Provenance note: engines and tested_at come from live_probe data only; never hardcoded.
+    # tested_at is rendered when present, omitted gracefully when absent.
+    # A $497 report never invents a test date or a fake quote.
+    tested_at = live_probe.get("tested_at", "")
+    date_clause = f" These results were captured on {tested_at}." if tested_at else ""
+    lines.extend([
+        f"*How we tested this: We submitted each query to {engines_str} and recorded the actual "
+        f"text each assistant returned.{date_clause} The queries are listed exactly as submitted "
+        "so you or your web contractor can run them directly and compare.*",
+        "",
+    ])
+
+    # Group by query: for each probe, show engine, query, practices named, site appearance,
+    # and a verbatim snippet when present so the buyer can verify the result directly.
+    for i, probe in enumerate(probes, 1):
         engine = probe.get("engine", "AI assistant")
+        query = probe.get("query", "")
         practices_named = probe.get("practices_named") or []
+        site_appeared = probe.get("site_appeared", False)
         response_snippet = (probe.get("response_snippet") or "").strip()
 
-        lines.append(f"**{engine} named:**")
+        lines.append(f"**Query {i} ({engine}):** *\"{query}\"*")
+        lines.append("")
+
         if practices_named:
             for name in practices_named:
                 lines.append(f"- {name}")
         elif response_snippet:
-            # Show raw snippet as a quote - honest, whatever the engine actually said
-            snippet_show = response_snippet[:200]
-            if len(response_snippet) > 200:
+            # No parsed practices list; show the snippet as primary evidence.
+            snippet_show = response_snippet[:300]
+            if len(response_snippet) > 300:
                 snippet_show += "..."
-            lines.append(f"> {snippet_show}")
+            lines.append(f"> *{engine} said:* \"{snippet_show}\"")
         else:
             lines.append("*(Response not captured for this query)*")
+
+        if site_appeared:
+            lines.append(f"- **{site_name_safe}** (cited)")
+        else:
+            lines.append(f"- {site_name_safe}: **not cited**")
+
+        # Supplementary evidence: when a snippet accompanies the extracted practices list,
+        # render it as a verbatim quote so the buyer can verify our interpretation.
+        # Snippet text comes from live_probe data only; never hardcoded in this template.
+        if practices_named and response_snippet:
+            snippet_show = response_snippet[:300]
+            if len(response_snippet) > 300:
+                snippet_show += "..."
+            lines.extend([
+                "",
+                f"> *{engine} said:* \"{snippet_show}\"",
+            ])
+
         lines.append("")
 
-    # Punchline - driven entirely by probe data, never hardcoded
-    any_appeared = any(p.get("site_appeared", False) for p in probes)
-    if not any_appeared:
+    # Summary punchline - derived from data, never hardcoded
+    if cited_queries == 0:
         lines.extend([
-            f"**{site_name_safe} was not mentioned by any of them.**",
-            "",
-            "These are the assistants a growing number of patients ask before choosing. "
-            "Right now they are handing those patients to the practices above.",
+            f"Across all {total_queries} queries, {site_name_safe} was not among the firms "
+            "these AI assistants recommended. These are the tools a growing share of buyers "
+            "use before reaching out. Right now they are directing those buyers to the firms above.",
             "",
         ])
     else:
         lines.extend([
-            f"**{site_name_safe} was mentioned in at least one response.** "
-            "The full citation and recommendation rate is in Section 3 below.",
+            f"Across {total_queries} queries, {site_name_safe} appeared in "
+            f"{cited_queries} of {total_queries} responses. "
+            "The full breakdown and what improves your citation rate is in the sections below.",
             "",
         ])
 
@@ -654,19 +695,22 @@ def generate_cover_email(
                 engine_names.append(ename)
         if engine_names and not any_appeared:
             engine_str = " and ".join(engine_names[:2])
+            # Use the first probe's actual query to avoid hardcoding any service-specific language
+            sample_query = probes[0].get("query", "") if probes else ""
+            query_tease = f" '{sample_query}'" if sample_query else ""
             probe_tease = (
-                f"One finding you'll want to see: when patients in {city} asked "
-                f"{engine_str} for a dentist recommendation, {client_name} was not among "
-                "the practices named. The report shows exactly what changes that."
+                f"One finding you'll want to see: when potential clients in {city} asked "
+                f"{engine_str}{query_tease}, {client_name} was not among "
+                "the firms recommended. The report shows exactly what changes that."
             )
 
     lines = [
         f"Hi {client_name},",
         "",
         f"We audited {domain} to check whether AI tools like ChatGPT, Perplexity, "
-        "and Google's AI results can find and recommend your practice when potential patients search nearby.",
+        "and Google's AI results can find and recommend your firm when potential clients search for services like yours.",
         "",
-        "The short answer: AI tools cannot reliably recommend your practice yet. "
+        "The short answer: AI tools cannot reliably recommend your firm yet. "
         "The attached report lists exactly what to fix and who does it.",
     ]
 
@@ -746,18 +790,42 @@ def generate_report(
             "---",
         ])
 
+    # Live probe section (POSITION ONE): immediately after header, BEFORE exec summary.
+    # The competitor-gap is the lead value; buyer sees it first.
+    # HONESTY GUARD: never rendered when live_probe is None (degrades safely).
+    if client_name and live_probe:
+        site_display = client_name or url or "Your firm"
+        lines.extend(_render_live_probe_section(live_probe, site_display))
+
     # Executive summary: leads with buyer-felt outcome, NOT a pass-count or status code.
     # Plain-language business consequence first; technical detail follows.
     buyer_outcome = _BUYER_OUTCOME_LEADS.get(overall, "")
 
-    # Patient bridge: connects AI visibility to the specific buyer's real stakes.
-    # HONESTY GUARD: never invent a patient count or percentage.
-    practice_name = client_name or url or "your practice"
-    patient_bridge = (
-        f"In practical terms: when a potential patient asks ChatGPT, Perplexity, or Google's AI "
-        f"'who's a good dentist near me?', {practice_name} is unlikely to be mentioned, "
-        "and those patients book with whoever is."
-    )
+    # Client bridge: connects AI visibility to the specific buyer's real stakes.
+    # HONESTY GUARD: never invent a client count or percentage.
+    # When probe data is present, use the actual query so the bridge is concrete, not generic.
+    practice_name = client_name or url or "your firm"
+    if live_probe and live_probe.get("probes"):
+        first_query = live_probe["probes"][0].get("query", "")
+        probe_city = live_probe.get("city", "your area")
+        if first_query:
+            patient_bridge = (
+                f"In practical terms: when a potential client in {probe_city} asks an AI assistant "
+                f"'{first_query}', {practice_name} is unlikely to be among the firms recommended, "
+                "and those clients reach out to whoever is."
+            )
+        else:
+            patient_bridge = (
+                f"In practical terms: when a potential client asks ChatGPT, Perplexity, or Google's AI "
+                f"for a firm like yours, {practice_name} is unlikely to be mentioned, "
+                "and those clients reach out to whoever is."
+            )
+    else:
+        patient_bridge = (
+            f"In practical terms: when a potential client asks ChatGPT, Perplexity, or Google's AI "
+            f"for a firm like yours, {practice_name} is unlikely to be mentioned, "
+            "and those clients reach out to whoever is."
+        )
 
     # Arithmetic summary: derive from data, never hardcode.
     # States the total ran, explains any SKIPPED item, and gives working/needs-work/partly-working counts.
@@ -788,16 +856,15 @@ def generate_report(
 
     if client_name:
         lines.extend([
-            "**What to expect:** These fixes remove technical barriers - they do not guarantee patient "
-            "bookings, and we cannot promise a specific patient count. Anyone who does is guessing. "
-            "Once the infrastructure is in place, AI tools can find and correctly describe your practice; "
+            "**What to expect:** These fixes remove technical barriers - they do not guarantee client "
+            "engagements, and we cannot promise a specific client count. Anyone who does is guessing. "
+            "Once the infrastructure is in place, AI tools can find and correctly describe your firm; "
             "citation rates typically improve over the weeks to months that follow as search engines "
             "and AI platforms re-crawl your site.",
             "",
-            "**What this audit covers:** your visibility to AI assistants (ChatGPT, Perplexity, "
-            "and Google's AI answers). It does not assess your Google Business Profile, patient "
-            "reviews, or traditional local SEO, which are separate and also important - just not "
-            "what this report measures.",
+            "**What this audit covers:** AI-answer visibility, the layer your web analytics won't show you "
+            "(how ChatGPT, Perplexity, and Google's AI answers recommend businesses like yours). "
+            "It complements your existing SEO and Google Business Profile work; it does not replace them.",
             "",
         ])
 
@@ -832,13 +899,6 @@ def generate_report(
             lines.append(f"{i}. {action}")
             if expected_result:
                 lines.append(f"   - **Expected result:** {expected_result}")
-
-    # Live probe section (R6): placed HIGH, right after executive summary and top actions.
-    # Only rendered in buyer mode when probe data is present.
-    # HONESTY GUARD: never rendered when live_probe is None (degrades safely).
-    if client_name and live_probe:
-        site_display = client_name or url or "Your practice"
-        lines.extend(_render_live_probe_section(live_probe, site_display))
 
     # "What to do Monday morning" box: near the top, answers Q3 before the buyer hunts for it.
     # Step 1: forward to web person. Step 2: pre-written email. Step 3: no-dev-team path.
@@ -885,7 +945,7 @@ def generate_report(
             "> Could you review it and let me know when you could schedule the work?",
             ">",
             "> Thanks,",
-            "> Dr. [Your name]",
+            "> [Your name]",
             "",
             "**Step 3:** No one maintains your site? "
             "Reply to this email and we'll quote a flat fee to do all the fixes.",
@@ -1371,6 +1431,14 @@ def _self_check() -> bool:
     7. The no-promise hedge ('cannot promise') appears exactly once (in 'What to expect:' only).
     8. Every technical recommendation includes a 'What to tell your web person:' line.
     9. No 'freely available' tool bragging in buyer output.
+    10. Live probe section heading present when live_probe data is given.
+    11. No hardcoded competitor names in rendering code.
+    12. Scope disclaimer heading 'What this audit covers:' is present.
+    13. No raw 'JSON-LD' in buyer output.
+    14. Structured data appears as one consolidated recommendation (no duplicate headings).
+    15. Live probe section appears BEFORE Executive Summary (position-one content).
+    16. Gap score line ('cited in N of M') is present in buyer output.
+    17. Scope disclaimer uses additive 'complements ... does not replace' framing.
 
     Returns True on pass, False on failure. No test framework dependency.
     Run via: python report_generator.py --self-check
@@ -1400,16 +1468,22 @@ def _self_check() -> bool:
             {"check": "2.4_semantic_html", "tier": "VERIFIABLE", "verdict": "PASS"},
         ],
     }
-    # Fixture live probe data for assertions 10 and 11.
+    # Fixture live probe data for assertions 10, 11, 18, and 19.
     # Uses generic "Fixture Dental" names that MUST NOT appear in production template code.
+    # tested_at and response_snippet are fixture-only; the template never hardcodes them.
     live_probe_fixture = {
         "city": "Austin, TX",
+        "tested_at": "2026-07-06T14:32:00Z",
         "probes": [
             {
                 "engine": "ChatGPT",
                 "query": "Who's a good dentist near me in Austin, TX?",
                 "practices_named": ["Fixture Dental A", "Fixture Dental B", "Fixture Dental C"],
                 "site_appeared": False,
+                "response_snippet": (
+                    "Fixture Dental A and Fixture Dental B are highly rated options in Austin, "
+                    "both accepting new patients and offering comprehensive family care."
+                ),
             },
             {
                 "engine": "Perplexity",
@@ -1532,10 +1606,10 @@ def _self_check() -> bool:
         )
 
     # 10. Live probe section present when live_probe data is given.
-    if "What AI assistants say about your practice right now" not in report:
+    if "What AI assistants recommend right now (and whether you're on the list)" not in report:
         failures.append(
             "Live probe section not found in buyer report when live_probe data is given "
-            "(expected 'What AI assistants say about your practice right now' heading)"
+            "(expected 'What AI assistants recommend right now (and whether you're on the list)' heading)"
         )
     if "Fixture Dental A" not in report:
         failures.append(
@@ -1543,10 +1617,10 @@ def _self_check() -> bool:
             "(expected 'Fixture Dental A' from live_probe_fixture; "
             "names must come from data, not the template)"
         )
-    if "was not mentioned by any of them" not in report:
+    if "was not among the firms" not in report:
         failures.append(
             "Live probe punchline not rendered "
-            "(expected 'was not mentioned by any of them' when site_appeared=False)"
+            "(expected 'was not among the firms' when site_appeared=False for all probes)"
         )
 
     # 11. No hardcoded competitor/practice names in the RENDERING code.
@@ -1599,13 +1673,62 @@ def _self_check() -> bool:
                 f"in the Recommendations section (expected 1 after consolidation): {sd_rec_lines}"
             )
 
+    # 15. Live probe section appears BEFORE Executive Summary.
+    probe_heading_pos = report.find("## What AI assistants recommend right now")
+    exec_summary_pos = report.find("## Executive Summary")
+    if probe_heading_pos == -1 or exec_summary_pos == -1:
+        failures.append(
+            "Cannot verify probe vs exec summary ordering: one or both sections not found in report"
+        )
+    elif probe_heading_pos >= exec_summary_pos:
+        failures.append(
+            "Live probe section does not appear before Executive Summary "
+            "(probe must be position-one content, immediately after the header)"
+        )
+
+    # 16. Gap score line ('cited in N of M') is present in buyer output.
+    import re as _re
+    if not _re.search(r"cited in \d+ of \d+", report):
+        failures.append(
+            "Gap score line ('cited in N of M') not found in buyer report "
+            "(must appear prominently in the live probe section)"
+        )
+
+    # 17. Scope disclaimer uses additive 'complements ... does not replace' framing.
+    if "complements" not in report or "does not replace" not in report:
+        failures.append(
+            "Scope disclaimer does not use additive framing "
+            "('complements ... does not replace' wording required in 'What this audit covers:')"
+        )
+
+    # 18. Provenance note ('How we tested this') present when tested_at is given.
+    # Also verifies the tested_at value from fixture data is rendered (never hardcoded in template).
+    if "How we tested this" not in report:
+        failures.append(
+            "'How we tested this' provenance note not found in buyer report when tested_at is given "
+            "(expected after intro paragraph in the live probe section)"
+        )
+    if "2026-07-06T14:32:00Z" not in report:
+        failures.append(
+            "tested_at value '2026-07-06T14:32:00Z' not rendered in provenance note "
+            "(tested_at from live_probe data must appear in the probe section; never hardcode a date)"
+        )
+
+    # 19. Response snippet rendered as a verbatim quote when response_snippet is given.
+    # Uses the fixture snippet text to confirm rendering, not a generic pattern.
+    if "Fixture Dental A and Fixture Dental B are highly rated" not in report:
+        failures.append(
+            "Response snippet not rendered in buyer report when response_snippet is given "
+            "(expected verbatim excerpt from first probe's response_snippet field)"
+        )
+
     if failures:
         for f in failures:
             print(f"  SELF-CHECK FAIL: {f}", file=sys.stderr)
         return False
 
     print(
-        "[report_generator self-check] PASS: all 14 buyer-framing invariants verified.",
+        "[report_generator self-check] PASS: all 19 buyer-framing invariants verified.",
         file=sys.stderr,
     )
     return True
