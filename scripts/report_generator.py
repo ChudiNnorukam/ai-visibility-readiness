@@ -330,6 +330,107 @@ _SKIPPED_DEFAULT_HINT = (
     "within 3 business days at no extra cost."
 )
 
+# ---------------------------------------------------------------------------
+# Fix-cost scale seam (FIX R1)
+# ---------------------------------------------------------------------------
+# Code seam: leave None to use the built-in half-day/flat-fee scale language.
+# Operator: set to a string like "$297 to $397 for all three fixes" once
+# pricing is confirmed. Never hardcode a number in the template logic itself.
+FIX_COST_QUOTE_SEAM: str | None = None
+
+
+# ---------------------------------------------------------------------------
+# Live probe section (R6)
+# ---------------------------------------------------------------------------
+
+def _render_live_probe_section(
+    live_probe: dict,
+    site_name: str,
+) -> list[str]:
+    """Render 'What AI assistants say about your practice right now' from live probe data.
+
+    HONESTY GUARDS (critical):
+    - All competitor/practice names come from live_probe data ONLY; never hardcoded here.
+    - site_appeared (from data) drives the punchline; never assumed False.
+    - Degrades safely when probes is empty: shows a promise, never an invented answer.
+    A $497 report never shows an invented AI answer.
+    """
+    probes = live_probe.get("probes", [])
+    site_name_safe = site_name or "your practice"
+    city = live_probe.get("city", "your area")
+
+    lines: list[str] = [
+        "",
+        "## What AI assistants say about your practice right now",
+        "",
+    ]
+
+    if not probes:
+        lines.extend([
+            "*We are running this live check and will include the results in your report "
+            "within 3 business days.*",
+            "",
+        ])
+        return lines
+
+    # Build engine list for the intro line (dedupe, preserve order)
+    engine_names: list[str] = []
+    for p in probes:
+        ename = p.get("engine")
+        if ename and ename not in engine_names:
+            engine_names.append(ename)
+
+    if len(engine_names) == 1:
+        engine_str = engine_names[0]
+    elif len(engine_names) == 2:
+        engine_str = f"{engine_names[0]} and {engine_names[1]}"
+    else:
+        engine_str = ", ".join(engine_names[:-1]) + f", and {engine_names[-1]}"
+
+    sample_query = probes[0].get("query") or f"Who's a good dentist near me in {city}?"
+    lines.extend([
+        f"We asked {engine_str}: *'{sample_query}'*",
+        "",
+    ])
+
+    for probe in probes:
+        engine = probe.get("engine", "AI assistant")
+        practices_named = probe.get("practices_named") or []
+        response_snippet = (probe.get("response_snippet") or "").strip()
+
+        lines.append(f"**{engine} named:**")
+        if practices_named:
+            for name in practices_named:
+                lines.append(f"- {name}")
+        elif response_snippet:
+            # Show raw snippet as a quote - honest, whatever the engine actually said
+            snippet_show = response_snippet[:200]
+            if len(response_snippet) > 200:
+                snippet_show += "..."
+            lines.append(f"> {snippet_show}")
+        else:
+            lines.append("*(Response not captured for this query)*")
+        lines.append("")
+
+    # Punchline - driven entirely by probe data, never hardcoded
+    any_appeared = any(p.get("site_appeared", False) for p in probes)
+    if not any_appeared:
+        lines.extend([
+            f"**{site_name_safe} was not mentioned by any of them.**",
+            "",
+            "These are the assistants a growing number of patients ask before choosing. "
+            "Right now they are handing those patients to the practices above.",
+            "",
+        ])
+    else:
+        lines.extend([
+            f"**{site_name_safe} was mentioned in at least one response.** "
+            "The full citation and recommendation rate is in Section 3 below.",
+            "",
+        ])
+
+    return lines
+
 
 def _lookup_buyer_info(check_name: str) -> tuple[str, str, str, str, str] | None:
     """Find buyer-facing info for a check by keyword substring match."""
@@ -523,6 +624,7 @@ def generate_cover_email(
     client_name: str,
     url: str,
     consultant_name: str = "Chudi Nnorukam",
+    live_probe: dict | None = None,
 ) -> str:
     """Generate a buyer-vocabulary cover email for the audit delivery.
 
@@ -530,8 +632,30 @@ def generate_cover_email(
     ('AI tools cannot reliably recommend your practice yet, here's exactly what to fix
     and who does it'); where the Monday-morning box is; how to reply.
     No AVR/framework jargon. No 'AI Visibility Readiness', no 'schema', no CLI terms.
+    When live_probe is present, adds one concrete tease line about the probe finding.
     """
     domain = url.replace("https://", "").replace("http://", "").rstrip("/")
+
+    # Build probe tease line when live probe data is present (R6).
+    # Only adds a line when we have real probe data; never fabricates a result.
+    probe_tease = ""
+    if live_probe and live_probe.get("probes"):
+        probes = live_probe["probes"]
+        any_appeared = any(p.get("site_appeared", False) for p in probes)
+        city = live_probe.get("city", "your area")
+        engine_names = []
+        for p in probes:
+            ename = p.get("engine")
+            if ename and ename not in engine_names:
+                engine_names.append(ename)
+        if engine_names and not any_appeared:
+            engine_str = " and ".join(engine_names[:2])
+            probe_tease = (
+                f"One finding you'll want to see: when patients in {city} asked "
+                f"{engine_str} for a dentist recommendation, {client_name} was not among "
+                "the practices named. The report shows exactly what changes that."
+            )
+
     lines = [
         f"Hi {client_name},",
         "",
@@ -540,6 +664,12 @@ def generate_cover_email(
         "",
         "The short answer: AI tools cannot reliably recommend your practice yet. "
         "The attached report lists exactly what to fix and who does it.",
+    ]
+
+    if probe_tease:
+        lines.extend(["", probe_tease])
+
+    lines.extend([
         "",
         "There's a 'What to do Monday morning' section near the top - "
         "it gives you a clear first step, a forwarding email you can copy and send "
@@ -548,7 +678,7 @@ def generate_cover_email(
         "Questions or not sure what to do next? Reply to this email and I'll help.",
         "",
         f"- {consultant_name}",
-    ]
+    ])
     return "\n".join(lines)
 
 
@@ -561,6 +691,7 @@ def generate_report(
     client_name: str | None = None,
     consultant_name: str = "Chudi Nnorukam",
     calibration_receipt: dict | None = None,
+    live_probe: dict | None = None,
 ) -> str:
     """Generate a formatted Markdown audit report."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -693,26 +824,48 @@ def generate_report(
             if expected_result:
                 lines.append(f"   - **Expected result:** {expected_result}")
 
+    # Live probe section (R6): placed HIGH, right after executive summary and top actions.
+    # Only rendered in buyer mode when probe data is present.
+    # HONESTY GUARD: never rendered when live_probe is None (degrades safely).
+    if client_name and live_probe:
+        site_display = client_name or url or "Your practice"
+        lines.extend(_render_live_probe_section(live_probe, site_display))
+
     # "What to do Monday morning" box: near the top, answers Q3 before the buyer hunts for it.
     # Step 1: forward to web person. Step 2: pre-written email. Step 3: no-dev-team path.
     if client_name:
         site_url = url or "your website"
-        domain = site_url.replace("https://", "").replace("http://", "").rstrip("/")
+        domain_display = site_url.replace("https://", "").replace("http://", "").rstrip("/")
+
+        # FIX R1: cost SCALE framing (order-of-magnitude only, no hardcoded dollar figure).
+        # FIX_COST_QUOTE_SEAM: operator injects a specific price range here once confirmed.
+        scale_suffix = (
+            FIX_COST_QUOTE_SEAM
+            if FIX_COST_QUOTE_SEAM
+            else "reply to this email and we'll quote a flat fee to do all three"
+        )
+        cost_scale_msg = (
+            "Total fix work is about a half-day to a day of a web developer's time "
+            "(roughly 8 hours across the three items). "
+            f"Most practices use their existing web provider; or {scale_suffix}."
+        )
+
         lines.extend([
             "",
             "---",
             "",
             "## What to do Monday morning",
             "",
+            cost_scale_msg,
+            "",
             "**Step 1:** Forward this report to whoever built or currently maintains your website. "
-            f"It covers 3 fixes with an estimated total of about 8 hours of work. "
             "The report is written so they can act on it directly.",
             "",
             "**Step 2:** Use this email to send it to them:",
             "",
             "> Hi [your web contact],",
             ">",
-            f"> We had an independent audit done on {domain} covering how AI tools",
+            f"> We had an independent audit done on {domain_display} covering how AI tools",
             "> (ChatGPT, Google's AI results, etc.) find and describe the practice.",
             "> The attached report lists 3 fixes, with what each one is, why it matters,",
             "> and roughly how long it takes (about 8 hours total).",
@@ -723,7 +876,7 @@ def generate_report(
             "> Dr. [Your name]",
             "",
             "**Step 3:** No one maintains your site? "
-            "Reply to this email and we'll quote a flat price to do all three fixes.",
+            "Reply to this email and we'll quote a flat fee to do all three fixes.",
             "",
             "---",
         ])
@@ -1223,7 +1376,30 @@ def _self_check() -> bool:
             {"check": "2.4_semantic_html", "tier": "VERIFIABLE", "verdict": "PASS"},
         ],
     }
-    report = generate_report(seo_fixture, ai_fixture, client_name="TestCo Inc", url="https://example.com")
+    # Fixture live probe data for assertions 10 and 11.
+    # Uses generic "Fixture Dental" names that MUST NOT appear in production template code.
+    live_probe_fixture = {
+        "city": "Austin, TX",
+        "probes": [
+            {
+                "engine": "ChatGPT",
+                "query": "Who's a good dentist near me in Austin, TX?",
+                "practices_named": ["Fixture Dental A", "Fixture Dental B", "Fixture Dental C"],
+                "site_appeared": False,
+            },
+            {
+                "engine": "Perplexity",
+                "query": "Who's a good dentist near me in Austin, TX?",
+                "practices_named": ["Fixture Dental D", "Fixture Dental E"],
+                "site_appeared": False,
+            },
+        ],
+    }
+    report = generate_report(
+        seo_fixture, ai_fixture,
+        client_name="TestCo Inc", url="https://example.com",
+        live_probe=live_probe_fixture,
+    )
 
     failures = []
 
@@ -1317,13 +1493,51 @@ def _self_check() -> bool:
             "keep direct-measurement transparency, drop the free-tool brag)"
         )
 
+    # 10. Live probe section present when live_probe data is given.
+    if "What AI assistants say about your practice right now" not in report:
+        failures.append(
+            "Live probe section not found in buyer report when live_probe data is given "
+            "(expected 'What AI assistants say about your practice right now' heading)"
+        )
+    if "Fixture Dental A" not in report:
+        failures.append(
+            "Live probe section does not render practices_named from data "
+            "(expected 'Fixture Dental A' from live_probe_fixture; "
+            "names must come from data, not the template)"
+        )
+    if "was not mentioned by any of them" not in report:
+        failures.append(
+            "Live probe punchline not rendered "
+            "(expected 'was not mentioned by any of them' when site_appeared=False)"
+        )
+
+    # 11. No hardcoded competitor/practice names in the RENDERING code.
+    # Names must come from live_probe data only. Scan ONLY the source ABOVE
+    # _self_check (the template/rendering functions); scanning the whole file
+    # would self-match this very candidate list and the check's own fixture.
+    render_source = open(__file__).read().split("def _self_check")[0]
+    hardcoded_name_candidates = [
+        "Austin Smiles Family Dental",
+        "Capital City Dentistry",
+        "Barton Springs Dental Group",
+        "Domain Family Dentistry",
+        "Westlake Hills Dental",
+        "Fixture Dental A",
+    ]
+    for name in hardcoded_name_candidates:
+        if name in render_source:
+            failures.append(
+                f"Hardcoded competitor name '{name}' found in rendering source "
+                "(competitor names must come from live_probe data, not the template)"
+            )
+
     if failures:
         for f in failures:
             print(f"  SELF-CHECK FAIL: {f}", file=sys.stderr)
         return False
 
     print(
-        "[report_generator self-check] PASS: all 9 buyer-framing invariants verified.",
+        "[report_generator self-check] PASS: all 11 buyer-framing invariants verified.",
         file=sys.stderr,
     )
     return True

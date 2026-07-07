@@ -367,6 +367,65 @@ PLATFORM_FUNCTIONS = {
     "gemini": query_gemini,
 }
 
+
+def _extract_live_probe(
+    all_results: list[dict],
+    vertical: str | None,
+    vertical_ctx: dict | None,
+) -> dict | None:
+    """Extract structured live-probe data from raw citation results for the report.
+
+    Only populated for the local-healthcare vertical, where geo-specific queries
+    produce responses naming local practices. Returns None for other verticals.
+
+    HONESTY GUARD: practices_named is left empty in the returned dict because
+    auto-extraction without an LLM call is unreliable. The template falls back to
+    response_snippet (the raw AI answer text) when practices_named is empty, which
+    is always honest. In the consulting workflow the operator can enrich the
+    live_probe dict before generating the final report.
+    """
+    if vertical != "local-healthcare":
+        return None
+
+    ctx = vertical_ctx or {}
+    city = ctx.get("neighborhood") or ctx.get("city") or "your area"
+
+    # Find topic_authority queries (the geo-local "best X in city" shape)
+    # from local-healthcare: take first 2 distinct engines
+    geo_results = [
+        r for r in all_results
+        if r.get("category") == "topic_authority" and r.get("status") != "ERROR"
+    ]
+
+    if not geo_results:
+        return None
+
+    # Pick one result per engine (max 2 engines for readability)
+    seen_engines: set[str] = set()
+    probes = []
+    for r in geo_results:
+        engine = r.get("platform", "AI assistant")
+        if engine in seen_engines or len(probes) >= 2:
+            continue
+        seen_engines.add(engine)
+        probes.append({
+            "engine": engine,
+            "query": r.get("query", ""),
+            # practices_named left empty: cannot be reliably auto-extracted
+            # without an LLM call. Template falls back to response_snippet.
+            "practices_named": [],
+            "response_snippet": r.get("response_snippet", ""),
+            "site_appeared": r.get("status") == "CITED",
+        })
+
+    if not probes:
+        return None
+
+    return {
+        "city": city,
+        "probes": probes,
+    }
+
 PLATFORM_NAMES = {
     "openai": "ChatGPT",
     "perplexity": "Perplexity",
@@ -668,6 +727,12 @@ def run_citation_test(
     summary["target_url"] = target_url
     summary["test_date"] = datetime.now(timezone.utc).isoformat()
     summary["platforms_tested"] = list(active.keys())
+
+    # Build live probe for the report's 'What AI assistants say' section (R6).
+    # Only populated for local-healthcare vertical; None otherwise.
+    probe_data = _extract_live_probe(all_results, vertical, vertical_ctx)
+    if probe_data is not None:
+        summary["live_probe"] = probe_data
 
     # Save raw results
     os.makedirs(output_dir, exist_ok=True)
