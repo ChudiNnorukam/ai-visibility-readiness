@@ -115,16 +115,16 @@ _CHECK_BUYER_INFO: list[tuple[str, tuple[str, str, str, str, str]]] = [
         "and that all pages load over HTTPS without redirect chains.",
     )),
     ("schema_markup", (
-        "Structured data (labels in your website's code that spell out your practice name, "
-        "hours, services, and location so AI tools can read them correctly)",
+        "Add and complete structured data across your pages (labels in your website's code "
+        "that spell out your practice name, hours, services, and location so AI tools can read them correctly)",
         "whoever maintains your website (most web providers handle this routinely); "
         "or we can do it for a flat fee - reply for a quote",
         "~3 hours",
         "Once added, AI tools can read your practice name, hours, services, and location directly from your site. "
         "Over the weeks to months following the fix, this typically makes AI answers about local practices "
         "more likely to include and correctly describe you.",
-        "Add structured-data markup (schema.org / JSON-LD) for a local dental practice, "
-        "covering name, address, phone, hours, and services.",
+        "Add structured-data markup (schema.org) covering your practice name, address, phone, "
+        "hours, and services on every main page - not just the homepage.",
     )),
     ("page_speed", (
         "Page speed",
@@ -176,7 +176,7 @@ _CHECK_BUYER_INFO: list[tuple[str, tuple[str, str, str, str, str]]] = [
         "Once expanded, AI tools have more structured facts about your practice to draw on. "
         "Over the weeks to months following the fix, wider data coverage typically improves "
         "how accurately and completely AI answers describe you.",
-        "Expand the structured-data markup (JSON-LD) so it covers all your main service pages "
+        "Expand the structured-data markup (schema.org) to cover all your main service pages "
         "and location pages, not just the homepage.",
     )),
     ("content_structure", (
@@ -523,6 +523,7 @@ def _build_top_actions(
         return actions[:3]
 
     # Priority 1: SEO failures
+    schema_covered = False  # track whether a structured-data action was already added
     for check in seo_results.get("checks", []):
         if check.get("verdict") == "FAIL":
             check_id = check["check"]
@@ -540,12 +541,14 @@ def _build_top_actions(
                 ))
             elif "schema" in check_id:
                 actions.append((
-                    "Add structured data (labels in your website's code that spell out your practice name, "
-                    "hours, services, and location) so AI tools can read them correctly.",
+                    "Add and complete structured data across your pages (labels in your website's code "
+                    "that spell out your practice name, hours, services, and location) so AI tools "
+                    "can read them correctly.",
                     "AI tools can read your practice details directly from your site. "
                     "Over the weeks to months following the fix, this typically makes AI answers more likely "
                     "to include and correctly describe you.",
                 ))
+                schema_covered = True  # mark structured data as covered so Priority 2 doesn't duplicate
             elif "web_vitals" in check_id or "page_speed" in check_id:
                 actions.append((
                     "Improve page speed so visitors from AI tools don't leave before reading.",
@@ -574,11 +577,12 @@ def _build_top_actions(
                     "The permission must be in place before any AI tool can cite you.",
                 ))
             elif "structured_data" in check_id:
-                actions.append((
-                    "Add structured data labels to more of your pages so AI has more facts to draw on.",
-                    "Richer data coverage gives AI engines more to cite about your practice. "
-                    "Over the weeks to months following the fix, this typically improves citation accuracy.",
-                ))
+                if not schema_covered:  # skip if schema_markup already added this in Priority 1
+                    actions.append((
+                        "Add structured data labels to more of your pages so AI has more facts to draw on.",
+                        "Richer data coverage gives AI engines more to cite about your practice. "
+                        "Over the weeks to months following the fix, this typically improves citation accuracy.",
+                    ))
             elif "content_structure" in check_id:
                 actions.append((
                     "Improve heading structure so AI tools can navigate your content cleanly.",
@@ -790,6 +794,11 @@ def generate_report(
             "citation rates typically improve over the weeks to months that follow as search engines "
             "and AI platforms re-crawl your site.",
             "",
+            "**What this audit covers:** your visibility to AI assistants (ChatGPT, Perplexity, "
+            "and Google's AI answers). It does not assess your Google Business Profile, patient "
+            "reviews, or traditional local SEO, which are separate and also important - just not "
+            "what this report measures.",
+            "",
         ])
 
     lines.extend([
@@ -839,14 +848,17 @@ def generate_report(
 
         # FIX R1: cost SCALE framing (order-of-magnitude only, no hardcoded dollar figure).
         # FIX_COST_QUOTE_SEAM: operator injects a specific price range here once confirmed.
+        # n_actions: derived from the deduplicated top_actions list so the Monday box count
+        # stays consistent with what the buyer sees in the Recommendations section.
+        n_actions = len(top_actions)
         scale_suffix = (
             FIX_COST_QUOTE_SEAM
             if FIX_COST_QUOTE_SEAM
-            else "reply to this email and we'll quote a flat fee to do all three"
+            else "reply to this email and we'll quote a flat fee to do them all"
         )
         cost_scale_msg = (
-            "Total fix work is about a half-day to a day of a web developer's time "
-            "(roughly 8 hours across the three items). "
+            f"Total fix work is a small project, roughly half a day of a web developer's time "
+            f"across the {n_actions} item{'s' if n_actions != 1 else ''} above (each item's estimate is listed with it). "
             f"Most practices use their existing web provider; or {scale_suffix}."
         )
 
@@ -867,8 +879,8 @@ def generate_report(
             ">",
             f"> We had an independent audit done on {domain_display} covering how AI tools",
             "> (ChatGPT, Google's AI results, etc.) find and describe the practice.",
-            "> The attached report lists 3 fixes, with what each one is, why it matters,",
-            "> and roughly how long it takes (about 8 hours total).",
+            f"> The attached report lists {n_actions} fix{'es' if n_actions != 1 else ''}, with what each one is, why it matters,",
+            "> and roughly how long each takes.",
             "> Everything you need to implement them is in the report itself.",
             "> Could you review it and let me know when you could schedule the work?",
             ">",
@@ -876,7 +888,7 @@ def generate_report(
             "> Dr. [Your name]",
             "",
             "**Step 3:** No one maintains your site? "
-            "Reply to this email and we'll quote a flat fee to do all three fixes.",
+            "Reply to this email and we'll quote a flat fee to do all the fixes.",
             "",
             "---",
         ])
@@ -1275,8 +1287,20 @@ def generate_report(
             "These gaps prevent AI crawlers from finding, parsing, or citing your content accurately."
         )
         lines.append("")
+        # Dedup: if schema_markup (1.3) was already FAIL in Priority 1, skip structured_data_depth
+        # (2.2) here - both surface the same underlying fix and the buyer must not see two entries.
+        schema_markup_in_p1 = (
+            seo_verdict_val == "FAIL" and
+            any(
+                "schema_markup" in c.get("check", "") and c.get("verdict") == "FAIL"
+                for c in seo_results.get("checks", [])
+            )
+        )
         for check in ai_results.get("checks", []):
             if check.get("verdict") in ("FAIL", "PARTIAL"):
+                check_raw = check.get("check", "")
+                if "structured_data_depth" in check_raw and schema_markup_in_p1:
+                    continue  # consolidated into the schema_markup recommendation above
                 lines.extend(_format_check_as_recommendation(check, check.get("verdict", "FAIL")))
 
     if overall == "AI-READY":
@@ -1474,15 +1498,29 @@ def _self_check() -> bool:
         )
 
     # 8. Every FAIL/PARTIAL recommendation includes a 'What to tell your web person:' line.
-    expected_rec_count = sum(
+    # Dedup-aware: schema_markup + structured_data_depth consolidate to ONE recommendation when
+    # both are FAIL, so the expected count is reduced by 1 in that scenario.
+    raw_fail_count = sum(
         1 for c in seo_fixture["checks"] + ai_fixture["checks"]
         if c.get("verdict") in ("FAIL", "PARTIAL")
     )
+    schema_markup_fail_8 = any(
+        "schema_markup" in c.get("check", "") and c.get("verdict") == "FAIL"
+        for c in seo_fixture["checks"]
+    )
+    struct_depth_fail_8 = any(
+        "structured_data_depth" in c.get("check", "") and c.get("verdict") in ("FAIL", "PARTIAL")
+        for c in ai_fixture["checks"]
+    )
+    if schema_markup_fail_8 and struct_depth_fail_8:
+        raw_fail_count -= 1  # consolidated into one recommendation
+    expected_rec_count = raw_fail_count
     actual_web_person_count = report.count("What to tell your web person:")
     if actual_web_person_count < expected_rec_count:
         failures.append(
             f"'What to tell your web person:' appears {actual_web_person_count} times "
-            f"but expected at least {expected_rec_count} (one per FAIL/PARTIAL recommendation)"
+            f"but expected at least {expected_rec_count} "
+            "(one per FAIL/PARTIAL recommendation after structured-data consolidation)"
         )
 
     # 9. No "freely available" tool bragging in buyer output (FIX B).
@@ -1531,13 +1569,43 @@ def _self_check() -> bool:
                 "(competitor names must come from live_probe data, not the template)"
             )
 
+    # 12. Scope disclaimer present in buyer output.
+    if "What this audit covers:" not in report:
+        failures.append(
+            "Scope disclaimer not found in buyer report "
+            "(expected 'What this audit covers:' near top of executive summary)"
+        )
+
+    # 13. No raw 'JSON-LD' acronym in buyer output.
+    if "JSON-LD" in report:
+        failures.append(
+            "'JSON-LD' found in buyer output "
+            "(must not appear in buyer-facing copy; use 'schema.org' instead)"
+        )
+
+    # 14. Structured data appears as ONE consolidated recommendation heading (not two).
+    # Both schema_markup (1.3) and structured_data_depth (2.2) are FAIL in the self-check fixture;
+    # only ONE structured-data recommendation must appear in the buyer Recommendations section.
+    rec_start = report.find("## Recommendations")
+    if rec_start != -1:
+        rec_section = report[rec_start:]
+        sd_rec_lines = [
+            line for line in rec_section.split("\n")
+            if line.startswith("**") and "structured data" in line.lower()
+        ]
+        if len(sd_rec_lines) > 1:
+            failures.append(
+                f"Structured data appears as {len(sd_rec_lines)} separate recommendation headings "
+                f"in the Recommendations section (expected 1 after consolidation): {sd_rec_lines}"
+            )
+
     if failures:
         for f in failures:
             print(f"  SELF-CHECK FAIL: {f}", file=sys.stderr)
         return False
 
     print(
-        "[report_generator self-check] PASS: all 11 buyer-framing invariants verified.",
+        "[report_generator self-check] PASS: all 14 buyer-framing invariants verified.",
         file=sys.stderr,
     )
     return True
