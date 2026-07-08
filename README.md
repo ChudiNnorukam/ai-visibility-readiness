@@ -1,5 +1,8 @@
 # ai-visibility-readiness
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/AVR-v1.1.0-green.svg)](https://chudi.dev/framework)
+
 The **AI Visibility Readiness (AVR) Framework** v1.1.0 — a transparent, tiered audit methodology for measuring whether a website is ready for traditional search AND for AI-powered search (Google AI Mode, AI Overviews, Perplexity, ChatGPT, Claude, Gemini, Microsoft Copilot).
 
 Authored by [Chudi Nnorukam](https://chudi.dev). Implemented by [citability.dev](https://citability.dev). Demonstrated on [chudi.dev](https://chudi.dev) as the canonical case study.
@@ -109,6 +112,19 @@ All verdicts verified on production 2026-05-22 to 2026-05-23. Full reports in `s
 
 chudi-blog ships a GitHub Action at `.github/workflows/avr-fact-block-audit.yml` (added 2026-05-23) that triggers on `deployment_status: success` with `environment: Production`, clones ai-visibility-readiness, audits the 5 chudi.dev URLs in the table above, posts an `avr-fact-block-density` commit status check, and EXITS NON-ZERO if any URL drops below EXTRACTABLE. Flipped from fail-soft to hard-fail on chudi-blog commit `c548df2d` after all 5 URLs reached EXTRACTABLE. Any deploy that regresses below the baseline will surface in the GitHub commit timeline + the workflow run summary.
 
+## Sample audits
+
+Dated baseline measurements from the April 2026 AVR v1.0 assessment are archived in `avr-baseline-2026-04-07/`. Each file is regeneratable via `python3 scripts/run_audit.py` on the audited domain.
+
+- [citations_chudi.dev_20260407_074019_summary.json](avr-baseline-2026-04-07/citations_chudi.dev_20260407_074019_summary.json)
+- [citations_chudi.dev_20260407_074019_raw.json](avr-baseline-2026-04-07/citations_chudi.dev_20260407_074019_raw.json)
+- [citations_citability.dev_20260407_074025_summary.json](avr-baseline-2026-04-07/citations_citability.dev_20260407_074025_summary.json)
+- [citations_citability.dev_20260407_074025_raw.json](avr-baseline-2026-04-07/citations_citability.dev_20260407_074025_raw.json)
+- [visibility_chudi.dev_20260407_074024_summary.json](avr-baseline-2026-04-07/visibility_chudi.dev_20260407_074024_summary.json)
+- [visibility_chudi.dev_20260407_074024_raw.json](avr-baseline-2026-04-07/visibility_chudi.dev_20260407_074024_raw.json)
+- [visibility_citability.dev_20260407_074010_summary.json](avr-baseline-2026-04-07/visibility_citability.dev_20260407_074010_summary.json)
+- [visibility_citability.dev_20260407_074010_raw.json](avr-baseline-2026-04-07/visibility_citability.dev_20260407_074010_raw.json)
+
 ## Tests
 
 ```bash
@@ -145,5 +161,7 @@ sample-audits/
 ```
 
 ## License + contact
+
+Licensed under the [Apache License 2.0](LICENSE). Copyright 2026 Chudi Nnorukam.
 
 Contact: [chudi@chudi.dev](mailto:chudi@chudi.dev). Methodology canonical reference: [chudi.dev/framework](https://chudi.dev/framework). Audit deliverable demo: [citability.dev](https://citability.dev).
