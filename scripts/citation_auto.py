@@ -96,6 +96,50 @@ def _domain_match(target_domain: str, url: str | None) -> bool:
     return False
 
 
+# Per-run cache: wrapper URL -> resolved final URL. Module-level so repeated
+# wrappers within one audit run (many queries citing the same source) are
+# resolved once instead of once per query.
+_REDIRECT_CACHE: dict[str, str] = {}
+
+
+def _resolve_redirect_url(url: str, cache: dict[str, str] | None = None) -> str:
+    """Resolve a Gemini grounding wrapper URL to its real destination.
+
+    Gemini's grounding_chunks return citation URLs on the host
+    vertexaisearch.cloud.google.com (path /grounding-api-redirect/...) instead
+    of the actual cited page. _domain_match against target_domain can never
+    match that wrapper host, producing false NOT_CITED results even when the
+    target was genuinely cited (measured: strategyn.com scored 0/14 when the
+    true rate was 10/14). This follows the redirect and returns the final URL.
+
+    Non-wrapper URLs pass through unchanged with no HTTP call. Any failure
+    (timeout, connection error, non-2xx) falls back to the original wrapper
+    URL — never raises, so a single bad redirect can't crash the scoring path.
+    """
+    if cache is None:
+        cache = _REDIRECT_CACHE
+    if url in cache:
+        return cache[url]
+
+    from urllib.parse import urlparse
+    try:
+        host = (urlparse(url).hostname or "").lower()
+    except Exception:
+        return url
+    if host != "vertexaisearch.cloud.google.com":
+        return url
+
+    try:
+        import requests as req
+        resp = req.get(url, allow_redirects=True, timeout=10)
+        resolved = resp.url or url
+    except Exception:
+        resolved = url
+
+    cache[url] = resolved
+    return resolved
+
+
 def query_openai(query: str, target_domain: str) -> dict:
     """Query OpenAI with FORCED web_search and check for target domain citations.
 
@@ -314,7 +358,10 @@ def query_gemini(query: str, target_domain: str) -> dict:
 
     Uses gemini-2.5-flash with the google_search built-in tool. Citations come
     back via response.candidates[0].grounding_metadata.grounding_chunks, each
-    chunk's .web.uri is a source URL the model grounded on.
+    chunk's .web.uri is a source URL the model grounded on. Gemini returns
+    these as vertexaisearch.cloud.google.com redirect wrappers rather than
+    the real destination, so each URI is resolved via _resolve_redirect_url
+    before dedupe/domain matching (see that function's docstring).
 
     SDK reads GEMINI_API_KEY (or GOOGLE_API_KEY) from env automatically.
     Returns: {platform, query, status, cited_urls, response_snippet}
@@ -345,7 +392,7 @@ def query_gemini(query: str, target_domain: str) -> dict:
                 for chunk in chunks:
                     web = getattr(chunk, "web", None)
                     if web and getattr(web, "uri", None):
-                        cited_urls.append(web.uri)
+                        cited_urls.append(_resolve_redirect_url(web.uri))
 
         # Dedupe while preserving order
         seen = set()
